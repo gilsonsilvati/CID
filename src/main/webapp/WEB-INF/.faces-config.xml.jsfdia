@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:" SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::0" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="home::#paginas#Home.xhtml" NAME="output"
+    PATH="/paginas/Home.xhtml" TARGET="rules:#paginas#Home.xhtml"
+    TITLE="home" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::1" SHAPE="32,241,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::1" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastraUsuario::#paginas#cadastrar#CadastraUsuario.xhtml"
+    NAME="output" PATH="/paginas/cadastrar/CadastraUsuario.xhtml"
+    TARGET="rules:#paginas#cadastrar#CadastraUsuario.xhtml"
+    TITLE="cadastraUsuario" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::2" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::2" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastraMedico::#paginas#cadastrar#CadastraMedico.xhtml"
+    NAME="output" PATH="/paginas/cadastrar/CadastraMedico.xhtml"
+    TARGET="rules:#paginas#cadastrar#CadastraMedico.xhtml"
+    TITLE="cadastraMedico" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::3" SHAPE="32,465,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::3" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastraExame::#paginas#cadastrar#CadastraExame.xhtml"
+    NAME="output" PATH="/paginas/cadastrar/CadastraExame.xhtml"
+    TARGET="rules:#paginas#cadastrar#CadastraExame.xhtml"
+    TITLE="cadastraExame" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::4" SHAPE="32,577,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::4" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastraDoenca::#paginas#cadastrar#CadastraDoenca.xhtml"
+    NAME="output" PATH="/paginas/cadastrar/CadastraDoenca.xhtml"
+    TARGET="rules:#paginas#cadastrar#CadastraDoenca.xhtml"
+    TITLE="cadastraDoenca" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::5" SHAPE="32,689,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::5" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="consultaUsuario::#paginas#consultar#ConsultaUsuario.xhtml"
+    NAME="output" PATH="/paginas/consultar/ConsultaUsuario.xhtml"
+    TARGET="rules:#paginas#consultar#ConsultaUsuario.xhtml"
+    TITLE="consultaUsuario" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::6" SHAPE="32,801,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::6" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="consultaMedico::#paginas#consultar#ConsultaMedico.xhtml"
+    NAME="output" PATH="/paginas/consultar/ConsultaMedico.xhtml"
+    TARGET="rules:#paginas#consultar#ConsultaMedico.xhtml"
+    TITLE="consultaMedico" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::7" SHAPE="32,913,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::7" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="consultaExame::#paginas#consultar#ConsultaExame.xhtml"
+    NAME="output" PATH="/paginas/consultar/ConsultaExame.xhtml"
+    TARGET="rules:#paginas#consultar#ConsultaExame.xhtml"
+    TITLE="consultaExame" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::8" SHAPE="32,1025,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::8" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="consultaDoenca::#paginas#consultar#ConsultaDoenca.xhtml"
+    NAME="output" PATH="/paginas/consultar/ConsultaDoenca.xhtml"
+    TARGET="rules:#paginas#consultar#ConsultaDoenca.xhtml"
+    TITLE="consultaDoenca" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::9" SHAPE="32,1137,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::9" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="imprimiExame::#paginas#imprimir#ImprimiExame.xhtml"
+    NAME="output" PATH="/paginas/imprimir/ImprimiExame.xhtml"
+    TARGET="rules:#paginas#imprimir#ImprimiExame.xhtml"
+    TITLE="imprimiExame" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::10" SHAPE="32,1249,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::10" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="imprimiDoenca::#paginas#imprimir#ImprimiDoenca.xhtml"
+    NAME="output" PATH="/paginas/imprimir/ImprimiDoenca.xhtml"
+    TARGET="rules:#paginas#imprimir#ImprimiDoenca.xhtml"
+    TITLE="imprimiDoenca" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#Home.xhtml"
+  PATH="/paginas/Home.xhtml" SHAPE="240,145,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#cadastrar#CadastraDoenca.xhtml"
+  PATH="/paginas/cadastrar/CadastraDoenca.xhtml" SHAPE="240,705,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#cadastrar#CadastraMedico.xhtml"
+  PATH="/paginas/cadastrar/CadastraMedico.xhtml" SHAPE="240,481,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#cadastrar#CadastraUsuario.xhtml"
+  PATH="/paginas/cadastrar/CadastraUsuario.xhtml" SHAPE="240,369,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#cadastrar#CadastraExame.xhtml"
+  PATH="/paginas/cadastrar/CadastraExame.xhtml" SHAPE="240,593,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#consultar#ConsultaExame.xhtml"
+  PATH="/paginas/consultar/ConsultaExame.xhtml" SHAPE="240,1041,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#consultar#ConsultaDoenca.xhtml"
+  PATH="/paginas/consultar/ConsultaDoenca.xhtml" SHAPE="240,1153,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#consultar#ConsultaUsuario.xhtml"
+  PATH="/paginas/consultar/ConsultaUsuario.xhtml" SHAPE="240,817,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#consultar#ConsultaMedico.xhtml"
+  PATH="/paginas/consultar/ConsultaMedico.xhtml" SHAPE="240,929,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#imprimir#ImprimiExame.xhtml"
+  PATH="/paginas/imprimir/ImprimiExame.xhtml" SHAPE="240,1265,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#imprimir#ImprimiDoenca.xhtml"
+  PATH="/paginas/imprimir/ImprimiDoenca.xhtml" SHAPE="240,1377,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

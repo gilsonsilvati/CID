@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:composite="http://xmlns.jcp.org/jsf/composite"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>..:: CID | Login ::..</title>
+	<h:outputStylesheet library="css" name="Login.css" />
+</h:head>
+<h:body>
+	<h:form id="frm-login">
+
+		<!-- <p:growl id="growl" life="5000" /> -->
+		
+		<p:dialog visible="true" modal="true" resizable="false" showEffect="explode"
+				showHeader="explode" closable="false" styleClass="dialog-login" position="center">
+				
+			<p:graphicImage library="imagens" name="logo.png" styleClass="logo" />
+			
+			<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
+
+			<h:panelGrid columns="2" cellpadding="5" cellspacing="10" styleClass="grid" id="painel-login">
+				
+				<f:facet name="header">
+					<h:outputText value="sistema de consulta cid ®" styleClass="header" />
+				</f:facet>
+				
+				<h:outputText />
+				<h:outputText />
+
+				<p:outputLabel value="E-mail: *" for="email" />
+				<p:inputText id="email" value="#{loginUsuarioBean.usuario.email}"
+					placeholder="email@exemplo.com.br" size="25"
+					onclick="this.value = '';"
+					onmouseover="this.style.backgroundColor = '#c2e7ee';"
+					onmouseout="this.style.backgroundColor = '#ffffff';" />
+
+				<p:outputLabel value="Senha: *" for="senha" />
+				<p:password id="senha" value="#{loginUsuarioBean.usuario.senha}"
+					placeholder="**********" size="25"
+					onclick="this.value = '';"
+					onmouseover="this.style.backgroundColor = '#c2e7ee';"
+					onmouseout="this.style.backgroundColor = '#ffffff';" />
+
+				<h:outputLabel />
+				<p:commandButton value="Entrar" icon="ui-icon-unlocked"
+					update="@form" action="home" styleClass="botao" />
+					
+			</h:panelGrid>
+
+			<f:facet name="footer">
+				<h:outputLabel value="CID © 2015 - todos os direitos reservados ®."
+					styleClass="footer" />
+				<p:graphicImage library="imagens" name="primefaces_ui.png"
+					styleClass="logo-prime" />
+			</f:facet>
+
+		</p:dialog>
+
+	</h:form>
+
+</h:body>
+</html>

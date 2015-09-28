@@ -1,0 +1,45 @@
+@CHARSET "UTF-8";
+
+* {
+	margin: 0;
+}
+
+body {
+	text-align: center;
+  	font-family: serif, sans-serif;
+  	font-variant: small-caps;
+  	font-weight: bold;
+  	font-size: 14px;
+	color: #000000;
+	letter-spacing: 2px;
+	background-color: #ABD1DC;
+}
+
+.header {
+	border: 0;
+	font-size: 20px;
+	background-color: #ABD1DC;
+}
+
+.menu {
+	font-size: 16px;
+}
+
+.footer {
+	font-size: 14px;
+	letter-spacing: 1px;
+}
+
+.primefaces {
+	width: 60px;
+	height: auto;
+	padding: 0;
+	margin-bottom: -11px;
+}
+
+.logo-body {
+	width: 500px;
+	height: auto;
+	margin-top: 10px;
+	position: relative;
+}
