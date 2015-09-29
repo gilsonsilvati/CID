@@ -10,7 +10,7 @@
 
 	<!-- Configurando Página Inicial -->
 	<welcome-file-list>
-		<welcome-file>/Login.xhtml</welcome-file>
+		<welcome-file>Login.xhtml</welcome-file>
 	</welcome-file-list>
 
 	<!-- Configurando a Servlet -->
