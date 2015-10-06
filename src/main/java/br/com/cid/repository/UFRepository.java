@@ -30,5 +30,11 @@ public class UFRepository implements Serializable {
 		return uf;
 		
 	}
+	
+	public UF buscaPorSigla(String sigla) {
+		UF uf = manager.find(UF.class, sigla);
+		return uf;
+		
+	}
 
 }

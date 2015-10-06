@@ -15,22 +15,22 @@ public class UFConverter implements Converter {
 	
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
-		UF retorno = null;
+		UF uf = null;
 		
 		if (value != null) {
-			retorno = this.ufs.buscaPorId(new Long(value));
+			uf = this.ufs.buscaPorId(new Long(value));
 		}
 		
-		return retorno;
+		return uf;
 	}
 
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
 		if (value != null) {
 			Long id = ((UF) value).getId();
-			String retorno = (id == null ? null : id.toString());
+			String uf = (id == null ? null : id.toString());
 			
-			return retorno;
+			return uf;
 		}
 		
 		return "";
