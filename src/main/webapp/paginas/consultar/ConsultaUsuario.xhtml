@@ -13,9 +13,10 @@
 		<h:form id="frm-consulta-usuario">
 			<h:outputStylesheet library="css" name="ConsultaUsuario.css" />
 			
-			<p:dataTable value="#{cadastroUsuarioBean.usuarios}" var="usuario"
+			<p:dataTable value="#{consultaUsuario.usuarios}" var="usuario"
 					emptyMessage="Nenhum usuário cadastrado!"
-					paginator="true" paginatorPosition="bottom" rows="5" style="margin-top: 30px">
+					paginator="true" paginatorPosition="bottom" rows="5" style="margin-top: 30px"
+					styleClass="table-consulta-usuario">
 					
 				<f:facet name="header">Usuários cadastrados no sistema</f:facet>
 				
@@ -34,23 +35,25 @@
 					<p:outputLabel value="#{usuario.email}" style="font-size: 14px" />
 				</p:column>
 				
-				<p:column style="font-size: 17px">
+				<p:column style="font-size: 17px" width="120">
 					<f:facet name="header">cpf</f:facet>
 					<p:outputLabel value="#{usuario.cpf}" style="font-size: 12px" />
 				</p:column>
 				
+				<!--
 				<p:column style="font-size: 17px">
 					<f:facet name="header">senha</f:facet>
 					<p:outputLabel value="#{usuario.senha}" style="font-size: 12px" />
 				</p:column>
+				-->
 				
-				<p:column style="font-size: 17px">
+				<p:column style="font-size: 17px" width="85">
 					<f:facet name="header">opções</f:facet>
-					<p:button icon="ui-icon-pencil" title="Editar">
+					<p:button icon="fa fa-pencil" title="Editar">
 						<f:param name="id" value="#{usuario.id}" />
 					</p:button>
 					
-					<p:button icon="ui-icon-trash" title="Excluir">
+					<p:button icon="fa fa-trash" title="Excluir">
 						<f:param name="id" value="#{usuario.id}" />
 					</p:button>
 				</p:column>

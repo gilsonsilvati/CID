@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+
+* {
+	margin: 0;
+}
+
+.botao-imprimi {
+	font-variant: small-caps;
+  	letter-spacing: 2px;
+	display: block;
+	margin-bottom: 50px;
+	margin-left: 500px;
+}
+
+.table-imprimi {
+	width: 750px;
+	height: auto;
+	margin-left: 200px;
+}

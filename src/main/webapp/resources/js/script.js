@@ -1,1 +1,0 @@
-alert('Olá! Seja bem-vindo ao CID');

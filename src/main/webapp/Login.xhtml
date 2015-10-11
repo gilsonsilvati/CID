@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
@@ -12,8 +13,6 @@
 <h:body>
 	<h:form id="frm-login">
 
-		<!-- <p:growl id="growl" life="5000" /> -->
-		
 		<p:dialog visible="true" modal="true" resizable="false" showEffect="explode"
 				showHeader="explode" closable="false" styleClass="dialog-login" position="center">
 				
@@ -32,26 +31,20 @@
 
 				<p:outputLabel value="E-mail: *" for="email" />
 				<p:inputText id="email" value="#{loginUsuarioBean.usuario.email}"
-					placeholder="email@exemplo.com.br" size="25"
-					onclick="this.value = '';"
-					onmouseover="this.style.backgroundColor = '#c2e7ee';"
-					onmouseout="this.style.backgroundColor = '#ffffff';" />
+					placeholder="exemplo@dominio.com" size="25" />
 
 				<p:outputLabel value="Senha: *" for="senha" />
 				<p:password id="senha" value="#{loginUsuarioBean.usuario.senha}"
-					placeholder="**********" size="25"
-					onclick="this.value = '';"
-					onmouseover="this.style.backgroundColor = '#c2e7ee';"
-					onmouseout="this.style.backgroundColor = '#ffffff';" />
+					placeholder="**********" size="25" />
 
 				<h:outputLabel />
-				<p:commandButton value="Entrar" icon="ui-icon-unlocked"
+				<p:commandButton value="Entrar" icon="fa fa-unlock-alt"
 					update="@form" action="home" styleClass="botao" />
 					
 			</h:panelGrid>
 
 			<f:facet name="footer">
-				<h:outputLabel value="CID © 2015 - todos os direitos reservados ®."
+				<h:outputLabel value="copyright © 2015 CID - all rights reserved"
 					styleClass="footer" />
 				<p:graphicImage library="imagens" name="primefaces_ui.png"
 					styleClass="logo-prime" />
