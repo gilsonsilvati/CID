@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
@@ -6,14 +7,14 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
+	<meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>..:: CID | Login ::..</title>
 	<h:outputStylesheet library="css" name="Login.css" />
 </h:head>
 <h:body>
 	<h:form id="frm-login">
 
-		<!-- <p:growl id="growl" life="5000" /> -->
-		
 		<p:dialog visible="true" modal="true" resizable="false" showEffect="explode"
 				showHeader="explode" closable="false" styleClass="dialog-login" position="center">
 				
@@ -21,7 +22,8 @@
 			
 			<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
 
-			<h:panelGrid columns="2" cellpadding="5" cellspacing="10" styleClass="grid" id="painel-login">
+			<h:panelGrid columns="2" cellpadding="5" cellspacing="10" styleClass="grid"
+					id="painel-login">
 				
 				<f:facet name="header">
 					<h:outputText value="sistema de consulta cid ®" styleClass="header" />
@@ -32,26 +34,26 @@
 
 				<p:outputLabel value="E-mail: *" for="email" />
 				<p:inputText id="email" value="#{loginUsuarioBean.usuario.email}"
-					placeholder="email@exemplo.com.br" size="25"
-					onclick="this.value = '';"
-					onmouseover="this.style.backgroundColor = '#c2e7ee';"
-					onmouseout="this.style.backgroundColor = '#ffffff';" />
+					placeholder="exemplo@dominio.com" size="25" />
 
 				<p:outputLabel value="Senha: *" for="senha" />
 				<p:password id="senha" value="#{loginUsuarioBean.usuario.senha}"
-					placeholder="**********" size="25"
-					onclick="this.value = '';"
-					onmouseover="this.style.backgroundColor = '#c2e7ee';"
-					onmouseout="this.style.backgroundColor = '#ffffff';" />
-
-				<h:outputLabel />
-				<p:commandButton value="Entrar" icon="ui-icon-unlocked"
-					update="@form" action="home" styleClass="botao" />
+					placeholder="**********" size="25" />
 					
+				<h:outputLabel />
+				<p:commandButton value="Entrar" icon="fa fa-unlock-alt"
+					update="@form" action="home" styleClass="botao" />
+				
+				<!--
+				<h:outputLabel />	
+				<p:commandLink value="Esqueceu sua senha?" style="font-size: 12px; margin-left: 80px;
+					color: #0000ff; text-decoration: none" />
+				-->
+				
 			</h:panelGrid>
 
 			<f:facet name="footer">
-				<h:outputLabel value="CID © 2015 - todos os direitos reservados ®."
+				<h:outputLabel value="copyright © 2015 CID - all rights reserved"
 					styleClass="footer" />
 				<p:graphicImage library="imagens" name="primefaces_ui.png"
 					styleClass="logo-prime" />

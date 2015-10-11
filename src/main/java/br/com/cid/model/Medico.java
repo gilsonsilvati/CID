@@ -3,13 +3,11 @@ package br.com.cid.model;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -38,9 +36,8 @@ public class Medico implements Serializable {
 	@Column(length = 10, unique = true)
 	private Integer crm;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_uf", nullable = false)
-	private UF uf;
+	@Embedded
+	private UF sigla;
 	
 	@NotEmpty
 	@Column(length = 50, unique = true)
@@ -71,12 +68,12 @@ public class Medico implements Serializable {
 		this.crm = crm;
 	}
 
-	public UF getUf() {
-		return uf;
+	public UF getSigla() {
+		return sigla;
 	}
 
-	public void setUf(UF uf) {
-		this.uf = uf;
+	public void setSigla(UF sigla) {
+		this.sigla = sigla;
 	}
 
 	public String getEmail() {
@@ -84,7 +81,7 @@ public class Medico implements Serializable {
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
+		this.email = email.trim().toUpperCase();
 	}
 
 	public Long getId() {
@@ -122,5 +119,4 @@ public class Medico implements Serializable {
 		return true;
 	}
 	
-
 }

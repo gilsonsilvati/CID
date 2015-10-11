@@ -7,10 +7,10 @@
 .botao {
   	font-variant: small-caps;
   	letter-spacing: 2px;
-  	margin-left: 20px;
+  	margin-right: 70px;
 }
 
-.dialog-usuario {
+.dialog-doenca {
 	text-align: left;
 	margin-left: 120px;
 	
@@ -23,7 +23,7 @@
 	box-shadow: 4px 4px 4px #babdb6;
 }
 
-.header-usuario {
+.header-doenca {
 	letter-spacing: 1px;
 	font-size: 18px;
 }

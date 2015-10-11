@@ -12,40 +12,33 @@
 		<h:form id="frm-cadastro-usuario">
 			<h:outputStylesheet library="css" name="CadastraUsuario.css" />
 
-			<!-- <p:growl id="growl" life="5000" /> -->
-
-			<p:fieldset styleClass="fieldset" legend="CADASTRO DE USUÁRIO" toggleable="true">
+			<p:dialog visible="true" modal="false" resizable="false" showEffect="explode"
+				showHeader="explode" closable="false" styleClass="dialog-usuario" position="center">
 				
 				<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
 				
 				<h:panelGrid id="panel-usuario" columns="2" cellpadding="5"
 					cellspacing="10">
-					<p:outputLabel value="Nome: *" for="nome" />
+
+					<f:facet name="header">
+						<h:outputText value="Cadastro de usuário" styleClass="header-usuario" />
+					</f:facet>
+
+					<p:outputLabel value="Nome:" for="nome" />
 					<p:inputText id="nome" value="#{cadastroUsuarioBean.usuario.nome}"
-						onclick="this.value = '';" size="25"
-						placeholder="Nome e Sobrenome"
-						onmouseover="this.style.backgroundColor = '#c2e7ee';"
-						onmouseout="this.style.backgroundColor = '#ffffff';" />	
+						placeholder="Nome e Sobrenome" size="25" />	
 
-					<p:outputLabel value="E-mail: *" for="email" />
+					<p:outputLabel value="E-mail:" for="email" />
 					<p:inputText id="email" value="#{cadastroUsuarioBean.usuario.email}"
-						onclick="this.value = '';" size="25"
-						placeholder="email@exemplo.com.br"
-						onmouseover="this.style.backgroundColor = '#c2e7ee';"
-						onmouseout="this.style.backgroundColor = '#ffffff';" />
+						placeholder="exemplo@dominio.com" size="25" />
 
-					<p:outputLabel value="CPF: *" for="cpf" />
+					<p:outputLabel value="CPF:" for="cpf" />
 					<p:inputMask mask="999.999.999-99" id="cpf"
-						value="#{cadastroUsuarioBean.usuario.cpf}" size="25"
-						onmouseover="this.style.backgroundColor = '#c2e7ee';"
-						onmouseout="this.style.backgroundColor = '#ffffff';" />
+						value="#{cadastroUsuarioBean.usuario.cpf}" size="25" />
 
-					<p:outputLabel value="Senha: *" for="senha" />
+					<p:outputLabel value="Senha:" for="senha" />
 					<p:password id="senha" value="#{cadastroUsuarioBean.usuario.senha}"
-						placeholder="**********" size="25"
-						onclick="this.value = '';"
-						onmouseover="this.style.backgroundColor = '#c2e7ee';"
-						onmouseout="this.style.backgroundColor = '#ffffff';" />
+						placeholder="**********" size="25" />
 
 					<h:outputLabel />
 					<p:commandButton value="Adicionar" update="@form"
@@ -53,7 +46,8 @@
 						styleClass="botao" />
 						
 				</h:panelGrid>
-			</p:fieldset>
+				
+			</p:dialog>
 
 		</h:form>
 	</ui:define>

@@ -24,6 +24,10 @@ public class LoginUsuarioBean implements Serializable {
 	}
 
 	public Usuario getUsuario() {
+		if (this.usuario == null) {
+			usuario = new Usuario();
+		}
+		
 		return usuario;
 	}
 

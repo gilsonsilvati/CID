@@ -11,9 +11,36 @@
 	<ui:define name="center">
 		<h:form id="frm-cadastro-doenca">
 
-			<h2>Cadastra Doença</h2>
-				Testes...
+			<h:outputStylesheet library="css" name="CadastraDoenca.css" />
 			
-			</h:form>
+			<p:dialog visible="true" modal="false" resizable="false" showEffect="explode"
+				showHeader="explode" closable="false" styleClass="dialog-doenca" position="center">
+			
+				<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
+			
+				<h:panelGrid id="panel-doenca" columns="2" cellpadding="5" cellspacing="10">
+				
+					<f:facet name="header">
+						<h:outputText value="Cadastro de doença" styleClass="header-doenca" />
+					</f:facet>
+				
+					<p:outputLabel value="Código cid:" for="cid" />
+					<p:inputText id="cid" value="#{cadastroDoencaBean.doenca.cid}"
+						placeholder="CID da doença" size="25" />
+						
+					<p:outputLabel value="Doença:" for="doenca" />
+					<p:inputText id="doenca" value="#{cadastroDoencaBean.doenca.doenca}"
+						placeholder="Nome da doença" size="25" />
+				
+				<h:outputLabel />	
+				<p:commandButton value="Adicionar" update="@form"
+					icon="fa fa-save" action="#{cadastroDoencaBean.adicionaDoenca}"
+					styleClass="botao" />
+					
+				</h:panelGrid>
+				
+			</p:dialog>
+			
+		</h:form>
 	</ui:define>
 </ui:composition>

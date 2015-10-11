@@ -1,10 +1,10 @@
 package br.com.cid.controller;
 
 import java.io.Serializable;
+import java.util.List;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
@@ -14,28 +14,24 @@ import br.com.cid.model.Usuario;
 import br.com.cid.repository.UsuarioRepository;
 
 @ManagedBean
-@RequestScoped
-public class CadastroUsuarioBean implements Serializable {
+@ViewScoped
+public class ConsultaUsuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Usuario usuario;
+	private List<Usuario> usuarios;
 	
-	public void adicionaUsuario() {
-		EntityManager manager = this.getEntityManager();
-		UsuarioRepository repository = new UsuarioRepository(manager);
-
-		repository.adiciona(this.usuario);
-
-		/* Mensagem */
-		FacesContext context = FacesContext.getCurrentInstance();
-		FacesMessage mensagem = new FacesMessage("Usuário cadastrado com sucesso!");
-		mensagem.setSeverity(FacesMessage.SEVERITY_INFO);
-		context.addMessage(null, mensagem);
-
-		manager.close();
-
-		this.usuario = new Usuario();
+	public List<Usuario> getUsuarios() {
+		if (this.usuarios == null) {
+			EntityManager manager = this.getEntityManager();
+			UsuarioRepository repository = new UsuarioRepository(manager);
+			
+			this.usuarios = repository.buscaTodos();
+			
+			manager.close();
+		}
+		
+		return usuarios;
 		
 	}
 	
@@ -46,14 +42,6 @@ public class CadastroUsuarioBean implements Serializable {
 		EntityManager manager = (EntityManager) request.getAttribute("EntityManager");
 		
 		return manager;
-	}
-
-	public Usuario getUsuario() {
-		if (this.usuario == null) {
-			usuario = new Usuario();
-		}
-		
-		return usuario;
 	}
 
 }

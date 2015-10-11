@@ -1,7 +1,6 @@
 package br.com.cid.controller;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -11,43 +10,33 @@ import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 
-import br.com.cid.model.Medico;
-import br.com.cid.model.UF;
-import br.com.cid.repository.MedicoRepository;
+import br.com.cid.model.Doenca;
+import br.com.cid.repository.DoencaRepository;
 
 @ManagedBean
 @RequestScoped
-public class CadastroMedicoBean implements Serializable {
+public class CadastroDoencaBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Medico medico;
-	private List<UF> ufs;
+	private Doenca doenca;
 	
-	public void adiciona() {
+	public void adicionaDoenca() {
 		EntityManager manager = this.getEntityManager();
-		MedicoRepository repository = new MedicoRepository(manager);
-		
-		repository.adiciona(this.medico);
-		
+		DoencaRepository repository = new DoencaRepository(manager);
+
+		repository.adiciona(this.doenca);
+
 		/* Mensagem */
 		FacesContext context = FacesContext.getCurrentInstance();
-		FacesMessage message = new FacesMessage("Médico cadastrado com sucesso!");
-		message.setSeverity(FacesMessage.SEVERITY_INFO);
-		context.addMessage(null, message);
-		
+		FacesMessage mensagem = new FacesMessage("Doença cadastrada com sucesso!");
+		mensagem.setSeverity(FacesMessage.SEVERITY_INFO);
+		context.addMessage(null, mensagem);
+
 		manager.close();
+
+		this.doenca = new Doenca();
 		
-		this.medico = new Medico();
-		
-	}
-	
-	public Medico getMedico() {
-		if (this.medico == null) {
-			medico = new Medico();
-		}
-		
-		return medico;
 	}
 	
 	private EntityManager getEntityManager() {
@@ -58,9 +47,17 @@ public class CadastroMedicoBean implements Serializable {
 		
 		return manager;
 	}
-	
-	public List<UF> getUfs() {
-		return ufs;
+
+	public Doenca getDoenca() {
+		if (this.doenca == null) {
+			doenca = new Doenca();
+		}
+		
+		return doenca;
+	}
+
+	public void setDoenca(Doenca doenca) {
+		this.doenca = doenca;
 	}
 	
 }

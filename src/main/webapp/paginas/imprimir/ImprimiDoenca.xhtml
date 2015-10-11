@@ -10,10 +10,38 @@
 
 	<ui:define name="center">
 		<h:form id="frm-imprimi-doenca">
-
-			<h2>Imprimi Doença</h2>
-				Testes...
+			<h:outputStylesheet library="css" name="ImprimiDoenca.css" />
 			
-			</h:form>
+			<p:dataTable value="#{imprimiDoencaBean.doencas}" var="doenca"
+					emptyMessage="Nenhuma doença cadastrada!"
+					paginator="true" paginatorPosition="bottom" rows="5" style="margin-top: 30px"
+					styleClass="table-imprimi">
+					
+				<f:facet name="header">Doenças cadastradas  no sistema</f:facet>
+				
+				<p:column style="font-size: 18px; color: #ff0000" width="50">
+					<f:facet name="header">id</f:facet>
+					<p:outputLabel value="#{doenca.id}" style="font-size: 14px" />
+				</p:column>
+				
+				<p:column style="font-size: 18px" width="200">
+					<f:facet name="header">cid</f:facet>
+					<p:outputLabel value="#{doenca.cid}" style="font-size: 14px" />
+				</p:column>
+				
+				<p:column style="font-size: 18px" width="400">
+					<f:facet name="header">doença</f:facet>
+					<p:outputLabel value="#{doenca.doenca}" style="font-size: 14px" />
+				</p:column>
+				
+			</p:dataTable>
+			
+			<br />
+			<p:commandButton value="Imprimir" icon="fa fa-print" styleClass="botao-imprimi">
+	    		<p:printer target="frm-imprimi-doenca" />
+			</p:commandButton>
+					
+		</h:form>
+		
 	</ui:define>
 </ui:composition>

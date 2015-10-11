@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import br.com.cid.model.Medico;
-import br.com.cid.model.UF;
 
 public class MedicoRepository implements Serializable {
 
@@ -33,13 +32,6 @@ public class MedicoRepository implements Serializable {
 	public void removePorId(Long id) {
 		Medico medico = this.buscaPorId(id);
 		remove(medico);
-	}
-	
-	public List<Medico> buscaPorUF(UF uf) {
-		List<Medico> medicosPorUF = manager.createQuery("from Medico m where m.uf = :uf", Medico.class)
-									.setParameter("uf", uf)
-									.getResultList();
-		return medicosPorUF;
 	}
 	
 	public Medico buscaPorId(Long id) {
