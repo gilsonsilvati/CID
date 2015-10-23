@@ -1,7 +1,6 @@
 package br.com.cid.controller;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -22,7 +21,6 @@ public class CadastroMedicoBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Medico medico;
-	private List<UF> ufs;
 	
 	public void adiciona() {
 		EntityManager manager = this.getEntityManager();
@@ -42,6 +40,10 @@ public class CadastroMedicoBean implements Serializable {
 		
 	}
 	
+	public UF[] getUFs() {
+		return UF.values();
+	}
+	
 	public Medico getMedico() {
 		if (this.medico == null) {
 			medico = new Medico();
@@ -57,10 +59,6 @@ public class CadastroMedicoBean implements Serializable {
 		EntityManager manager = (EntityManager) request.getAttribute("EntityManager");
 		
 		return manager;
-	}
-	
-	public List<UF> getUfs() {
-		return ufs;
 	}
 	
 }

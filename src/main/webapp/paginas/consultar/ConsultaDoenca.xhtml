@@ -11,9 +11,47 @@
 	<ui:define name="center">
 		<h:form id="frm-consulta-doenca">
 
-			<h2>Consulta Doença</h2>
-				Testes...
+		<h:outputStylesheet library="css" name="ConsultaDoenca.css" />
 			
-			</h:form>
+			<h1>Doenças cadastradas no sistema</h1>
+			<br />
+			
+			<h:panelGrid columns="3" cellpadding="3" cellspacing="5">
+				<p:outputLabel value="Pesquisar por nome: " for="pesquisa" />
+				<p:inputText id="pesquisa" />
+				<p:commandButton value="Pesquisar" icon="fa fa-search" styleClass="botao" />
+			</h:panelGrid>
+			
+			<br /><br />
+			<hr />
+			<br />
+			
+			<p:dataTable emptyMessage="Nenhuma doença cadastrada!" style="margin-top: 30px"
+					styleClass="table-consulta-doenca">
+					
+				<p:column style="font-size: 17px" width="100">
+					<f:facet name="header">cid</f:facet>
+					<p:outputLabel style="font-size: 14px" />
+				</p:column>
+				
+				<p:column style="font-size: 17px">
+					<f:facet name="header">nome</f:facet>
+					<p:outputLabel style="font-size: 11px" />
+				</p:column>
+				
+				<p:column style="font-size: 17px" width="85">
+					<f:facet name="header">opções</f:facet>
+					<p:button icon="fa fa-pencil" title="Editar">
+						<f:param name="id" value="#{usuario.id}" />
+					</p:button>
+					
+					<p:button icon="fa fa-trash" title="Excluir">
+						<f:param name="id" value="#{usuario.id}" />
+					</p:button>
+				</p:column>
+			
+			</p:dataTable>
+			
+		</h:form>
 	</ui:define>
 </ui:composition>

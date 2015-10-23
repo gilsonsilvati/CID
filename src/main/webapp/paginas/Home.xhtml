@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
@@ -18,12 +18,12 @@
 	<p:layout fullPage="true">
 
 		<p:layoutUnit position="north" size="50"
-			header="seja bem-vindo ao sistema de consulta cid!"
+			header="seja bem-vindo ao sistema de consulta cid -
+				usuário logado: #{loginUsuarioBean.usuario.email}"
 			styleClass="header">
-
 		</p:layoutUnit>
 
-		<p:layoutUnit position="west" size="250" styleClass="menu">
+		<p:layoutUnit position="west" size="255" styleClass="menu">
 			<h:form>
 
 				<p:slideMenu style="width: 228px" backLabel="Voltar">
@@ -55,10 +55,6 @@
 				</p:slideMenu>
 				
 				<br />
-				<p:outputLabel value="Suporte:" style="font-size: 16px" /><br />
-				
-				<p:outputLabel value="E-mail: contato@cid.com.br" style="font-size: 14px" /><br />
-				<p:outputLabel value="Telefone: (61) 3456-6789" style="font-size: 14px" /><br /><br />
 				
 				<p:outputLabel value="Apoio:" style="font-size: 16px" /><br />
 				<p:graphicImage library="imagens" name="projecao.png" styleClass="logo-projecao" /><br />
@@ -72,9 +68,6 @@
 
 		<p:layoutUnit position="center">
 			<ui:insert name="center">
-				<p:panel style="border: 0">
-					<p:outputLabel value="Usuário logado: #{loginUsuarioBean.usuario.email}" />
-				</p:panel>
 	        	<h:graphicImage library="imagens" name="logo.png" styleClass="logo-body" />			
 	        </ui:insert>
 		</p:layoutUnit>

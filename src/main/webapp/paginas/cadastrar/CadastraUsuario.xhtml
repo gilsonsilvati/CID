@@ -11,6 +11,8 @@
 	<ui:define name="center">
 		<h:form id="frm-cadastro-usuario">
 			<h:outputStylesheet library="css" name="CadastraUsuario.css" />
+			
+			<h1>Cadastro de novo usuário</h1>
 
 			<p:dialog visible="true" modal="false" resizable="false" showEffect="explode"
 				showHeader="explode" closable="false" styleClass="dialog-usuario" position="center">
@@ -21,8 +23,11 @@
 					cellspacing="10">
 
 					<f:facet name="header">
-						<h:outputText value="Cadastro de usuário" styleClass="header-usuario" />
+						<h:outputText value="Preencha o formulário" styleClass="header-usuario" />
 					</f:facet>
+					
+					<p:outputLabel />
+					<p:outputLabel />
 
 					<p:outputLabel value="Nome:" for="nome" />
 					<p:inputText id="nome" value="#{cadastroUsuarioBean.usuario.nome}"

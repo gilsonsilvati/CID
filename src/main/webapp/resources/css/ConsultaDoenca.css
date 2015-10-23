@@ -1,0 +1,11 @@
+@CHARSET "UTF-8";
+
+* {
+	margin: 0;
+}
+
+.table-consulta-doenca {
+	width: 750px;
+	height: auto;
+	margin-left: 160px;
+}

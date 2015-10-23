@@ -42,9 +42,5 @@ public enum UF {
 	public String getSigla() {
 		return sigla;
 	}
-
-	public void setSigla(String sigla) {
-		this.sigla = sigla;
-	}
 	
 }

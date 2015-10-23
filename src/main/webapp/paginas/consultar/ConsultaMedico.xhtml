@@ -13,17 +13,23 @@
 
 			<h:outputStylesheet library="css" name="ConsultaMedico.css" />
 			
-			<p:dataTable value="#{cadastroMedicoBean.medicos}" var="medico"
-					emptyMessage="Nenhum médico cadastrado!"
-					paginator="true" paginatorPosition="bottom" rows="5" style="margin-top: 30px">
+			<h1>Médicos cadastrados no sistema</h1>
+			<br />
+			
+			<h:panelGrid columns="3" cellpadding="3" cellspacing="5">
+				<p:outputLabel value="Pesquisar por nome: " for="pesquisa" />
+				<p:inputText id="pesquisa" />
+				<p:commandButton value="Pesquisar" icon="fa fa-search" styleClass="botao" />
+			</h:panelGrid>
+			
+			<br /><br />
+			<hr />
+			<br />
+			
+			<p:dataTable value="#{consultaMedicoBean.medicos}" var="medico"
+					emptyMessage="Nenhum médico cadastrado!" style="margin-top: 30px"
+					styleClass="table-consulta-medico">
 					
-				<f:facet name="header">Médicos cadastrados no sistema</f:facet>
-				
-				<p:column style="font-size: 17px; color: #ff0000" width="50">
-					<f:facet name="header">id</f:facet>
-					<p:outputLabel value="#{medico.id}" style="font-size: 14px" />
-				</p:column>
-				
 				<p:column style="font-size: 17px">
 					<f:facet name="header">nome</f:facet>
 					<p:outputLabel value="#{medico.nome}" style="font-size: 11px" />
@@ -39,23 +45,23 @@
 					<p:outputLabel value="#{medico.especialidade}" style="font-size: 12px" />
 				</p:column>
 				
-				<p:column style="font-size: 17px">
+				<p:column style="font-size: 17px" width="90">
 					<f:facet name="header">crm</f:facet>
 					<p:outputLabel value="#{medico.crm}" style="font-size: 12px" />
 				</p:column>
 				
-				<p:column style="font-size: 17px">
+				<p:column style="font-size: 17px" width="50">
 					<f:facet name="header">uf</f:facet>
 					<p:outputLabel value="#{medico.uf}" style="font-size: 12px" />
 				</p:column>
 				
-				<p:column style="font-size: 17px">
+				<p:column style="font-size: 17px" width="85">
 					<f:facet name="header">opções</f:facet>
-					<p:button icon="ui-icon-pencil" title="Editar">
+					<p:button icon="fa fa-pencil" title="Editar">
 						<f:param name="id" value="#{usuario.id}" />
 					</p:button>
 					
-					<p:button icon="ui-icon-trash" title="Excluir">
+					<p:button icon="fa fa-trash" title="Excluir">
 						<f:param name="id" value="#{usuario.id}" />
 					</p:button>
 				</p:column>

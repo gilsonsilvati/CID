@@ -4,12 +4,6 @@
 	margin: 0;
 }
 
-.botao {
-  	font-variant: small-caps;
-  	letter-spacing: 2px;
-  	margin-left: 20px;
-}
-
 .dialog-usuario {
 	text-align: left;
 	margin-left: 120px;
@@ -26,4 +20,5 @@
 .header-usuario {
 	letter-spacing: 1px;
 	font-size: 18px;
+	margin-left: 50px;
 }

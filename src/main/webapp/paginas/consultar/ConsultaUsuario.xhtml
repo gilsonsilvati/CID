@@ -13,18 +13,23 @@
 		<h:form id="frm-consulta-usuario">
 			<h:outputStylesheet library="css" name="ConsultaUsuario.css" />
 			
+			<h1>Usuários cadastrados no sistema</h1>
+			<br />
+			
+			<h:panelGrid columns="3" cellpadding="3" cellspacing="5">
+				<p:outputLabel value="Pesquisar por nome: " for="pesquisa" />
+				<p:inputText id="pesquisa" />
+				<p:commandButton value="Pesquisar" icon="fa fa-search" styleClass="botao" />
+			</h:panelGrid>
+			
+			<br /><br />
+			<hr />
+			<br />
+			
 			<p:dataTable value="#{consultaUsuario.usuarios}" var="usuario"
-					emptyMessage="Nenhum usuário cadastrado!"
-					paginator="true" paginatorPosition="bottom" rows="5" style="margin-top: 30px"
+					emptyMessage="Nenhum usuário cadastrado!" style="margin-top: 30px"
 					styleClass="table-consulta-usuario">
 					
-				<f:facet name="header">Usuários cadastrados no sistema</f:facet>
-				
-				<p:column style="font-size: 17px; color: #ff0000" width="50">
-					<f:facet name="header">id</f:facet>
-					<p:outputLabel value="#{usuario.id}" style="font-size: 14px" />
-				</p:column>
-				
 				<p:column style="font-size: 17px">
 					<f:facet name="header">nome</f:facet>
 					<p:outputLabel value="#{usuario.nome}" style="font-size: 11px" />

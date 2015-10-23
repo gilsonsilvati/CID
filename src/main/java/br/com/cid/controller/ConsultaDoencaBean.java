@@ -15,7 +15,7 @@ import br.com.cid.repository.DoencaRepository;
 
 @ManagedBean
 @ViewScoped
-public class ConsultaDoenca implements Serializable {
+public class ConsultaDoencaBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	

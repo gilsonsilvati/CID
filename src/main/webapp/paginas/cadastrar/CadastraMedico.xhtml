@@ -12,6 +12,8 @@
 		<h:form id="frm-cadastro-medico">
 
 			<h:outputStylesheet library="css" name="CadastraMedico.css" />
+			
+			<h1>Cadastro de novo médico</h1>
 
 			<p:dialog visible="true" modal="false" resizable="false" showEffect="explode"
 				showHeader="explode" closable="false" styleClass="dialog-medico" position="center">
@@ -21,8 +23,11 @@
 				<h:panelGrid id="panel-medico" columns="2" cellpadding="5" cellspacing="10">
 				
 					<f:facet name="header">
-						<h:outputText value="Cadastro de médico" styleClass="header-medico" />
+						<h:outputText value="Preencha o formulário" styleClass="header-medico" />
 					</f:facet>
+					
+					<p:outputLabel />
+					<p:outputLabel />
 				
 					<p:outputLabel value="Nome:" for="nome" />
 					<p:inputText id="nome" value="#{cadastroMedicoBean.medico.nome}"
@@ -32,20 +37,18 @@
 					<p:inputText id="especialidade" value="#{cadastroMedicoBean.medico.especialidade}"
 						size="29" placeholder="Especialista em?" />
 						
-					<p:outputLabel value="Número e uf do crm:" for="crm" />
+					<p:outputLabel value="crm:" for="crm" />
 					<h:panelGroup>
-						<h:panelGrid columns="2" cellpadding="5" cellspacing="10">
-							<p:inputText id="crm" size="7" value="#{cadastroMedicoBean.medico.crm}"
-								placeholder="0123456789" />
-							
-							<p:selectOneMenu value="#{cadastroMedicoBean.medico.sigla}" id="uf"
-									filter="true" filterMatchMode="contains" style="width: 120px">
-								<f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true" />
-								<f:selectItems value="#{cadastroMedicoBean.medico.sigla}"
-									var="uf" itemValue="#{uf}" itemLabel="#{uf.sigla}" />
-							</p:selectOneMenu>
-							
-						</h:panelGrid>
+						<p:inputText id="crm" size="7" value="#{cadastroMedicoBean.medico.crm}"
+							placeholder="0123456789" />
+						
+						<p:outputLabel value=" uf:" for="uf" />						
+						<h:selectOneMenu value="#{cadastroMedicoBean.medico.sigla}" style="width: 95px"
+							required="true" label="UF" id="uf">
+							<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+							<f:selectItems value="#{cadastroMedicoBean.UFs}" var="uf"
+								itemLabel="#{uf.sigla}" itemValue="#{uf}" />
+						</h:selectOneMenu>
 					</h:panelGroup>
 
 					<p:outputLabel value="E-mail:" for="email" />

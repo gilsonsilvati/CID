@@ -4,12 +4,6 @@
 	margin: 0;
 }
 
-.botao {
-  	font-variant: small-caps;
-  	letter-spacing: 2px;
-  	margin-right: 70px;
-}
-
 .dialog-medico {
 	text-align: left;
 	margin-left: 120px;
@@ -26,4 +20,5 @@
 .header-medico {
 	letter-spacing: 1px;
 	font-size: 18px;
+	margin-left: 150px;
 }

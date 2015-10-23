@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,6 +38,7 @@ public class Medico implements Serializable {
 	private Integer crm;
 	
 	@Embedded
+	@Enumerated
 	private UF sigla;
 	
 	@NotEmpty

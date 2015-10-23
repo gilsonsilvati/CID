@@ -10,29 +10,28 @@ import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 
-import br.com.cid.model.Usuario;
-import br.com.cid.repository.UsuarioRepository;
+import br.com.cid.model.Medico;
+import br.com.cid.repository.MedicoRepository;
 
 @ManagedBean
 @ViewScoped
-public class ConsultaUsuario implements Serializable {
+public class ConsultaMedicoBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private List<Usuario> usuarios;
+	private List<Medico> medicos;
 	
-	public List<Usuario> getUsuarios() {
-		if (this.usuarios == null) {
+	public List<Medico> getMedicos() {
+		if (this.medicos == null) {
 			EntityManager manager = this.getEntityManager();
-			UsuarioRepository repository = new UsuarioRepository(manager);
+			MedicoRepository repository = new MedicoRepository(manager);
 			
-			this.usuarios = repository.buscaTodos();
+			this.medicos = repository.buscaTodos();
 			
 			manager.close();
 		}
 		
-		return usuarios;
-		
+		return medicos;
 	}
 	
 	private EntityManager getEntityManager() {
