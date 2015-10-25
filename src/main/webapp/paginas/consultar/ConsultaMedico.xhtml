@@ -32,15 +32,15 @@
 					
 				<p:column style="font-size: 17px">
 					<f:facet name="header">nome</f:facet>
-					<p:outputLabel value="#{medico.nome}" style="font-size: 11px" />
+					<p:outputLabel value="#{medico.nome}" style="font-size: 12px" />
 				</p:column>
 				
 				<p:column style="font-size: 17px">
 					<f:facet name="header">e-mail</f:facet>
-					<p:outputLabel value="#{medico.email}" style="font-size: 14px" />
+					<p:outputLabel value="#{medico.email}" style="font-size: 12px" />
 				</p:column>
 				
-				<p:column style="font-size: 17px">
+				<p:column style="font-size: 17px" width="150">
 					<f:facet name="header">especialidade</f:facet>
 					<p:outputLabel value="#{medico.especialidade}" style="font-size: 12px" />
 				</p:column>
@@ -50,20 +50,24 @@
 					<p:outputLabel value="#{medico.crm}" style="font-size: 12px" />
 				</p:column>
 				
-				<p:column style="font-size: 17px" width="50">
+				<p:column style="font-size: 17px" width="20">
 					<f:facet name="header">uf</f:facet>
-					<p:outputLabel value="#{medico.uf}" style="font-size: 12px" />
+					<p:outputLabel value="#{medico.sigla}" style="font-size: 12px" />
 				</p:column>
 				
-				<p:column style="font-size: 17px" width="85">
+				<p:column style="font-size: 17px" width="65">
 					<f:facet name="header">opções</f:facet>
-					<p:button icon="fa fa-pencil" title="Editar">
-						<f:param name="id" value="#{usuario.id}" />
-					</p:button>
 					
-					<p:button icon="fa fa-trash" title="Excluir">
-						<f:param name="id" value="#{usuario.id}" />
-					</p:button>
+					<p:commandLink action="#{consultaMedicoBean.editar}" update="@form">
+						<p:graphicImage library="imagens" name="edit.png" title="Editar"
+							style="width: 20px; heigth: 20px" />
+					</p:commandLink>
+					
+					<p:commandLink action="#{consultaMedicoBean.excluir}" update="@form">
+						<p:graphicImage library="imagens" name="excluir.png" title="Excluir"
+							style="width: 20px; heigth: 20px" />
+					</p:commandLink>
+					
 				</p:column>
 			
 			</p:dataTable>

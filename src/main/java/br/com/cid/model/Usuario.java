@@ -41,6 +41,9 @@ public class Usuario implements Serializable {
 	@Column(length = 14, unique = true)
 	private String cpf;
 	
+	public Usuario() {
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -81,8 +84,6 @@ public class Usuario implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
@@ -96,16 +97,6 @@ public class Usuario implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
-		if (cpf == null) {
-			if (other.cpf != null)
-				return false;
-		} else if (!cpf.equals(other.cpf))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;

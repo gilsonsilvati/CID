@@ -8,26 +8,22 @@ body {
 	text-align: center;
   	font-family: serif, sans-serif;
   	font-variant: small-caps;
-  	font-weight: bold;
+  	font-weight: normal;
   	font-size: 14px;
 	color: #000000;
-	letter-spacing: 1px;
+	letter-spacing: 2px;
 }
 
 .header {
-	letter-spacing: 1px;
+	letter-spacing: 2px;
 	font-size: 14px;
 	margin-left: 100px;
 }
 
-.grid {
-	letter-spacing: 2px;
-}
-
 .logo {
-	width: 180px;
+	width: 170px;
 	height: auto;
-	margin-top: 30px;
+	margin-top: 10px;
 	margin-left: 120px;
 	
 	/* Arredondamendo das bordas */
@@ -40,7 +36,7 @@ body {
 }
 
 .logo-prime {
-	width: 60px;
+	width: 35px;
 	height: auto;
 	padding: 0;
 	margin-bottom: -11px;

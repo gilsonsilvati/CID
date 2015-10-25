@@ -46,7 +46,7 @@
 						<h:selectOneMenu value="#{cadastroMedicoBean.medico.sigla}" style="width: 95px"
 							required="true" label="UF" id="uf">
 							<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
-							<f:selectItems value="#{cadastroMedicoBean.UFs}" var="uf"
+							<f:selectItems value="#{cadastroMedicoBean.uf}" var="uf"
 								itemLabel="#{uf.sigla}" itemValue="#{uf}" />
 						</h:selectOneMenu>
 					</h:panelGroup>

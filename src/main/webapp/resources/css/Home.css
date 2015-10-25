@@ -9,7 +9,7 @@ body {
 	text-align: center;
   	font-family: serif, sans-serif;
   	font-variant: small-caps;
-  	font-weight: bold;
+  	font-weight: normal;
   	font-size: 14px;
 	color: #000000;
 	letter-spacing: 2px;
@@ -42,13 +42,6 @@ h1 {
 .footer {
 	font-size: 14px;
 	letter-spacing: 1px;
-}
-
-.primefaces {
-	width: 60px;
-	height: auto;
-	padding: 0;
-	margin-bottom: -11px;
 }
 
 .logo-body {

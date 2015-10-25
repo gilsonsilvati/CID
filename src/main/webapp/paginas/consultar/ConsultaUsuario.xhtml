@@ -26,9 +26,11 @@
 			<hr />
 			<br />
 			
-			<p:dataTable value="#{consultaUsuario.usuarios}" var="usuario"
+			<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
+			
+			<p:dataTable value="#{consultaUsuarioBean.usuarios}" var="usuario"
 					emptyMessage="Nenhum usuário cadastrado!" style="margin-top: 30px"
-					styleClass="table-consulta-usuario">
+					styleClass="table-consulta-usuario" id="table-consulta">
 					
 				<p:column style="font-size: 17px">
 					<f:facet name="header">nome</f:facet>
@@ -40,27 +42,24 @@
 					<p:outputLabel value="#{usuario.email}" style="font-size: 14px" />
 				</p:column>
 				
-				<p:column style="font-size: 17px" width="120">
+				<p:column style="font-size: 17px" width="130">
 					<f:facet name="header">cpf</f:facet>
 					<p:outputLabel value="#{usuario.cpf}" style="font-size: 12px" />
 				</p:column>
 				
-				<!--
-				<p:column style="font-size: 17px">
-					<f:facet name="header">senha</f:facet>
-					<p:outputLabel value="#{usuario.senha}" style="font-size: 12px" />
-				</p:column>
-				-->
-				
-				<p:column style="font-size: 17px" width="85">
+				<p:column style="font-size: 17px" width="65">
 					<f:facet name="header">opções</f:facet>
-					<p:button icon="fa fa-pencil" title="Editar">
-						<f:param name="id" value="#{usuario.id}" />
-					</p:button>
 					
-					<p:button icon="fa fa-trash" title="Excluir">
-						<f:param name="id" value="#{usuario.id}" />
-					</p:button>
+					<p:commandLink action="#{consultaUsuarioBean.editar}" update="@form">
+						<p:graphicImage library="imagens" name="edit.png" title="Editar"
+							style="width: 20px; heigth: 20px" />
+					</p:commandLink>
+					
+					<p:commandLink action="#{consultaUsuarioBean.excluir}" update="@form">
+						<p:graphicImage library="imagens" name="excluir.png" title="Excluir"
+							style="width: 20px; heigth: 20px" />
+					</p:commandLink>
+					
 				</p:column>
 			
 			</p:dataTable>

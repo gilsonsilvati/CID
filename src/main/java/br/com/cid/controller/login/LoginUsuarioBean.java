@@ -1,4 +1,4 @@
-package br.com.cid.controller;
+package br.com.cid.controller.login;
 
 import java.io.Serializable;
 

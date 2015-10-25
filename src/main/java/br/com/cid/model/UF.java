@@ -1,37 +1,34 @@
 package br.com.cid.model;
 
-import javax.persistence.Embeddable;
-
-@Embeddable
 public enum UF {
 
-	ACRE("AC"),
-	ALAGOAS("AL"),
-	AMAPA("AP"),
-	AMAZONAS("AM"),
-	BAHIA("BA"),
-	CEARA("CE"),
-	DISTRITO_FEDERAL("DF"),
-	ESPIRITO_SANTO("ES"),
-	GOIAS("GO"),
-	MARANHAO("MA"),
-	MATA_GROSSO("MT"),
-	MATO_GROSSO_SUL("MS"),
-	MINAS_GERAIS("MG"),
-	PARA("PA"),
-	PARAIBA("PB"),
-	PARANA("PR"),
-	PERNABUCO("PE"),
-	PIAUI("PI"),
-	RIO_JANEIRO("RJ"),
-	RIO_GRANDE_NORTE("RN"),
-	RIO_GRANDE_SUL("RS"),
-	RONDONIA("RO"),
-	RORAIMA("RR"),
-	SANTA_CATARINA("SC"),
-	SAO_PAULO("SP"),
-	SERGIPE("SE"),
-	TOCANTINS("TO");
+	AC("AC"),
+	AL("AL"),
+	AP("AP"),
+	AM("AM"),
+	BA("BA"),
+	CE("CE"),
+	DF("DF"),
+	ES("ES"),
+	GO("GO"),
+	MA("MA"),
+	MT("MT"),
+	MS("MS"),
+	MG("MG"),
+	PA("PA"),
+	PB("PB"),
+	PR("PR"),
+	PE("PE"),
+	PI("PI"),
+	RJ("RJ"),
+	RN("RN"),
+	RS("RS"),
+	RO("RO"),
+	RR("RR"),
+	SC("SC"),
+	SP("SP"),
+	SE("SE"),
+	TO("TO");
 	
 	private String sigla;
 

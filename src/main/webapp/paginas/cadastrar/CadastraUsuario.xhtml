@@ -43,7 +43,10 @@
 
 					<p:outputLabel value="Senha:" for="senha" />
 					<p:password id="senha" value="#{cadastroUsuarioBean.usuario.senha}"
-						placeholder="**********" size="25" />
+							placeholder="**********" size="25">
+						
+						<f:validateLength minimum="5" maximum="10" />
+					</p:password>
 
 					<h:outputLabel />
 					<p:commandButton value="Adicionar" update="@form"
