@@ -7,8 +7,8 @@ import javax.faces.context.FacesContext;
 public class FacesMessageUtil {
 	
 	public static void adicionarMensagem(Severity tipo, String msg) {
-		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(tipo, msg, msg));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(tipo, msg, msg));
+		
 	}
 
 }

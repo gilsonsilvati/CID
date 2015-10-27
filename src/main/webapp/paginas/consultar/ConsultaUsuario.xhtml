@@ -28,9 +28,9 @@
 			
 			<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
 			
-			<p:dataTable value="#{consultaUsuarioBean.usuarios}" var="usuario"
-					emptyMessage="Nenhum usuário cadastrado!" style="margin-top: 30px"
-					styleClass="table-consulta-usuario" id="table-consulta">
+			<p:dataTable id="table-consulta-usuario" value="#{consultaUsuarioBean.usuarios}"
+					var="usuario" emptyMessage="Nenhum usuário cadastrado!" style="margin-top: 30px"
+					styleClass="table-consulta-usuario">
 					
 				<p:column style="font-size: 17px">
 					<f:facet name="header">nome</f:facet>
@@ -50,7 +50,7 @@
 				<p:column style="font-size: 17px" width="65">
 					<f:facet name="header">opções</f:facet>
 					
-					<p:commandLink action="#{consultaUsuarioBean.editar}" update="@form">
+					<p:commandLink action="#{consultaUsuarioBean.editar}">
 						<p:graphicImage library="imagens" name="edit.png" title="Editar"
 							style="width: 20px; heigth: 20px" />
 					</p:commandLink>
@@ -58,6 +58,9 @@
 					<p:commandLink action="#{consultaUsuarioBean.excluir}" update="@form">
 						<p:graphicImage library="imagens" name="excluir.png" title="Excluir"
 							style="width: 20px; heigth: 20px" />
+							
+						<f:setPropertyActionListener value="#{usuario}"
+							target="#{consultaUsuarioBean.usuarioSelecionado}" />
 					</p:commandLink>
 					
 				</p:column>

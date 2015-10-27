@@ -5,12 +5,11 @@ import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.persistence.EntityManager;
 
 import br.com.cid.model.Usuario;
-import br.com.cid.repository.UsuarioRepository;
-import br.com.cid.util.EntityManagerUtil;
+import br.com.cid.service.GestaoUsuarios;
 import br.com.cid.util.FacesMessageUtil;
+import br.com.cid.util.Repositorios;
 
 @ManagedBean
 @RequestScoped
@@ -18,20 +17,17 @@ public class CadastroUsuarioBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	private Repositorios repositorios = new Repositorios();
 	private Usuario usuario;
 	
-	public void adicionaUsuario() {
-		EntityManager manager = EntityManagerUtil.getEntityManager();
-		UsuarioRepository repository = new UsuarioRepository(manager);
-
-		repository.adiciona(this.usuario);
+	public void cadastrar() {
+		GestaoUsuarios gestaoUsuarios = new GestaoUsuarios(this.repositorios.getUsuarios());
+		gestaoUsuarios.salvar(this.usuario);
 		
-		FacesMessageUtil.adicionarMensagem(FacesMessage.SEVERITY_INFO, "Usuário cadastrado com sucesso!");
-
-		manager.close();
-
 		this.usuario = new Usuario();
 		
+		FacesMessageUtil.adicionarMensagem(FacesMessage.SEVERITY_INFO,
+				"Usuário cadastrado com sucesso!");
 	}
 	
 	public Usuario getUsuario() {

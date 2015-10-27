@@ -14,6 +14,7 @@ public class EntityManagerUtil {
 		EntityManager manager = (EntityManager) request.getAttribute("EntityManager");
 		
 		return manager;
+		
 	}
 
 }

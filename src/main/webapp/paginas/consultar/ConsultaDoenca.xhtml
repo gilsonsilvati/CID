@@ -26,7 +26,9 @@
 			<hr />
 			<br />
 			
-			<p:dataTable value="#{consultaDoencaBean.doencas}" var="doenca"
+			<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
+			
+			<p:dataTable id="table-consulta-doenca" value="#{consultaDoencaBean.doencas}" var="doenca"
 					emptyMessage="Nenhuma doença cadastrada!" style="margin-top: 30px"
 					styleClass="table-consulta-doenca">
 					
@@ -43,7 +45,7 @@
 				<p:column style="font-size: 17px" width="65">
 					<f:facet name="header">opções</f:facet>
 					
-					<p:commandLink action="#{consultaDoencaBean.editar}" update="@form">
+					<p:commandLink action="#{consultaDoencaBean.editar}">
 						<p:graphicImage library="imagens" name="edit.png" title="Editar"
 							style="width: 20px; heigth: 20px" />
 					</p:commandLink>
@@ -51,6 +53,9 @@
 					<p:commandLink action="#{consultaDoencaBean.excluir}" update="@form">
 						<p:graphicImage library="imagens" name="excluir.png" title="Excluir"
 							style="width: 20px; heigth: 20px" />
+							
+						<f:setPropertyActionListener value="#{doenca}"
+							target="#{consultaDoencaBean.doencaSelecionada}" />
 					</p:commandLink>
 					
 				</p:column>

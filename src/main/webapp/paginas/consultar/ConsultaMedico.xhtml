@@ -26,7 +26,9 @@
 			<hr />
 			<br />
 			
-			<p:dataTable value="#{consultaMedicoBean.medicos}" var="medico"
+			<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
+			
+			<p:dataTable id="table-consulta-medico" value="#{consultaMedicoBean.medicos}" var="medico"
 					emptyMessage="Nenhum médico cadastrado!" style="margin-top: 30px"
 					styleClass="table-consulta-medico">
 					
@@ -58,7 +60,7 @@
 				<p:column style="font-size: 17px" width="65">
 					<f:facet name="header">opções</f:facet>
 					
-					<p:commandLink action="#{consultaMedicoBean.editar}" update="@form">
+					<p:commandLink action="#{consultaMedicoBean.editar}">
 						<p:graphicImage library="imagens" name="edit.png" title="Editar"
 							style="width: 20px; heigth: 20px" />
 					</p:commandLink>
@@ -66,6 +68,9 @@
 					<p:commandLink action="#{consultaMedicoBean.excluir}" update="@form">
 						<p:graphicImage library="imagens" name="excluir.png" title="Excluir"
 							style="width: 20px; heigth: 20px" />
+							
+						<f:setPropertyActionListener value="#{medico}"
+							target="#{consultaMedicoBean.medicoSelecionado}" />
 					</p:commandLink>
 					
 				</p:column>
