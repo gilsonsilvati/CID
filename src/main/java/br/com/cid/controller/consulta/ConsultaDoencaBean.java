@@ -41,10 +41,6 @@ public class ConsultaDoencaBean implements Serializable {
 				"Doença excluída com sucesso!");
 	}
 	
-	public void editar() {
-		
-	}
-	
 	public List<Doenca> getDoencas() {
 		return doencas;
 	}

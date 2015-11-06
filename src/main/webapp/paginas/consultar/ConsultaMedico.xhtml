@@ -60,10 +60,12 @@
 				<p:column style="font-size: 17px" width="65">
 					<f:facet name="header">opções</f:facet>
 					
-					<p:commandLink action="#{consultaMedicoBean.editar}">
+					<h:link outcome="cadastraMedico">
 						<p:graphicImage library="imagens" name="edit.png" title="Editar"
 							style="width: 20px; heigth: 20px" />
-					</p:commandLink>
+						
+						<f:param name="id" value="#{medico.id}" />
+					</h:link>
 					
 					<p:commandLink action="#{consultaMedicoBean.excluir}" update="@form">
 						<p:graphicImage library="imagens" name="excluir.png" title="Excluir"
@@ -71,6 +73,8 @@
 							
 						<f:setPropertyActionListener value="#{medico}"
 							target="#{consultaMedicoBean.medicoSelecionado}" />
+							
+						<f:ajax render="@form" />
 					</p:commandLink>
 					
 				</p:column>

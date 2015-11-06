@@ -41,10 +41,6 @@ public class ConsultaMedicoBean implements Serializable {
 				"Médico excluído com sucesso!");
 	}
 	
-	public void editar() {
-		
-	}
-	
 	public List<Medico> getMedicos() {
 		return medicos;
 	}

@@ -20,14 +20,14 @@ public class CadastroDoencaBean implements Serializable {
 	private Repositorios repositorios = new Repositorios();
 	private Doenca doenca;
 	
-	public void cadastrar() {
+	public void salvar() {
 		GestaoDoencas gestaoDoencas = new GestaoDoencas(this.repositorios.getDoencas());
 		gestaoDoencas.salvar(this.doenca);
 		
 		this.doenca = new Doenca();
 		
 		FacesMessageUtil.adicionarMensagem(FacesMessage.SEVERITY_INFO,
-				"Doença cadastrada com sucesso!");
+				"Doença salva com sucesso!");
 	}
 	
 	public Doenca getDoenca() {
@@ -36,6 +36,14 @@ public class CadastroDoencaBean implements Serializable {
 		}
 		
 		return doenca;
+	}
+
+	public void setDoenca(Doenca doenca) {
+		this.doenca = doenca;
+		
+		if (this.doenca == null) {
+			doenca = new Doenca();
+		}
 	}
 	
 }

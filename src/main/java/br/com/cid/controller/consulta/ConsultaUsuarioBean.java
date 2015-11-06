@@ -41,10 +41,6 @@ public class ConsultaUsuarioBean implements Serializable {
 				"Usuário excluído com sucesso!");
 	}
 	
-	public void editar() {
-		
-	}
-	
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}

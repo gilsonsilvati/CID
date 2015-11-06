@@ -37,13 +37,6 @@
     	</navigation-case>
     </navigation-rule>
     
-    <navigation-rule>
-    	<navigation-case>
-    		<from-outcome>cadastraExame</from-outcome>
-    		<to-view-id>/paginas/cadastrar/CadastraExame.xhtml</to-view-id>
-    	</navigation-case>
-    </navigation-rule>
-
 	<navigation-rule>
 		<navigation-case>
 			<from-outcome>cadastraDoenca</from-outcome>
@@ -68,26 +61,12 @@
 
 	<navigation-rule>
 		<navigation-case>
-			<from-outcome>consultaExame</from-outcome>
-			<to-view-id>/paginas/consultar/ConsultaExame.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-
-	<navigation-rule>
-		<navigation-case>
 			<from-outcome>consultaDoenca</from-outcome>
 			<to-view-id>/paginas/consultar/ConsultaDoenca.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
 	<!-- Imprimir -->
-	<navigation-rule>
-		<navigation-case>
-			<from-outcome>imprimiExame</from-outcome>
-			<to-view-id>/paginas/imprimir/ImprimiExame.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-
 	<navigation-rule>
 		<navigation-case>
 			<from-outcome>imprimiDoenca</from-outcome>

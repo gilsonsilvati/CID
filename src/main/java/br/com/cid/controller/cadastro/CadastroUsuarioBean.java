@@ -20,14 +20,14 @@ public class CadastroUsuarioBean implements Serializable {
 	private Repositorios repositorios = new Repositorios();
 	private Usuario usuario;
 	
-	public void cadastrar() {
+	public void salvar() {
 		GestaoUsuarios gestaoUsuarios = new GestaoUsuarios(this.repositorios.getUsuarios());
 		gestaoUsuarios.salvar(this.usuario);
 		
 		this.usuario = new Usuario();
 		
 		FacesMessageUtil.adicionarMensagem(FacesMessage.SEVERITY_INFO,
-				"Usuário cadastrado com sucesso!");
+				"Usuário salvo com sucesso!");
 	}
 	
 	public Usuario getUsuario() {
@@ -38,4 +38,12 @@ public class CadastroUsuarioBean implements Serializable {
 		return usuario;
 	}
 
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+		
+		if (this.usuario == null) {
+			this.usuario = new Usuario();
+		}
+	}
+	
 }

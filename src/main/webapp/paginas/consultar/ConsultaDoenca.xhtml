@@ -45,10 +45,12 @@
 				<p:column style="font-size: 17px" width="65">
 					<f:facet name="header">opções</f:facet>
 					
-					<p:commandLink action="#{consultaDoencaBean.editar}">
+					<h:link outcome="cadastraDoenca">
 						<p:graphicImage library="imagens" name="edit.png" title="Editar"
 							style="width: 20px; heigth: 20px" />
-					</p:commandLink>
+						
+						<f:param name="id" value="#{doenca.id}" />
+					</h:link>
 					
 					<p:commandLink action="#{consultaDoencaBean.excluir}" update="@form">
 						<p:graphicImage library="imagens" name="excluir.png" title="Excluir"
@@ -56,6 +58,8 @@
 							
 						<f:setPropertyActionListener value="#{doenca}"
 							target="#{consultaDoencaBean.doencaSelecionada}" />
+							
+						<f:ajax render="@form" />
 					</p:commandLink>
 					
 				</p:column>

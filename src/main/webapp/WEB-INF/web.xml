@@ -10,7 +10,7 @@
 
 	<!-- Configurando Página Inicial -->
 	<welcome-file-list>
-		<welcome-file>Login.xhtml</welcome-file>
+		<welcome-file>paginas/Home.xhtml</welcome-file>
 	</welcome-file-list>
 
 	<!-- Configurando a Servlet -->
@@ -58,11 +58,12 @@
 		<param-value>true</param-value>
 	</context-param>
 
-	<!-- Página de Erro -->
+	<!-- Página de Erro...
 	<error-page>
 		<exception-type>java.lang.Exception</exception-type>
 		<location>/paginas/Erro.xhtml</location>
 	</error-page>
+	-->
 	
 	<!-- Configurar Servidor com UTF-8 -->
 	<filter>

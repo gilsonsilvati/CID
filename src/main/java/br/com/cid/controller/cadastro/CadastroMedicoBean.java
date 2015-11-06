@@ -21,14 +21,14 @@ public class CadastroMedicoBean implements Serializable {
 	private Repositorios repositorios = new Repositorios();
 	private Medico medico;
 	
-	public void cadastrar() {
+	public void salvar() {
 		GestaoMedicos gestaoMedicos = new GestaoMedicos(this.repositorios.getMedicos());
 		gestaoMedicos.salvar(this.medico);
 		
 		this.medico = new Medico();
 
 		FacesMessageUtil.adicionarMensagem(FacesMessage.SEVERITY_INFO,
-				"Médico cadastrado com sucesso!");
+				"Médico salvo com sucesso!");
 	}
 	
 	public UF[] getUf() {
@@ -41,6 +41,14 @@ public class CadastroMedicoBean implements Serializable {
 		}
 		
 		return medico;
+	}
+
+	public void setMedico(Medico medico) {
+		this.medico = medico;
+		
+		if (this.medico == null) {
+			medico = new Medico();
+		}
 	}
 	
 }

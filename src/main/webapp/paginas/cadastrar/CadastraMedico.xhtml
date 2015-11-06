@@ -6,14 +6,18 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/paginas/Home.xhtml">
 	
-	<ui:define name="titulo">..:: Cadastro | Médico ::..</ui:define>
+	<f:metadata>
+		<f:viewParam name="id" value="#{cadastroMedicoBean.medico}" />
+	</f:metadata>
+	
+	<ui:define name="titulo">..:: Médico ::..</ui:define>
 
 	<ui:define name="center">
 		<h:form id="frm-cadastro-medico">
 
 			<h:outputStylesheet library="css" name="CadastraMedico.css" />
 			
-			<h1>Cadastro de novo médico</h1>
+			<h1>..:: Médico cid ::..</h1>
 
 			<p:dialog visible="true" modal="false" resizable="false" showEffect="explode"
 				showHeader="explode" closable="false" styleClass="dialog-medico" position="center">
@@ -56,9 +60,11 @@
 						placeholder="exemplo@dominio.com" />
 					
 					<h:outputLabel />	
-					<p:commandButton value="Adicionar" update="@form"
-						icon="fa fa-save" action="#{cadastroMedicoBean.cadastrar}"
-						styleClass="botao" />
+					<p:commandButton value="Salvar" update="@form" icon="fa fa-save"
+							action="#{cadastroMedicoBean.salvar}" styleClass="botao">
+						
+						<f:ajax execute="@form" render="@all" />
+					</p:commandButton>
 				</h:panelGrid>
 				
 			</p:dialog>
