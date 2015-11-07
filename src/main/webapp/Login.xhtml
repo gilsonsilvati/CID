@@ -29,16 +29,16 @@
 				</f:facet>
 
 				<p:outputLabel value="E-mail:" for="email" />
-				<p:inputText id="email" value="#{loginUsuarioBean.usuario.email}"
+				<p:inputText id="email" value="#{loginUsuarioBean.email}"
 					placeholder="exemplo@dominio.com.br" size="30" />
 
 				<p:outputLabel value="Senha:" for="senha" />
-				<p:password id="senha" value="#{loginUsuarioBean.usuario.senha}"
-					placeholder="****************************" size="30" />
+				<p:password id="senha" value="#{loginUsuarioBean.senha}"
+					placeholder="**********" size="30" />
 					
 				<h:outputLabel />
 				<p:commandButton value="Entrar" icon="fa fa-unlock-alt"
-					update="@form" action="home" styleClass="botao" />
+					update="@form" action="#{loginUsuarioBean.logar}" styleClass="botao" />
 				
 			</h:panelGrid>
 

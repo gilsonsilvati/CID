@@ -13,6 +13,8 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.br.CPF;
 
+import br.com.cid.md5.TransformaStringMD5;
+
 @Entity
 @Table(name = "usuario")
 public class Usuario implements Serializable {
@@ -65,7 +67,7 @@ public class Usuario implements Serializable {
 	}
 	
 	public void setSenha(String senha) {
-		this.senha = senha.trim();
+		this.senha = TransformaStringMD5.md5(senha.trim());
 	}
 	
 	public String getCpf() {

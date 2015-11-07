@@ -9,7 +9,6 @@
 	<ui:define name="titulo">..:: Consulta | Usuário ::..</ui:define>
 
 	<ui:define name="center">
-	
 		<h:form id="frm-consulta-usuario">
 			<h:outputStylesheet library="css" name="ConsultaUsuario.css" />
 			
@@ -47,7 +46,8 @@
 					<p:outputLabel value="#{usuario.cpf}" style="font-size: 12px" />
 				</p:column>
 				
-				<p:column style="font-size: 17px" width="65">
+				<p:column rendered="#{request.isUserInRole('cadastro')}"
+						style="font-size: 17px" width="65">
 					<f:facet name="header">opções</f:facet>
 					
 					<h:link outcome="cadastraUsuario">

@@ -1,0 +1,23 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:composite="http://xmlns.jcp.org/jsf/composite"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/paginas/Home.xhtml">
+	
+	<ui:define name="titulo">..:: Acesso negado ::..</ui:define>
+
+	<ui:define name="center">
+		<h:form id="frm-imprimi-doenca">
+			<!-- <h:outputStylesheet library="css" name="ImprimiDoenca.css" /> -->
+			
+			<h1>Acesso negado</h1>
+			
+			MSG: Está página é protegida e você não possui privilégios para acessa-la. 
+			
+			<br /><br />
+			<input type="button" value="Voltar" onclick="history.back()" />
+		</h:form>
+	</ui:define>
+</ui:composition>

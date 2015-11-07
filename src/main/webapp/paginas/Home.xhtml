@@ -17,9 +17,10 @@
 <h:body>
 	<p:layout fullPage="true">
 
+	<!-- #{facesContext.externalContext.userPrincipal.name} -->
+
 		<p:layoutUnit position="north" size="50"
-			header="seja bem-vindo ao sistema de consulta cid -
-				usuário logado: #{loginUsuarioBean.usuario.email}"
+			header="#{msg.welcome}"
 			styleClass="header">
 		</p:layoutUnit>
 
@@ -68,6 +69,7 @@
 
 		<p:layoutUnit position="center">
 			<ui:insert name="center">
+				<h4>Olá, #{facesContext.externalContext.userPrincipal.name}</h4>
 	        	<h:graphicImage library="imagens" name="logo.png" styleClass="logo-body" />			
 	        </ui:insert>
 		</p:layoutUnit>

@@ -6,9 +6,21 @@
     	http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
     
-    <!-- Configurando as mesagens (Bean Validation) -->
+    <!-- Configurando as mesagens -->
 	<application>
     	<message-bundle>Messages</message-bundle>
+    	
+    	<!-- i18n (internacionalization) -->
+    	<locale-config>
+    		<default-locale>pt</default-locale>
+    		<supported-locale>pt</supported-locale>
+    		<supported-locale>en</supported-locale>
+    	</locale-config>
+    	
+    	<resource-bundle>
+    		<base-name>sistema</base-name>
+    		<var>msg</var>
+    	</resource-bundle>
     </application>
 
 	<!-- Mapeando as páginas -->
