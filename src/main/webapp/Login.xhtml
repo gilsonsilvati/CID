@@ -9,14 +9,14 @@
 <h:head>
 	<meta charset="UTF-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>..:: CID | Login ::..</title>
+	<title>..:: #{msg.titulo_login} ::..</title>
 	<h:outputStylesheet library="css" name="Login.css" />
 </h:head>
 <h:body>
 	<h:form id="frm-login">
 
-		<p:dialog visible="true" modal="true" resizable="false" showEffect="explode"
-				showHeader="explode" closable="false" styleClass="dialog-login">
+		<p:dialog visible="true" modal="true" resizable="false" closable="false"
+				styleClass="dialog-login" position="center">
 				
 			<p:graphicImage library="imagens" name="logo.png" styleClass="logo" />
 			
@@ -25,25 +25,25 @@
 			<h:panelGrid columns="2" cellpadding="5" cellspacing="10" id="painel-login">
 				
 				<f:facet name="header">
-					<h:outputText value="sistema de consulta cid ®" styleClass="header" />
+					<h:outputText value="#{msg.header_login}" styleClass="header" />
 				</f:facet>
 
-				<p:outputLabel value="E-mail:" for="email" />
+				<p:outputLabel value="#{msg.email}:" for="email" />
 				<p:inputText id="email" value="#{loginUsuarioBean.email}"
 					placeholder="exemplo@dominio.com.br" size="30" />
 
-				<p:outputLabel value="Senha:" for="senha" />
+				<p:outputLabel value="#{msg.senha}:" for="senha" />
 				<p:password id="senha" value="#{loginUsuarioBean.senha}"
 					placeholder="**********" size="30" />
 					
 				<h:outputLabel />
-				<p:commandButton value="Entrar" icon="fa fa-unlock-alt"
+				<p:commandButton value="#{msg.botao_entrar}" icon="fa fa-unlock-alt"
 					update="@form" action="#{loginUsuarioBean.logar}" styleClass="botao" />
 				
 			</h:panelGrid>
 
 			<f:facet name="footer">
-				<h:outputLabel value="copyright © 2015 CID - all rights reserved"
+				<h:outputLabel value="#{msg.copyright}"
 					styleClass="footer" />
 				<p:graphicImage library="imagens" name="primefaces_ui.png"
 					styleClass="logo-prime" />

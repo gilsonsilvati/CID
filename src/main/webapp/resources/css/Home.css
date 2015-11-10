@@ -7,13 +7,13 @@
 
 body {
 	text-align: center;
-  	font-family: serif, sans-serif;
+  	/* font-family: serif, sans-serif; */
   	font-variant: small-caps;
   	font-weight: normal;
   	font-size: 14px;
 	color: #000000;
 	letter-spacing: 2px;
-	background-color: #ABD1DC;
+	background-color: #2e3436;
 }
 
 h1 {
@@ -42,10 +42,31 @@ h4 {
 	box-shadow: 4px 4px 4px #babdb6;
 }
 
+/*
+.ui-layout-unit-header {
+	background-color: #888a85;
+	color: #ffffff;
+}
+
+.ui-layout-unit-content {
+	background-color: #ffffff;
+}
+
+.ui-slidemenu {
+	background-color: #ffffff;
+	color: #2e3436;
+	border: 0;
+}
+
+.ui-sortable-column {
+	background-color: #888a85;
+}
+*/
+
 .header {
 	border: 0;
 	font-size: 20px;
-	background-color: #ABD1DC;
+	background-color: #2e3436;
 }
 
 .menu {

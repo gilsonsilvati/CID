@@ -22,7 +22,7 @@ public class LoginUsuarioBean {
 			return "/paginas/Home?faces-redirect=true";
 		} catch (ServletException e) {
 			FacesMessageUtil.adicionarMensagem(FacesMessage.SEVERITY_ERROR,
-					"E-mail ou Senha não confere.");
+					FacesMessageUtil.getMensagemI18n("erro_login"));
 			return null;
 		}
 	}

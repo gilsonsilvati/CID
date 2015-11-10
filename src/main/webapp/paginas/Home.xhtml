@@ -33,14 +33,16 @@
 						<p:menuitem value="Home" icon="fa fa-home" action="home" />
 					</p:submenu>
 
-					<p:submenu label="Cadastrar" icon="fa fa-save">
+					<p:submenu label="Cadastrar" icon="fa fa-save"
+							rendered="#{request.isUserInRole('admin')}">
 						<p:menuitem value="Usuário" icon="fa fa-child" action="cadastraUsuario" />
 						<p:menuitem value="Médico" icon="fa fa-male" action="cadastraMedico" />
 						<p:menuitem value="Doença" icon="fa fa-plus-square" action="cadastraDoenca" />
 					</p:submenu>
 
 					<p:submenu label="Consultar" icon="fa fa-search">
-						<p:menuitem value="Usuário" icon="fa fa-child" action="consultaUsuario" />
+						<p:menuitem value="Usuário" icon="fa fa-child" action="consultaUsuario"
+								rendered="#{request.isUserInRole('admin')}"/>
 						<p:menuitem value="Médico" icon="fa fa-male" action="consultaMedico" />
 						<p:menuitem value="Doença - CID" icon="fa fa-plus-square" action="consultaDoenca" />
 					</p:submenu>

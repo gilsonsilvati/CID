@@ -16,10 +16,10 @@
 		<h:form id="frm-cadastro-usuario">
 			<h:outputStylesheet library="css" name="CadastraUsuario.css" />
 			
-			<h1>..:: Usuário cid ::..</h1>
+			<h4>..:: Usuário cid ::..</h4>
 
-			<p:dialog visible="true" modal="false" resizable="false" showEffect="explode"
-				showHeader="explode" closable="false" styleClass="dialog-usuario" position="center">
+			<p:dialog visible="true" modal="false" resizable="false" closable="false"
+					styleClass="dialog-usuario" position="center">
 				
 				<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
 				
@@ -56,7 +56,7 @@
 					<p:commandButton value="Salvar" icon="fa fa-save" update="@form"
 							action="#{cadastroUsuarioBean.salvar}" styleClass="botao">
 						
-						<f:ajax execute="@form" render="@all" />
+						<f:ajax execute="@form" render="@form" />
 					</p:commandButton>
 						
 				</h:panelGrid>

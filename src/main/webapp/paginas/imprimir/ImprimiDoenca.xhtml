@@ -12,7 +12,11 @@
 		<h:form id="frm-imprimi-doenca">
 			<h:outputStylesheet library="css" name="ImprimiDoenca.css" />
 			
-			<h1>Doenças cadastradas  no sistema</h1>
+			<h4>Doenças cadastradas  no sistema</h4>
+			<br />
+			
+			<p:separator />
+			<br />
 			
 			<p:dataTable id="table-imprimi" value="#{imprimiDoencaBean.doencas}" var="doenca"
 					emptyMessage="Nenhuma doença cadastrada!" style="margin-top: 30px"

@@ -17,10 +17,10 @@
 
 			<h:outputStylesheet library="css" name="CadastraMedico.css" />
 			
-			<h1>..:: Médico cid ::..</h1>
+			<h4>..:: Médico cid ::..</h4>
 
-			<p:dialog visible="true" modal="false" resizable="false" showEffect="explode"
-				showHeader="explode" closable="false" styleClass="dialog-medico" position="center">
+			<p:dialog visible="true" modal="false" resizable="false" closable="false"
+					styleClass="dialog-medico" position="center">
 			
 				<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
 			
@@ -63,7 +63,7 @@
 					<p:commandButton value="Salvar" update="@form" icon="fa fa-save"
 							action="#{cadastroMedicoBean.salvar}" styleClass="botao">
 						
-						<f:ajax execute="@form" render="@all" />
+						<f:ajax execute="@form" render="@form" />
 					</p:commandButton>
 				</h:panelGrid>
 				

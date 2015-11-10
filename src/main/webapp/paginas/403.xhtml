@@ -10,14 +10,25 @@
 
 	<ui:define name="center">
 		<h:form id="frm-imprimi-doenca">
-			<!-- <h:outputStylesheet library="css" name="ImprimiDoenca.css" /> -->
+			<h:outputStylesheet library="css" name="403.css" />
 			
-			<h1>Acesso negado</h1>
+			<h4>..:: Acesso negado ::..</h4>
+			<br />
 			
-			MSG: Está página é protegida e você não possui privilégios para acessa-la. 
+			<p:separator />
+			<br />
 			
-			<br /><br />
-			<input type="button" value="Voltar" onclick="history.back()" />
+			<p:graphicImage library="imagens" name="access_denied.png"
+				style="width: 500px; height: auto" />
+				
+			<br />
+			
+			<h4>Está página é protegida e você não possui privilégios para acessa-la.</h4> 
+			
+			<br />
+			<input type="button" value="Voltar" title="Voltar para página anterior." onclick="history.back()" />
+			
+			
 		</h:form>
 	</ui:define>
 </ui:composition>

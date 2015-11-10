@@ -17,10 +17,10 @@
 
 			<h:outputStylesheet library="css" name="CadastraDoenca.css" />
 			
-			<h1>..:: Doença cid ::..</h1>
+			<h4>..:: Doença cid ::..</h4>
 			
-			<p:dialog visible="true" modal="false" resizable="false" showEffect="explode"
-				showHeader="explode" closable="false" styleClass="dialog-doenca" position="center">
+			<p:dialog visible="true" modal="false" resizable="false" closable="false"
+					styleClass="dialog-doenca" position="center">
 			
 				<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
 			
@@ -45,7 +45,7 @@
 				<p:commandButton value="Salva" update="@form" icon="fa fa-save"
 						action="#{cadastroDoencaBean.salvar}" styleClass="botao">
 						
-					<f:ajax execute="@form" render="@all" />	
+					<f:ajax execute="@form" render="@form" />	
 				</p:commandButton>
 					
 				</h:panelGrid>

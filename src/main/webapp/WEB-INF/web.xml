@@ -8,11 +8,10 @@
 	<!-- Nome da Aplicação -->
 	<display-name>cid</display-name>
 
-	<!-- Configurando Página Inicial 
+	<!-- Configurando Página Inicial --> 
 	<welcome-file-list>
 		<welcome-file>paginas/Home.xhtml</welcome-file>
 	</welcome-file-list>
-	-->
 
 	<!-- Configurando a Servlet -->
 	<servlet>
@@ -48,24 +47,23 @@
 		<param-name>javax.faces.VALIDATE_EMPTY_FIELDS</param-name>
 		<param-value>true</param-value>
 	</context-param>
-
+	
+	<!-- Primefaces -->
+	<context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>hot-sneaks</param-value>
+	</context-param>
+	
 	<context-param>
 		<param-name>primefaces.FONT_AWESOME</param-name>
 		<param-value>true</param-value>
 	</context-param>
 
 	<context-param>
-		<param-name>facelets.SKIP_COMMENTS</param-name>
+		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
 		<param-value>true</param-value>
 	</context-param>
 
-	<!-- Página de Erro...
-	<error-page>
-		<exception-type>java.lang.Exception</exception-type>
-		<location>/paginas/Erro.xhtml</location>
-	</error-page>
-	-->
-	
 	<!-- Configurar Servidor com UTF-8 -->
 	<filter>
 		<filter-name>Encoding Filter</filter-name>
@@ -92,10 +90,10 @@
 	
 	<!-- Tipos de permissões -->
 	<security-role>
-		<role-name>cadastro</role-name>
+		<role-name>admin</role-name>
 	</security-role>
 	<security-role>
-		<role-name>consulta</role-name>
+		<role-name>user</role-name>
 	</security-role>
 	
 	<!-- Configurando páginas de acesso -->
@@ -105,28 +103,44 @@
 			<url-pattern>/paginas/Home.xhtml</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
-			<role-name>cadastro</role-name>
-			<role-name>consulta</role-name>
+			<role-name>admin</role-name>
+			<role-name>user</role-name>
 		</auth-constraint>
 	</security-constraint>
 	
 	<security-constraint>
 		<web-resource-collection>
-			<web-resource-name>Cadastro usuario</web-resource-name>
+			<web-resource-name>Cadastro</web-resource-name>
 			<url-pattern>/paginas/cadastrar/CadastraUsuario.xhtml</url-pattern>
+			<url-pattern>/paginas/cadastrar/CadastraMedico.xhtml</url-pattern>
+			<url-pattern>/paginas/cadastrar/CadastraDoenca.xhtml</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
-			<role-name>cadastro</role-name>
+			<role-name>admin</role-name>
 		</auth-constraint>
 	</security-constraint>
 	
 	<security-constraint>
 		<web-resource-collection>
-			<web-resource-name>Consulta usuario</web-resource-name>
+			<web-resource-name>Consulta</web-resource-name>
 			<url-pattern>/paginas/consultar/ConsultaUsuario.xhtml</url-pattern>
+			<url-pattern>/paginas/consultar/ConsultaMedico.xhtml</url-pattern>
+			<url-pattern>/paginas/consultar/ConsultaDoenca.xhtml</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
-			<role-name>consulta</role-name>
+			<role-name>admin</role-name>
+			<role-name>user</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+		<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Imprimi</web-resource-name>
+			<url-pattern>/paginas/imprimir/ImprimiDoenca.xhtml</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+			<role-name>user</role-name>
 		</auth-constraint>
 	</security-constraint>
 	

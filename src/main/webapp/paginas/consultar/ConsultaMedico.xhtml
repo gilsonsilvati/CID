@@ -13,7 +13,7 @@
 
 			<h:outputStylesheet library="css" name="ConsultaMedico.css" />
 			
-			<h1>Médicos cadastrados no sistema</h1>
+			<h4>Médicos cadastrados no sistema</h4>
 			<br />
 			
 			<h:panelGrid columns="3" cellpadding="3" cellspacing="5">
@@ -22,11 +22,11 @@
 				<p:commandButton value="Pesquisar" icon="fa fa-search" styleClass="botao" />
 			</h:panelGrid>
 			
-			<br /><br />
-			<hr />
+			<br />
+			<p:separator />
 			<br />
 			
-			<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
+			<p:messages showDetail="false" showSummary="true" autoUpdate="true" closable="true" />
 			
 			<p:dataTable id="table-consulta-medico" value="#{consultaMedicoBean.medicos}" var="medico"
 					emptyMessage="Nenhum médico cadastrado!" style="margin-top: 30px"
@@ -57,7 +57,8 @@
 					<p:outputLabel value="#{medico.sigla}" style="font-size: 12px" />
 				</p:column>
 				
-				<p:column style="font-size: 17px" width="65">
+				<p:column rendered="#{request.isUserInRole('admin')}"
+						style="font-size: 17px" width="65">
 					<f:facet name="header">opções</f:facet>
 					
 					<h:link outcome="cadastraMedico">
@@ -74,7 +75,7 @@
 						<f:setPropertyActionListener value="#{medico}"
 							target="#{consultaMedicoBean.medicoSelecionado}" />
 							
-						<f:ajax render="@form" />
+						<f:ajax execute="@form" render="@all" />
 					</p:commandLink>
 					
 				</p:column>
