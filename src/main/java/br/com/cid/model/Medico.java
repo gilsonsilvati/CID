@@ -34,14 +34,14 @@ public class Medico implements Serializable {
 	private String especialidade;
 	
 	@NotNull
-	@Column(length = 10, unique = true)
+	@Column(length = 10)
 	private Integer crm;
 	
 	@Enumerated(EnumType.STRING)
 	private UF sigla;
 	
 	@NotEmpty
-	@Column(length = 50, unique = true)
+	@Column(length = 50)
 	@Email
 	private String email;
 	
@@ -51,7 +51,6 @@ public class Medico implements Serializable {
 	public String getNome() {
 		return nome;
 	}
-
 	public void setNome(String nome) {
 		this.nome = nome.toUpperCase();
 	}
@@ -59,7 +58,6 @@ public class Medico implements Serializable {
 	public String getEspecialidade() {
 		return especialidade;
 	}
-
 	public void setEspecialidade(String especialidade) {
 		this.especialidade = especialidade.toUpperCase();
 	}
@@ -67,7 +65,6 @@ public class Medico implements Serializable {
 	public Integer getCrm() {
 		return crm;
 	}
-
 	public void setCrm(Integer crm) {
 		this.crm = crm;
 	}
@@ -75,7 +72,6 @@ public class Medico implements Serializable {
 	public UF getSigla() {
 		return sigla;
 	}
-
 	public void setSigla(UF sigla) {
 		this.sigla = sigla;
 	}
@@ -83,7 +79,6 @@ public class Medico implements Serializable {
 	public String getEmail() {
 		return email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email.trim().toUpperCase();
 	}

@@ -8,7 +8,7 @@ import br.com.cid.model.Doenca;
 import br.com.cid.repository.Doencas;
 
 public class DoencasJPA implements Doencas {
-	
+
 	private EntityManager manager;
 	
 	public DoencasJPA(EntityManager manager) {

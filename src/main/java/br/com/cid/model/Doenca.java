@@ -22,7 +22,7 @@ public class Doenca implements Serializable {
 	private Long id;
 	
 	@NotEmpty
-	@Column(length = 10, nullable = false, unique = true)
+	@Column(length = 10, nullable = false)
 	private String cid;
 	
 	@NotEmpty
@@ -35,7 +35,6 @@ public class Doenca implements Serializable {
 	public String getCid() {
 		return cid;
 	}
-
 	public void setCid(String cid) {
 		this.cid = cid.trim().toUpperCase();
 	}
@@ -43,7 +42,6 @@ public class Doenca implements Serializable {
 	public String getDoenca() {
 		return doenca;
 	}
-
 	public void setDoenca(String doenca) {
 		this.doenca = doenca.toUpperCase();
 	}

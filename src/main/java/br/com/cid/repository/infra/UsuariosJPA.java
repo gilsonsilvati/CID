@@ -42,4 +42,10 @@ public class UsuariosJPA implements Usuarios {
 		return this.manager.merge(usuario);
 	}
 
+	@Override
+	public Usuario comDadosIguais(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

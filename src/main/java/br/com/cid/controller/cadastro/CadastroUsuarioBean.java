@@ -39,11 +39,11 @@ public class CadastroUsuarioBean implements Serializable {
 	}
 
 	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-		
 		if (this.usuario == null) {
 			this.usuario = new Usuario();
 		}
+		
+		this.usuario = usuario;
 	}
 	
 }

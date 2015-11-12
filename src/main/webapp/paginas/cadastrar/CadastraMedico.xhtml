@@ -19,7 +19,7 @@
 			
 			<h4>..:: Médico cid ::..</h4>
 
-			<p:dialog visible="true" modal="false" resizable="false" closable="false"
+			<p:dialog id="dialog-medico" visible="true" modal="false" resizable="false" closable="false"
 					styleClass="dialog-medico" position="center">
 			
 				<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
@@ -30,8 +30,9 @@
 						<h:outputText value="Preencha o formulário" styleClass="header-medico" />
 					</f:facet>
 					
-					<p:outputLabel />
-					<p:outputLabel />
+					<p:outputLabel value="Id:" for="id" />
+					<p:inputText id="id" value="#{cadastroMedicoBean.medico.id}" readonly="true"
+						size="5" />
 				
 					<p:outputLabel value="Nome:" for="nome" />
 					<p:inputText id="nome" value="#{cadastroMedicoBean.medico.nome}"
@@ -47,12 +48,13 @@
 							placeholder="0123456789" />
 						
 						<p:outputLabel value=" uf:" for="uf" />						
-						<h:selectOneMenu value="#{cadastroMedicoBean.medico.sigla}" style="width: 95px"
-							required="true" label="UF" id="uf">
+						<p:selectOneMenu value="#{cadastroMedicoBean.medico.sigla}" required="true"
+							style="width: 127px" label="UF" id="uf" filter="true"
+							filterMatchMode="contains">
 							<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
 							<f:selectItems value="#{cadastroMedicoBean.uf}" var="uf"
 								itemLabel="#{uf.sigla}" itemValue="#{uf}" />
-						</h:selectOneMenu>
+						</p:selectOneMenu>
 					</h:panelGroup>
 
 					<p:outputLabel value="E-mail:" for="email" />
@@ -63,7 +65,7 @@
 					<p:commandButton value="Salvar" update="@form" icon="fa fa-save"
 							action="#{cadastroMedicoBean.salvar}" styleClass="botao">
 						
-						<f:ajax execute="@form" render="@form" />
+						<f:ajax execute="@form" render="frm-cadastro-medico:dialog-medico" />
 					</p:commandButton>
 				</h:panelGrid>
 				

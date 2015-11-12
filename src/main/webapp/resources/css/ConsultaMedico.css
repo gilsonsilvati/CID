@@ -3,3 +3,11 @@
 .table-consulta-medico {
 	
 }
+
+.ajax-status {
+	position: absolute;
+	top: 130px;
+	left: 500px;
+	width: 50px;
+	height: 50px
+}

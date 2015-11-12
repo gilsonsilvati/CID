@@ -20,16 +20,30 @@
 				<p:inputText id="pesquisa" />
 				<p:commandButton value="Pesquisar" icon="fa fa-search" styleClass="botao" />
 			</h:panelGrid>
-			
+
+			<p:ajaxStatus styleClass="ajax-status">
+				<f:facet name="start">
+					<h:graphicImage library="imagens" name="carregando.gif" />
+				</f:facet>
+				<f:facet name="complete">
+					<h:outputText value="" />
+				</f:facet>
+			</p:ajaxStatus>
+
 			<br />
 			<p:separator />
 			<br />
 			
 			<p:messages showDetail="false" showSummary="true" autoUpdate="true" closable="true" />
-			
+
 			<p:dataTable id="table-consulta-usuario" value="#{consultaUsuarioBean.usuarios}"
 					var="usuario" emptyMessage="Nenhum usuário cadastrado!" style="margin-top: 30px"
 					styleClass="table-consulta-usuario">
+				
+				<p:column style="font-size: 17px" width="20">
+					<f:facet name="header">id</f:facet>
+					<p:outputLabel value="#{usuario.id}" style="font-size: 12px" />
+				</p:column>
 					
 				<p:column style="font-size: 17px">
 					<f:facet name="header">nome</f:facet>
@@ -64,7 +78,7 @@
 						<f:setPropertyActionListener value="#{usuario}"
 							target="#{consultaUsuarioBean.usuarioSelecionado}" />
 							
-						<f:ajax execute="@form" render="@all" />
+						<f:ajax execute="@form" render="frm-consulta-usuario:table-consulta-usuario" />
 					</p:commandLink>
 					
 				</p:column>

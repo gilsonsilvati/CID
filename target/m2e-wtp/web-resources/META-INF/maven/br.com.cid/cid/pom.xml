@@ -15,14 +15,8 @@
 		<!-- Driver MySQL -->
 		<mysql.connector.version>5.1.35</mysql.connector.version>
 		
-		<!-- Omnifaces -->
-		<omnifaces.version>2.1</omnifaces.version>
-		
-		<!-- Driver MySQL -->
-		<mysql.connector.version>5.1.35</mysql.connector.version>
-		
-		<!-- Omnifaces -->
-		<omnifaces.version>2.1</omnifaces.version>
+		<!-- Omnifaces
+		<omnifaces.version>2.1</omnifaces.version> -->
 		
 		<!-- Logging -->
 		<slf4j.version>1.7.12</slf4j.version>
@@ -40,12 +34,14 @@
 
 	<dependencies>
 	
+		<!--
 		<dependency>
 		    <groupId>org.omnifaces</groupId>
 		    <artifactId>omnifaces</artifactId>
 		    <version>${omnifaces.version}</version>
 		    <scope>compile</scope>
 		</dependency>
+		-->
 
 		<!-- Primefaces -->
 		<dependency>
@@ -167,11 +163,19 @@
 			<version>3.3.4</version>
 		</dependency>
 		
-		<!-- Relatórios / Downloads de arquivos -->
+		<!-- Downloads em PDF -->
 		<dependency>
-		    <groupId>com.lowagie</groupId>
-		    <artifactId>itext</artifactId>
-		    <version>4.2.2</version>
+			<groupId>com.lowagie</groupId>
+			<artifactId>itext</artifactId>
+			<version>2.1.7</version>
+		</dependency>
+		
+		<!-- Downloads em XLS -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.12</version>
+			<scope>compile</scope>
 		</dependency>
 		
 		<!-- Logging -->

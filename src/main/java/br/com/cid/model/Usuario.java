@@ -31,7 +31,7 @@ public class Usuario implements Serializable {
 	
 	@NotEmpty
 	@Email
-	@Column(length = 50, unique = true)
+	@Column(length = 50)
 	private String email;
 	
 	@NotEmpty
@@ -40,7 +40,7 @@ public class Usuario implements Serializable {
 	
 	@NotEmpty
 	@CPF
-	@Column(length = 14, unique = true)
+	@Column(length = 14)
 	private String cpf;
 	
 	public Usuario() {
@@ -49,7 +49,6 @@ public class Usuario implements Serializable {
 	public String getNome() {
 		return nome;
 	}
-
 	public void setNome(String nome) {
 		this.nome = nome.toUpperCase();
 	}
@@ -57,15 +56,13 @@ public class Usuario implements Serializable {
 	public String getEmail() {
 		return email;
 	}
-	
 	public void setEmail(String email) {
 		this.email = email.trim().toLowerCase();
 	}
-	
+
 	public String getSenha() {
 		return senha;
 	}
-	
 	public void setSenha(String senha) {
 		this.senha = TransformaStringMD5.md5(senha.trim());
 	}
@@ -73,7 +70,6 @@ public class Usuario implements Serializable {
 	public String getCpf() {
 		return cpf;
 	}
-	
 	public void setCpf(String cpf) {
 		this.cpf = cpf.trim();
 	}

@@ -22,6 +22,15 @@
 				<p:commandButton value="Pesquisar" icon="fa fa-search" styleClass="botao" />
 			</h:panelGrid>
 			
+			<p:ajaxStatus styleClass="ajax-status">
+				<f:facet name="start">
+					<h:graphicImage library="imagens" name="carregando.gif" />
+				</f:facet>
+				<f:facet name="complete">
+					<h:outputText value="" />
+				</f:facet>
+			</p:ajaxStatus>
+			
 			<br />
 			<p:separator />
 			<br />
@@ -31,6 +40,11 @@
 			<p:dataTable id="table-consulta-doenca" value="#{consultaDoencaBean.doencas}" var="doenca"
 					emptyMessage="Nenhuma doença cadastrada!" style="margin-top: 30px"
 					styleClass="table-consulta-doenca">
+				
+				<p:column style="font-size: 17px" width="20">
+					<f:facet name="header">id</f:facet>
+					<p:outputLabel value="#{doenca.id}" style="font-size: 12px" />
+				</p:column>
 					
 				<p:column style="font-size: 17px" width="100">
 					<f:facet name="header">cid</f:facet>
@@ -60,7 +74,7 @@
 						<f:setPropertyActionListener value="#{doenca}"
 							target="#{consultaDoencaBean.doencaSelecionada}" />
 							
-						<f:ajax execute="@form" render="@all" />
+						<f:ajax execute="@form" render="frm-consulta-doenca:table-consulta-doenca" />
 					</p:commandLink>
 					
 				</p:column>

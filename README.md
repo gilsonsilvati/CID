@@ -1,14 +1,18 @@
-# cid
-> Sistema de consulta cid.
+# CID
+> CID consultation system.
 
 # Licença: GPL v2.0
 
->> Projeto teste para TCC de Sistemas de Informação.
-> Conclusão: DEZ/2016.
-> Faculdade: Projeção.
+# Information
 
->> Autores: Gilson Brasil - Gilson Silva - Josenaldo Jr.
+>> Project to test TCC Information Systems.
+> Conclusion: DEZ/2016.
+> College: Projeção.
+
+>> Authors: Gilson Brasil - Gilson Silva - Josenaldo Jr.
 
 >> Developed: Gilson Silva e Josenaldo Jr.
+
 >> Documented: Gilson Brasil.
->> Orientador TCC: Prof. Israel Rodrigues.
+
+>> Advisor TCC: Prof. Israel Rodrigues.

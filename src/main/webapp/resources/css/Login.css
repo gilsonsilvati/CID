@@ -17,14 +17,14 @@ body {
 .header {
 	letter-spacing: 2px;
 	font-size: 14px;
-	margin-left: 100px;
+	margin-left: 120px;
 }
 
 .logo {
 	width: 170px;
 	height: auto;
 	margin-top: 10px;
-	margin-left: 120px;
+	margin-left: 150px;
 	
 	/* Arredondamendo das bordas */
 	border: #babdb6 1px solid;

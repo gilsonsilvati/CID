@@ -4,13 +4,7 @@
 	margin: 0;
 }
 
-.botao-imprimi {
-	font-variant: small-caps;
-  	letter-spacing: 2px;
-	display: block;
-}
-
-.botao-pdf {
+.botao {
 	font-variant: small-caps;
   	letter-spacing: 2px;
 	display: block;

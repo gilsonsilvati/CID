@@ -22,6 +22,15 @@
 				<p:commandButton value="Pesquisar" icon="fa fa-search" styleClass="botao" />
 			</h:panelGrid>
 			
+			<p:ajaxStatus styleClass="ajax-status">
+				<f:facet name="start">
+					<h:graphicImage library="imagens" name="carregando.gif" />
+				</f:facet>
+				<f:facet name="complete">
+					<h:outputText value="" />
+				</f:facet>
+			</p:ajaxStatus>
+			
 			<br />
 			<p:separator />
 			<br />
@@ -31,6 +40,11 @@
 			<p:dataTable id="table-consulta-medico" value="#{consultaMedicoBean.medicos}" var="medico"
 					emptyMessage="Nenhum médico cadastrado!" style="margin-top: 30px"
 					styleClass="table-consulta-medico">
+				
+				<p:column style="font-size: 17px" width="20">
+					<f:facet name="header">id</f:facet>
+					<p:outputLabel value="#{medico.id}" style="font-size: 12px" />
+				</p:column>
 					
 				<p:column style="font-size: 17px">
 					<f:facet name="header">nome</f:facet>
@@ -75,7 +89,7 @@
 						<f:setPropertyActionListener value="#{medico}"
 							target="#{consultaMedicoBean.medicoSelecionado}" />
 							
-						<f:ajax execute="@form" render="@all" />
+						<f:ajax execute="@form" render="frm-consulta-medico:table-consulta-medico" />
 					</p:commandLink>
 					
 				</p:column>

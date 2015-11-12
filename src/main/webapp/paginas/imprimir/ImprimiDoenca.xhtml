@@ -14,9 +14,31 @@
 			
 			<h4>Doenças cadastradas  no sistema</h4>
 			<br />
+
+			<p:toolbar>
+				<f:facet name="left">
+					<!-- Biblioteca poi 3.12 -->
+					<p:commandButton value="Gerar xls" icon="fa fa fa-file-excel-o"
+						ajax="false" immediate="true" styleClass="botao">
+						
+						<p:dataExporter type="xls" target="table-imprimi" fileName="cid" />
+					</p:commandButton>
+					
+					<span class="ui-separator">
+				    	<span class="ui-icon ui-icon-grip-dotted-vertical" />
+				    </span>
+					
+					<!-- Biblioteca itext 2.1.7 -->
+					<p:commandButton value="Gerar pdf" icon="fa fa-file-pdf-o"
+						ajax="false" immediate="true" styleClass="botao">
+						
+						<p:dataExporter type="pdf" target="table-imprimi" fileName="cid" />
+					</p:commandButton>
+				</f:facet>
+			</p:toolbar>
 			
-			<p:separator />
 			<br />
+			<p:separator />
 			
 			<p:dataTable id="table-imprimi" value="#{imprimiDoencaBean.doencas}" var="doenca"
 					emptyMessage="Nenhuma doença cadastrada!" style="margin-top: 30px"
@@ -34,8 +56,8 @@
 				
 			</p:dataTable>
 			
+			<!--
 			<br />
-			
 			<h:panelGrid columns="2" border="0" styleClass="grid-botoes" cellpadding="5"
 					cellspacing="10">
 				<p:commandButton value="Imprimir" icon="fa fa-print" styleClass="botao-imprimi">
@@ -43,9 +65,10 @@
 				</p:commandButton>
 	
 				<p:commandButton value="Gerar PDF" icon="fa fa-file-pdf-o" styleClass="botao-pdf">
-					<!-- <p:dataExporter type="pdf" target="table-imprimi" fileName="cid" /> -->
+					<p:dataExporter type="pdf" target="table-imprimi" fileName="cid" />
 				</p:commandButton>
 			</h:panelGrid>
+			-->
 
 		</h:form>
 	</ui:define>

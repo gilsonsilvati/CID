@@ -19,7 +19,7 @@
 			
 			<h4>..:: Doença cid ::..</h4>
 			
-			<p:dialog visible="true" modal="false" resizable="false" closable="false"
+			<p:dialog id="dialog-doenca" visible="true" modal="false" resizable="false" closable="false"
 					styleClass="dialog-doenca" position="center">
 			
 				<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
@@ -30,8 +30,9 @@
 						<h:outputText value="Preencha o formulário" styleClass="header-doenca" />
 					</f:facet>
 					
-					<p:outputLabel />
-					<p:outputLabel />
+					<p:outputLabel value="Id:" for="id" />
+					<p:inputText id="id" value="#{cadastroDoencaBean.doenca.id}" readonly="true"
+						size="5" />
 				
 					<p:outputLabel value="Código cid:" for="cid" />
 					<p:inputText id="cid" value="#{cadastroDoencaBean.doenca.cid}"
@@ -45,7 +46,7 @@
 				<p:commandButton value="Salva" update="@form" icon="fa fa-save"
 						action="#{cadastroDoencaBean.salvar}" styleClass="botao">
 						
-					<f:ajax execute="@form" render="@form" />	
+					<f:ajax execute="@form" render="frm-cadastro-doenca:dialog-doenca" />	
 				</p:commandButton>
 					
 				</h:panelGrid>

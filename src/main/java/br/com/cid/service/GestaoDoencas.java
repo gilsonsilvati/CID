@@ -1,9 +1,13 @@
 package br.com.cid.service;
 
+import java.io.Serializable;
+
 import br.com.cid.model.Doenca;
 import br.com.cid.repository.Doencas;
 
-public class GestaoDoencas {
+public class GestaoDoencas implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private Doencas doencas;
 	
