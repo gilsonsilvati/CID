@@ -41,6 +41,11 @@ public class ConsultaUsuarioBean implements Serializable {
 				"Usuário excluído com sucesso!");
 	}
 	
+	public void buscar(String nome) {
+		GestaoUsuarios gestaoUsuarios = new GestaoUsuarios(this.repositorios.getUsuarios());
+		gestaoUsuarios.buscarPorNome(nome);
+	}
+	
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}

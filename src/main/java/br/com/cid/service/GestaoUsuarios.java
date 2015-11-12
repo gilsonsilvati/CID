@@ -19,6 +19,8 @@ public class GestaoUsuarios {
 		this.usuarios.remover(usuario);
 	}
 	
-	
+	public void buscarPorNome(String nome) {
+		this.usuarios.porNome(nome);
+	}
 
 }
