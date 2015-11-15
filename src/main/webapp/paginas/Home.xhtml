@@ -33,7 +33,7 @@
 						<p:menuitem value="Home" icon="fa fa-home" action="home" />
 					</p:submenu>
 					
-					<p:submenu label="Permissões" icon="fa fa-male"
+					<p:submenu label="Permissões" icon="fa fa-cogs"
 							rendered="#{request.isUserInRole('ADMIN')}">
 						<p:menuitem value="Cadastrar" icon="fa fa-save" action="cadastraPermissao" />
 						<p:menuitem value="Consultar" icon="fa fa-search" action="consultaPermissao" />
@@ -41,20 +41,20 @@
 
 					<p:submenu label="Cadastrar" icon="fa fa-save"
 							rendered="#{request.isUserInRole('ADMIN')}">
-						<p:menuitem value="Usuário" icon="fa fa-child" action="cadastraUsuario" />
-						<p:menuitem value="Médico" icon="fa fa-male" action="cadastraMedico" />
-						<p:menuitem value="Doença" icon="fa fa-plus-square" action="cadastraDoenca" />
+						<p:menuitem value="Usuário" icon="fa fa-male" action="cadastraUsuario" />
+						<p:menuitem value="Médico" icon="fa fa-user-md" action="cadastraMedico" />
+						<p:menuitem value="Doença" icon="fa fa-stethoscope" action="cadastraDoenca" />
 					</p:submenu>
 
 					<p:submenu label="Consultar" icon="fa fa-search">
-						<p:menuitem value="Usuário" icon="fa fa-child" action="consultaUsuario"
+						<p:menuitem value="Usuário" icon="fa fa-male" action="consultaUsuario"
 								rendered="#{request.isUserInRole('ADMIN')}"/>
-						<p:menuitem value="Médico" icon="fa fa-male" action="consultaMedico" />
-						<p:menuitem value="Doença - CID" icon="fa fa-plus-square" action="consultaDoenca" />
+						<p:menuitem value="Médico" icon="fa fa-user-md" action="consultaMedico" />
+						<p:menuitem value="Doença - CID" icon="fa fa-stethoscope" action="consultaDoenca" />
 					</p:submenu>
 
 					<p:submenu label="Imprimir" icon="fa fa-print">
-						<p:menuitem value="Doença com CID" icon="fa fa-plus-square" action="imprimiDoenca" />
+						<p:menuitem value="Doença com CID" icon="fa fa-stethoscope" action="imprimiDoenca" />
 					</p:submenu>
 
 					<p:submenu label="Sair" icon="fa fa-power-off">
@@ -87,5 +87,20 @@
 		</p:layoutUnit>
 
 	</p:layout>
+	
+	<!-- Confirmações de exclusões globais -->
+	<h:form>
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="explode" closable="false">
+			<p:panel id="painel-msg-exclusao" columns="2" cellpadding="5" cellspacing="5"
+					styleClass="msg-exclusao-painel" style="border: 0">
+				<p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no"
+					icon="fa fa-times" />
+
+				<p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes"
+					icon="fa fa-check" />
+			</p:panel>
+		</p:confirmDialog>
+	</h:form>
+
 </h:body>
 </html>

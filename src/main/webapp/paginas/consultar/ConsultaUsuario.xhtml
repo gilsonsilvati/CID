@@ -37,8 +37,10 @@
 			<p:messages showDetail="false" showSummary="true" autoUpdate="true" closable="true" />
 
 			<p:dataTable id="table-consulta-usuario" value="#{consultaUsuarioBean.usuarios}"
-					var="usuario" emptyMessage="Nenhum usuário cadastrado!" style="margin-top: 30px"
-					styleClass="table-consulta-usuario">
+					var="usuario" emptyMessage="Nenhum usuário cadastrado!" style="margin-top: 20px"
+					styleClass="table-consulta-usuario" paginator="true" paginatorPosition="top"
+					rows="7" selection="#{consultaUsuarioBean.usuarioSelecionado}" selectionMode="single"
+					rowKey="#{usuario.id}">
 				
 				<p:column style="font-size: 17px" width="20">
 					<f:facet name="header">id</f:facet>
@@ -77,6 +79,9 @@
 							
 						<f:setPropertyActionListener value="#{usuario}"
 							target="#{consultaUsuarioBean.usuarioSelecionado}" />
+						
+						<p:confirm icon="fa fa-exclamation-triangle" header="Confirmação de exclusão"
+							message="Excluir o usuário selecionado?" />
 							
 						<f:ajax execute="@form" render="frm-consulta-usuario:table-consulta-usuario" />
 					</p:commandLink>

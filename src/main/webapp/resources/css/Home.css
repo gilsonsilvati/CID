@@ -46,6 +46,20 @@ h4 {
 	border: 0;
 }
 
+.ui-confirmdialog-no {
+	font-variant: small-caps;
+  	letter-spacing: 2px;
+}
+
+.ui-confirmdialog-yes {
+	font-variant: small-caps;
+  	letter-spacing: 2px;
+}
+
+.msg-exclusao-painel {
+	margin-left: 55px;
+}
+
 /*
 .ui-layout-unit-header {
 	background-color: #888a85;

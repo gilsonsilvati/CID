@@ -38,8 +38,10 @@
 			<p:messages showDetail="false" showSummary="true" autoUpdate="true" closable="true" />
 			
 			<p:dataTable id="table-consulta-medico" value="#{consultaMedicoBean.medicos}" var="medico"
-					emptyMessage="Nenhum médico cadastrado!" style="margin-top: 30px"
-					styleClass="table-consulta-medico">
+					emptyMessage="Nenhum médico cadastrado!" style="margin-top: 20px"
+					styleClass="table-consulta-medico" paginator="true" paginatorPosition="top"
+					rows="7" selection="#{consultaMedicoBean.medicoSelecionado}" selectionMode="single"
+					rowKey="#{medico.id}">
 				
 				<p:column style="font-size: 17px" width="20">
 					<f:facet name="header">id</f:facet>
@@ -88,6 +90,9 @@
 							
 						<f:setPropertyActionListener value="#{medico}"
 							target="#{consultaMedicoBean.medicoSelecionado}" />
+							
+						<p:confirm icon="fa fa-exclamation-triangle" header="Confirmação de exclusão"
+							message="Excluir o médico selecionado?" />
 							
 						<f:ajax execute="@form" render="frm-consulta-medico:table-consulta-medico" />
 					</p:commandLink>
