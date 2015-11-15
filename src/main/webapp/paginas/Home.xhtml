@@ -27,14 +27,20 @@
 		<p:layoutUnit position="west" size="255" styleClass="menu">
 			<h:form>
 
-				<p:slideMenu style="width: 228px" backLabel="Voltar">
+				<p:slideMenu style="width: 225px" backLabel="Voltar">
 
 					<p:submenu label="Página inicial" icon="fa fa-home">
 						<p:menuitem value="Home" icon="fa fa-home" action="home" />
 					</p:submenu>
+					
+					<p:submenu label="Permissões" icon="fa fa-male"
+							rendered="#{request.isUserInRole('ADMIN')}">
+						<p:menuitem value="Cadastrar" icon="fa fa-save" action="cadastraPermissao" />
+						<p:menuitem value="Consultar" icon="fa fa-search" action="consultaPermissao" />
+					</p:submenu>
 
 					<p:submenu label="Cadastrar" icon="fa fa-save"
-							rendered="#{request.isUserInRole('admin')}">
+							rendered="#{request.isUserInRole('ADMIN')}">
 						<p:menuitem value="Usuário" icon="fa fa-child" action="cadastraUsuario" />
 						<p:menuitem value="Médico" icon="fa fa-male" action="cadastraMedico" />
 						<p:menuitem value="Doença" icon="fa fa-plus-square" action="cadastraDoenca" />
@@ -42,7 +48,7 @@
 
 					<p:submenu label="Consultar" icon="fa fa-search">
 						<p:menuitem value="Usuário" icon="fa fa-child" action="consultaUsuario"
-								rendered="#{request.isUserInRole('admin')}"/>
+								rendered="#{request.isUserInRole('ADMIN')}"/>
 						<p:menuitem value="Médico" icon="fa fa-male" action="consultaMedico" />
 						<p:menuitem value="Doença - CID" icon="fa fa-plus-square" action="consultaDoenca" />
 					</p:submenu>
@@ -57,14 +63,12 @@
 					
 				</p:slideMenu>
 				
-				<br />
-				
 				<p:outputLabel value="Apoio:" style="font-size: 16px" /><br />
 				<p:graphicImage library="imagens" name="projecao.png" styleClass="logo-projecao" /><br />
 				<br />
 				<p:graphicImage library="imagens" name="gptec.png" styleClass="logo-gptec" /><br />
 				<br />
-				<p:graphicImage library="imagens" name="siscad.png" styleClass="logo-siscad" /><br />
+				<p:graphicImage library="imagens" name="siscad.png" styleClass="logo-siscad" />
 				
 			</h:form>
 		</p:layoutUnit>

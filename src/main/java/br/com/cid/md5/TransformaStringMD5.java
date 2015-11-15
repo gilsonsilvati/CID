@@ -7,7 +7,6 @@ import java.security.NoSuchAlgorithmException;
 public class TransformaStringMD5 {
 
 	public static String md5(String senha) {
-		// String password = "";
 		MessageDigest md = null;
 
 		try {
@@ -32,11 +31,6 @@ public class TransformaStringMD5 {
 			return null;
 			
 		}
-
-		/*
-		 * BigInteger hash = new BigInteger(1, md.digest(senha.getBytes()));
-		 * password = hash.toString(16);
-		 */
 		
 	}
 

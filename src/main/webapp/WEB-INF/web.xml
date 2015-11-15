@@ -90,10 +90,10 @@
 	
 	<!-- Tipos de permissões -->
 	<security-role>
-		<role-name>admin</role-name>
+		<role-name>ADMIN</role-name>
 	</security-role>
 	<security-role>
-		<role-name>user</role-name>
+		<role-name>USER</role-name>
 	</security-role>
 	
 	<!-- Configurando páginas de acesso -->
@@ -103,8 +103,19 @@
 			<url-pattern>/paginas/Home.xhtml</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
-			<role-name>admin</role-name>
-			<role-name>user</role-name>
+			<role-name>ADMIN</role-name>
+			<role-name>USER</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Permissao</web-resource-name>
+			<url-pattern>/paginas/permissao/CadastraPermissao.xhtml</url-pattern>
+			<url-pattern>/paginas/permissao/ConsultaPermissao.xhtml</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>ADMIN</role-name>
 		</auth-constraint>
 	</security-constraint>
 	
@@ -116,7 +127,7 @@
 			<url-pattern>/paginas/cadastrar/CadastraDoenca.xhtml</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
-			<role-name>admin</role-name>
+			<role-name>ADMIN</role-name>
 		</auth-constraint>
 	</security-constraint>
 	
@@ -128,19 +139,19 @@
 			<url-pattern>/paginas/consultar/ConsultaDoenca.xhtml</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
-			<role-name>admin</role-name>
-			<role-name>user</role-name>
+			<role-name>ADMIN</role-name>
+			<role-name>USER</role-name>
 		</auth-constraint>
 	</security-constraint>
 	
-		<security-constraint>
+	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Imprimi</web-resource-name>
 			<url-pattern>/paginas/imprimir/ImprimiDoenca.xhtml</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
-			<role-name>admin</role-name>
-			<role-name>user</role-name>
+			<role-name>ADMIN</role-name>
+			<role-name>USER</role-name>
 		</auth-constraint>
 	</security-constraint>
 	

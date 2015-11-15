@@ -6,9 +6,11 @@ import javax.persistence.EntityManager;
 
 import br.com.cid.repository.Doencas;
 import br.com.cid.repository.Medicos;
+import br.com.cid.repository.Permissoes;
 import br.com.cid.repository.Usuarios;
 import br.com.cid.repository.infra.DoencasJPA;
 import br.com.cid.repository.infra.MedicosJPA;
+import br.com.cid.repository.infra.PermissoesJPA;
 import br.com.cid.repository.infra.UsuariosJPA;
 
 public class Repositorios implements Serializable {
@@ -25,6 +27,10 @@ public class Repositorios implements Serializable {
 	
 	public Doencas getDoencas() {
 		return new DoencasJPA(this.getEntityManager());
+	}
+	
+	public Permissoes getPermissoes() {
+		return new PermissoesJPA(this.getEntityManager());
 	}
 	
 	private EntityManager getEntityManager() {

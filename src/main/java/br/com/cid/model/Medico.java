@@ -38,6 +38,7 @@ public class Medico implements Serializable {
 	private Integer crm;
 	
 	@Enumerated(EnumType.STRING)
+	@Column(length = 2, nullable = false)
 	private UF sigla;
 	
 	@NotEmpty

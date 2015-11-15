@@ -33,6 +33,21 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+	
+	<!-- Permissões -->
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>cadastraPermissao</from-outcome>
+			<to-view-id>/paginas/permissao/CadastraPermissao.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>consultaPermissao</from-outcome>
+			<to-view-id>/paginas/permissao/ConsultaPermissao.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
     
     <!-- Cadastrar -->
     <navigation-rule>

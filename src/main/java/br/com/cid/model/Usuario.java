@@ -1,12 +1,14 @@
 package br.com.cid.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Email;
@@ -42,6 +44,9 @@ public class Usuario implements Serializable {
 	@CPF
 	@Column(length = 14)
 	private String cpf;
+
+	@OneToMany(mappedBy = "usuario")
+	private List<PermissaoUsuario> permissoes;
 	
 	public Usuario() {
 	}
@@ -74,6 +79,13 @@ public class Usuario implements Serializable {
 		this.cpf = cpf.trim();
 	}
 	
+	public List<PermissaoUsuario> getPermissoes() {
+		return permissoes;
+	}
+	public void setPermissoes(List<PermissaoUsuario> permissoes) {
+		this.permissoes = permissoes;
+	}
+
 	public Long getId() {
 		return id;
 	}

@@ -6,18 +6,18 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/paginas/Home.xhtml">
 	
-	<ui:define name="titulo">..:: Consulta | Doença ::..</ui:define>
+	<ui:define name="titulo">..:: Consulta | Permissão ::..</ui:define>
 
 	<ui:define name="center">
-		<h:form id="frm-consulta-doenca">
+		<h:form id="frm-consulta-permissao">
 
-		<h:outputStylesheet library="css" name="ConsultaDoenca.css" />
+		<h:outputStylesheet library="css" name="ConsultaPermissao.css" />
 			
-			<h4>Doenças cadastradas no sistema</h4>
+			<h4>Permissões cadastradas no sistema</h4>
 			<br />
 			
 			<h:panelGrid columns="3" cellpadding="3" cellspacing="5">
-				<p:outputLabel value="Pesquisar por nome: " for="pesquisa" />
+				<p:outputLabel value="Pesquisar por e-mail: " for="pesquisa" />
 				<p:inputText id="pesquisa" />
 				<p:commandButton value="Pesquisar" icon="fa fa-search" styleClass="botao" />
 			</h:panelGrid>
@@ -37,44 +37,44 @@
 			
 			<p:messages showDetail="false" showSummary="true" autoUpdate="true" closable="true" />
 			
-			<p:dataTable id="table-consulta-doenca" value="#{consultaDoencaBean.doencas}" var="doenca"
-					emptyMessage="Nenhuma doença cadastrada!" style="margin-top: 30px"
-					styleClass="table-consulta-doenca">
+			<p:dataTable id="table-consulta-permissao" value="#{consultaPermissaoBean.permissoes}"
+					var="permissoes" emptyMessage="Nenhuma permissão cadastrada!"
+					style="margin-top: 30px" styleClass="table-consulta-permissao">
 				
 				<p:column style="font-size: 17px" width="20">
 					<f:facet name="header">id</f:facet>
-					<p:outputLabel value="#{doenca.id}" style="font-size: 12px" />
+					<p:outputLabel value="#{permissoes.id}" style="font-size: 12px" />
 				</p:column>
 					
-				<p:column style="font-size: 17px" width="100">
-					<f:facet name="header">cid</f:facet>
-					<p:outputLabel value="#{doenca.cid}" style="font-size: 12px" />
+				<p:column style="font-size: 17px">
+					<f:facet name="header">e-mail</f:facet>
+					<p:outputLabel value="#{permissoes.email}" style="font-size: 12px" />
 				</p:column>
 				
-				<p:column style="font-size: 17px">
-					<f:facet name="header">doença</f:facet>
-					<p:outputLabel value="#{doenca.doenca}" style="font-size: 12px" />
+				<p:column style="font-size: 17px" width="100">
+					<f:facet name="header">permissão</f:facet>
+					<p:outputLabel value="#{permissoes.permissao}" style="font-size: 12px" />
 				</p:column>
 				
 				<p:column rendered="#{request.isUserInRole('ADMIN')}"
 						style="font-size: 17px" width="65">
 					<f:facet name="header">opções</f:facet>
 					
-					<h:link outcome="cadastraDoenca">
+					<h:link outcome="cadastraPermissao">
 						<p:graphicImage library="imagens" name="edit.png" title="Editar"
 							style="width: 20px; heigth: 20px" />
 						
-						<f:param name="id" value="#{doenca.id}" />
+						<f:param name="id" value="#{permissoes.id}" />
 					</h:link>
 					
-					<p:commandLink action="#{consultaDoencaBean.excluir}" update="@form">
+					<p:commandLink action="#{consultaPermissaoBean.excluir}" update="@form">
 						<p:graphicImage library="imagens" name="excluir.png" title="Excluir"
 							style="width: 20px; heigth: 20px" />
 							
-						<f:setPropertyActionListener value="#{doenca}"
-							target="#{consultaDoencaBean.doencaSelecionada}" />
+						<f:setPropertyActionListener value="#{permissoes}"
+							target="#{consultaPermissaoBean.permissaoSelecionada}" />
 							
-						<f:ajax execute="@form" render="frm-consulta-doenca:table-consulta-doenca" />
+						<f:ajax execute="@form" render="frm-consulta-permissao:table-consulta-permissao" />
 					</p:commandLink>
 					
 				</p:column>

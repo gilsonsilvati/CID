@@ -18,8 +18,15 @@ public class LoginUsuarioBean {
 	
 	public String logar() {
 		try {
-			this.getRequest().login(this.email, this.senha);
-			return "/paginas/Home?faces-redirect=true";
+			if (email.equals("") || senha.equals("")) {
+				FacesMessageUtil.adicionarMensagem(FacesMessage.SEVERITY_ERROR,
+						FacesMessageUtil.getMensagemI18n("login_empty"));
+				return null;
+			} else {
+				this.getRequest().login(this.email, this.senha);
+				return "/paginas/Home?faces-redirect=true";
+			}
+			
 		} catch (ServletException e) {
 			FacesMessageUtil.adicionarMensagem(FacesMessage.SEVERITY_ERROR,
 					FacesMessageUtil.getMensagemI18n("erro_login"));
