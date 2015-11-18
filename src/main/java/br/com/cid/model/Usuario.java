@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -19,6 +21,10 @@ import br.com.cid.md5.TransformaStringMD5;
 
 @Entity
 @Table(name = "usuario")
+@NamedQueries({
+	@NamedQuery(name = "Usuario.buscarTodos", query = "select u from Usuario u"),
+	@NamedQuery(name = "Usuario.buscarPorNome", query = "select u from Usuario u where u.nome = :nome")
+})
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;

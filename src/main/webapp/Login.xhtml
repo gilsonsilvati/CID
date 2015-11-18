@@ -22,6 +22,15 @@
 			
 			<p:messages showDetail="false" showSummary="true" autoUpdate="true"
 				style="font-size: 14px" />
+				
+			<p:ajaxStatus styleClass="ajax-status">
+				<f:facet name="start">
+					<h:graphicImage library="imagens" name="carregando.gif" />
+				</f:facet>
+				<f:facet name="complete">
+					<h:outputText value="" />
+				</f:facet>
+			</p:ajaxStatus>
 
 			<h:panelGrid columns="2" cellpadding="5" cellspacing="10" id="painel-login">
 				

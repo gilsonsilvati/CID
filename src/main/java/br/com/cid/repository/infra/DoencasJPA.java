@@ -17,8 +17,9 @@ public class DoencasJPA implements Doencas {
 
 	@Override
 	public List<Doenca> todos() {
-		List<Doenca> todasDoencas = manager.createQuery("from Doenca order by doenca",
-				Doenca.class).getResultList();
+		List<Doenca> todasDoencas = manager.createNamedQuery("Doenca.buscarTodos", Doenca.class)
+				.getResultList();
+		
 		return todasDoencas;
 	}
 
@@ -28,8 +29,12 @@ public class DoencasJPA implements Doencas {
 	}
 
 	@Override
-	public Doenca porCID(String cid) {
-		return this.manager.find(Doenca.class, cid);
+	public List<String> porCID(String cid) {
+		List<String> todasPorCid = manager.createNamedQuery("Doenca.buscarPorCID", String.class)
+				.setParameter("cid", cid)
+				.getResultList();
+		
+		return todasPorCid;
 	}
 
 	@Override

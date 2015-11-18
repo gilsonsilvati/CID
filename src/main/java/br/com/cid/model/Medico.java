@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -17,6 +19,10 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "medico")
+@NamedQueries({
+	@NamedQuery(name = "Medico.buscarTodos", query = "select m from Medico m"),
+	@NamedQuery(name = "Medico.buscarPorNome", query = "select m from Medico m where m.nome = :nome")
+})
 public class Medico implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

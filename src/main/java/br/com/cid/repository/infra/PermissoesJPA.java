@@ -17,8 +17,9 @@ public class PermissoesJPA implements Permissoes {
 
 	@Override
 	public List<PermissaoUsuario> todos() {
-		List<PermissaoUsuario> todasPermissoes = manager.createQuery("from PermissaoUsuario",
+		List<PermissaoUsuario> todasPermissoes = manager.createNamedQuery("PermissaoUsuario.buscarTodos",
 				PermissaoUsuario.class).getResultList();
+		
 		return todasPermissoes;
 	}
 
@@ -27,10 +28,12 @@ public class PermissoesJPA implements Permissoes {
 		return this.manager.find(PermissaoUsuario.class, id);
 	}
 
-	//TODO implements...
 	@Override
-	public PermissaoUsuario porEmail(String email) {
-		return this.manager.find(PermissaoUsuario.class, email);
+	public List<String> porEmail(String email) {
+		List<String> todosPorEmail = manager.createNamedQuery("PermissaoUsuario.buscarPorEmail",
+				String.class).setParameter("email", email).getResultList();
+		
+		return todosPorEmail;
 	}
 
 	@Override

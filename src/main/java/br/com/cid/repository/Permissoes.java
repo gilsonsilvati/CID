@@ -8,7 +8,7 @@ public interface Permissoes {
 	
 	public List<PermissaoUsuario> todos();
 	public PermissaoUsuario porId(Long id);
-	public PermissaoUsuario porEmail(String email);
+	public List<String> porEmail(String email);
 	public PermissaoUsuario comDadosIguais(PermissaoUsuario permissaoUsuario);
 	
 	public PermissaoUsuario guardar(PermissaoUsuario permissaoUsuario);

@@ -17,8 +17,9 @@ public class MedicosJPA implements Medicos {
 
 	@Override
 	public List<Medico> todos() {
-		List<Medico> todosMedicos = manager.createQuery("from Medico order by nome",
-				Medico.class).getResultList();
+		List<Medico> todosMedicos = manager.createNamedQuery("Medico.buscarTodos", Medico.class)
+				.getResultList();
+		
 		return todosMedicos;
 	}
 
@@ -28,10 +29,13 @@ public class MedicosJPA implements Medicos {
 		return medico;
 	}
 
-	//TODO implements...
 	@Override
-	public Medico porNome(String nome) {
-		return manager.find(Medico.class, nome);
+	public List<String> porNome(String nome) {
+		List<String> todosPorNome = manager.createNamedQuery("Medico.buscarPorNome", String.class)
+				.setParameter("nome", nome)
+				.getResultList();
+		
+		return todosPorNome;
 	}
 
 	@Override

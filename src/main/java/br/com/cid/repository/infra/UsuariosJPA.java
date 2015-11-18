@@ -17,8 +17,9 @@ public class UsuariosJPA implements Usuarios {
 
 	@Override
 	public List<Usuario> todos() {
-		List<Usuario> todosUsuarios = manager.createQuery("from Usuario order by nome",
-				Usuario.class).getResultList();
+		List<Usuario> todosUsuarios = manager.createNamedQuery("Usuario.buscarTodos", Usuario.class)
+				.getResultList();
+		
 		return todosUsuarios;
 	}
 
@@ -27,12 +28,10 @@ public class UsuariosJPA implements Usuarios {
 		return this.manager.find(Usuario.class, id);
 	}
 
-	// TODO corrigir método de pesquisa...
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<String> porNome(String nome) {
-		List<String> todosPorNome = manager.createQuery("from Usuario c where c.nome = ?")
-				.setParameter(1, nome)
+		List<String> todosPorNome = manager.createNamedQuery("Usuario.buscarPorNome", String.class)
+				.setParameter("nome", nome)
 				.getResultList();
 		
 		return todosPorNome;

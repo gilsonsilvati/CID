@@ -86,7 +86,7 @@ public class ImprimiDoencaBean implements Serializable {
 
 		pdf.add(image);
 
-		Paragraph paragraph = new Paragraph("\nCódigo e descrição cid.\n\n");
+		Paragraph paragraph = new Paragraph("Sistema de consulta cid\n\n");
 		paragraph.setAlignment("center");
 		pdf.add(paragraph);
 	}  

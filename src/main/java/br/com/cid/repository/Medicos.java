@@ -8,7 +8,7 @@ public interface Medicos {
 	
 	public List<Medico> todos();
 	public Medico porId(Long id);
-	public Medico porNome(String nome);
+	public List<String> porNome(String nome);
 	
 	public Medico guardar(Medico medico);
 	
