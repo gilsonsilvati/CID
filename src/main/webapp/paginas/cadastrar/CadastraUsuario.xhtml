@@ -19,9 +19,10 @@
 			<h4>..:: Usuário cid ::..</h4>
 
 			<p:dialog id="dialog-usuario" visible="true" modal="false" resizable="false" closable="false"
-					styleClass="dialog-usuario" position="center">
+					styleClass="dialog-usuario" position="center" focus="nome">
 
-				<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
+				<p:messages showDetail="false" showSummary="true" autoUpdate="true"
+					style="font-size: 14px" />
 				
 				<h:panelGrid id="panel-usuario" columns="2" cellpadding="5"
 					cellspacing="10">
@@ -32,7 +33,7 @@
 					
 					<p:outputLabel value="Id:" for="id" />
 					<p:inputText id="id" value="#{cadastroUsuarioBean.usuario.id}" readonly="true"
-						size="5" />
+						size="5" placeholder="@Id"  />
 
 					<p:outputLabel value="Nome:" for="nome" />
 					<p:inputText id="nome" value="#{cadastroUsuarioBean.usuario.nome}"
@@ -44,7 +45,8 @@
 
 					<p:outputLabel value="CPF:" for="cpf" />
 					<p:inputMask mask="999.999.999-99" id="cpf"
-						value="#{cadastroUsuarioBean.usuario.cpf}" size="25" />
+						value="#{cadastroUsuarioBean.usuario.cpf}" size="25"
+						placeholder="999.999.999-99" />
 
 					<p:outputLabel value="Senha:" for="senha" />
 					<p:password id="senha" value="#{cadastroUsuarioBean.usuario.senha}"
@@ -57,7 +59,7 @@
 					<p:commandButton value="Salvar" icon="fa fa-save" update="@form"
 							action="#{cadastroUsuarioBean.salvar}" styleClass="botao">
 						
-						<f:ajax execute="@form" render="frm-cadastro-usuari:dialog-usuario" />
+						<f:ajax execute="@form" render=":frm-cadastro-usuari:dialog-usuario" />
 					</p:commandButton>
 						
 				</h:panelGrid>

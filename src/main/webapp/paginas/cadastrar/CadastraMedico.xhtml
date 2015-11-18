@@ -20,9 +20,10 @@
 			<h4>..:: Médico cid ::..</h4>
 
 			<p:dialog id="dialog-medico" visible="true" modal="false" resizable="false" closable="false"
-					styleClass="dialog-medico" position="center">
+					styleClass="dialog-medico" position="center" focus="nome">
 			
-				<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
+				<p:messages showDetail="false" showSummary="true" autoUpdate="true"
+					style="font-size: 14px" />
 			
 				<h:panelGrid id="panel-medico" columns="2" cellpadding="5" cellspacing="10">
 				
@@ -32,7 +33,7 @@
 					
 					<p:outputLabel value="Id:" for="id" />
 					<p:inputText id="id" value="#{cadastroMedicoBean.medico.id}" readonly="true"
-						size="5" />
+						size="5" placeholder="@Id" />
 				
 					<p:outputLabel value="Nome:" for="nome" />
 					<p:inputText id="nome" value="#{cadastroMedicoBean.medico.nome}"
@@ -44,16 +45,16 @@
 						
 					<p:outputLabel value="crm:" for="crm" />
 					<h:panelGroup>
-						<p:inputText id="crm" size="10" value="#{cadastroMedicoBean.medico.crm}"
+						<p:inputText id="crm" size="8" value="#{cadastroMedicoBean.medico.crm}"
 							placeholder="0123456789" />
 						
 						<p:outputLabel value=" uf:" for="uf" />						
 						<p:selectOneMenu value="#{cadastroMedicoBean.medico.sigla}" required="true"
-							style="width: 110px" label="UF" id="uf" filter="true"
+							style="width: 115px" label="UF" id="uf" filter="true"
 							filterMatchMode="contains">
 							<f:selectItem itemLabel="selecione" noSelectionOption="true" />
-							<f:selectItems value="#{cadastroMedicoBean.uf}" var="uf"
-								itemLabel="#{uf.sigla}" itemValue="#{uf}" />
+							<f:selectItems value="#{cadastroMedicoBean.ufs}" var="uf"
+								itemLabel="#{uf}" itemValue="#{uf}" />
 						</p:selectOneMenu>
 					</h:panelGroup>
 
@@ -65,7 +66,7 @@
 					<p:commandButton value="Salvar" update="@form" icon="fa fa-save"
 							action="#{cadastroMedicoBean.salvar}" styleClass="botao">
 						
-						<f:ajax execute="@form" render="frm-cadastro-medico:dialog-medico" />
+						<f:ajax execute="@form" render=":frm-cadastro-medico:dialog-medico" />
 					</p:commandButton>
 				</h:panelGrid>
 				

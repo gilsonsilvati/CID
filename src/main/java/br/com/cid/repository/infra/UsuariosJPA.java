@@ -27,9 +27,15 @@ public class UsuariosJPA implements Usuarios {
 		return this.manager.find(Usuario.class, id);
 	}
 
+	// TODO corrigir método de pesquisa...
+	@SuppressWarnings("unchecked")
 	@Override
-	public Usuario porNome(String nome) {
-		return this.manager.find(Usuario.class, nome);
+	public List<String> porNome(String nome) {
+		List<String> todosPorNome = manager.createQuery("from Usuario c where c.nome = ?")
+				.setParameter(1, nome)
+				.getResultList();
+		
+		return todosPorNome;
 	}
 
 	@Override

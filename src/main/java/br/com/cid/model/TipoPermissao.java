@@ -2,6 +2,10 @@ package br.com.cid.model;
 
 public enum TipoPermissao {
 	
+	ADMIN,
+	USER
+	
+	/*
 	ADMIN("ADMIN"),
 	USER("USER");
 	
@@ -14,5 +18,6 @@ public enum TipoPermissao {
 	public String getDescricao() {
 		return descricao;
 	}
+	*/
 	
 }

@@ -16,11 +16,13 @@
 			<h4>Doenças cadastradas no sistema</h4>
 			<br />
 			
+			<!--
 			<h:panelGrid columns="3" cellpadding="3" cellspacing="5">
 				<p:outputLabel value="Pesquisar por nome: " for="pesquisa" />
 				<p:inputText id="pesquisa" />
 				<p:commandButton value="Pesquisar" icon="fa fa-search" styleClass="botao" />
 			</h:panelGrid>
+			-->
 			
 			<p:ajaxStatus styleClass="ajax-status">
 				<f:facet name="start">
@@ -31,29 +33,28 @@
 				</f:facet>
 			</p:ajaxStatus>
 			
-			<br />
 			<p:separator />
-			<br />
 			
-			<p:messages showDetail="false" showSummary="true" autoUpdate="true" closable="true" />
+			<p:messages showDetail="false" showSummary="true" autoUpdate="true" closable="true"
+				style="font-size: 14px" />
 			
 			<p:dataTable id="table-consulta-doenca" value="#{consultaDoencaBean.doencas}" var="doenca"
 					emptyMessage="Nenhuma doença cadastrada!" style="margin-top: 20px"
 					styleClass="table-consulta-doenca" paginator="true" paginatorPosition="top"
 					rows="7" selection="#{consultaDoencaBean.doencaSelecionada}" selectionMode="single"
-					rowKey="#{doenca.id}">
+					rowKey="#{doenca.id}" reflow="true">
 				
 				<p:column style="font-size: 17px" width="20">
 					<f:facet name="header">id</f:facet>
 					<p:outputLabel value="#{doenca.id}" style="font-size: 12px" />
 				</p:column>
 					
-				<p:column style="font-size: 17px" width="100">
+				<p:column style="font-size: 17px" width="100" filterBy="#{doenca.cid}" filterMatchMode="contains">
 					<f:facet name="header">cid</f:facet>
 					<p:outputLabel value="#{doenca.cid}" style="font-size: 12px" />
 				</p:column>
 				
-				<p:column style="font-size: 17px">
+				<p:column style="font-size: 17px" filterBy="#{doenca.cid}" filterMatchMode="contains">
 					<f:facet name="header">doença</f:facet>
 					<p:outputLabel value="#{doenca.doenca}" style="font-size: 12px" />
 				</p:column>
@@ -79,7 +80,7 @@
 						<p:confirm icon="fa fa-exclamation-triangle" header="Confirmação de exclusão"
 							message="Excluir a doença selecionada?" />
 							
-						<f:ajax execute="@form" render="frm-consulta-doenca:table-consulta-doenca" />
+						<f:ajax execute="@form" render=":frm-consulta-doenca:table-consulta-doenca" />
 					</p:commandLink>
 					
 				</p:column>

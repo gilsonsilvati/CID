@@ -2,6 +2,7 @@ package br.com.cid.controller.cadastro;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -20,21 +21,27 @@ public class CadastroUsuarioBean implements Serializable {
 	private Repositorios repositorios = new Repositorios();
 	private Usuario usuario;
 	
+	@PostConstruct
+	public void inicializar() {
+		this.repositorios = new Repositorios();
+		this.limpar();
+	}
+	
 	public void salvar() {
 		GestaoUsuarios gestaoUsuarios = new GestaoUsuarios(this.repositorios.getUsuarios());
 		gestaoUsuarios.salvar(this.usuario);
 		
-		this.usuario = new Usuario();
-		
 		FacesMessageUtil.adicionarMensagem(FacesMessage.SEVERITY_INFO,
 				"Usuário salvo com sucesso!");
+		
+		this.limpar();
+	}
+	
+	private void limpar() {
+		this.usuario = new Usuario();
 	}
 	
 	public Usuario getUsuario() {
-		if (this.usuario == null) {
-			usuario = new Usuario();
-		}
-		
 		return usuario;
 	}
 

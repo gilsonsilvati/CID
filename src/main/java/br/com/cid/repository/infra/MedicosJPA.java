@@ -28,6 +28,7 @@ public class MedicosJPA implements Medicos {
 		return medico;
 	}
 
+	//TODO implements...
 	@Override
 	public Medico porNome(String nome) {
 		return manager.find(Medico.class, nome);

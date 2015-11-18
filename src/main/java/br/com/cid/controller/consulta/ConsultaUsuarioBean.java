@@ -24,6 +24,7 @@ public class ConsultaUsuarioBean implements Serializable {
 	private Repositorios repositorios = new Repositorios();
 	private List<Usuario> usuarios = new ArrayList<>();
 	private Usuario usuarioSelecionado;
+	private Usuario usuario;
 	
 	@PostConstruct
 	public void inicializar() {
@@ -56,6 +57,14 @@ public class ConsultaUsuarioBean implements Serializable {
 
 	public void setUsuarioSelecionado(Usuario usuarioSelecionado) {
 		this.usuarioSelecionado = usuarioSelecionado;
+	}
+	
+	public Usuario getUsuario() {
+		if (this.usuario == null) {
+			usuario = new Usuario();
+		}
+		
+		return usuario;
 	}
 	
 }

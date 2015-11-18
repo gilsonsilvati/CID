@@ -27,6 +27,7 @@ public class PermissoesJPA implements Permissoes {
 		return this.manager.find(PermissaoUsuario.class, id);
 	}
 
+	//TODO implements...
 	@Override
 	public PermissaoUsuario porEmail(String email) {
 		return this.manager.find(PermissaoUsuario.class, email);

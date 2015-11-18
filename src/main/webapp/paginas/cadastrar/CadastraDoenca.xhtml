@@ -20,9 +20,10 @@
 			<h4>..:: Doença cid ::..</h4>
 			
 			<p:dialog id="dialog-doenca" visible="true" modal="false" resizable="false" closable="false"
-					styleClass="dialog-doenca" position="center">
+					styleClass="dialog-doenca" position="center" focus="cid">
 			
-				<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
+				<p:messages showDetail="false" showSummary="true" autoUpdate="true"
+					style="font-size: 14px" />
 			
 				<h:panelGrid id="panel-doenca" columns="2" cellpadding="5" cellspacing="10">
 				
@@ -32,7 +33,7 @@
 					
 					<p:outputLabel value="Id:" for="id" />
 					<p:inputText id="id" value="#{cadastroDoencaBean.doenca.id}" readonly="true"
-						size="5" />
+						size="5" placeholder="@Id" />
 				
 					<p:outputLabel value="Código cid:" for="cid" />
 					<p:inputText id="cid" value="#{cadastroDoencaBean.doenca.cid}"
@@ -46,7 +47,7 @@
 				<p:commandButton value="Salvar" update="@form" icon="fa fa-save"
 						action="#{cadastroDoencaBean.salvar}" styleClass="botao">
 						
-					<f:ajax execute="@form" render="frm-cadastro-doenca:dialog-doenca" />	
+					<f:ajax execute="@form" render=":frm-cadastro-doenca:dialog-doenca" />	
 				</p:commandButton>
 					
 				</h:panelGrid>

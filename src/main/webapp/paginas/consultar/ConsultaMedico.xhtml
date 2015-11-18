@@ -16,11 +16,13 @@
 			<h4>Médicos cadastrados no sistema</h4>
 			<br />
 			
+			<!--
 			<h:panelGrid columns="3" cellpadding="3" cellspacing="5">
 				<p:outputLabel value="Pesquisar por nome: " for="pesquisa" />
 				<p:inputText id="pesquisa" />
 				<p:commandButton value="Pesquisar" icon="fa fa-search" styleClass="botao" />
 			</h:panelGrid>
+			-->
 			
 			<p:ajaxStatus styleClass="ajax-status">
 				<f:facet name="start">
@@ -31,44 +33,43 @@
 				</f:facet>
 			</p:ajaxStatus>
 			
-			<br />
 			<p:separator />
-			<br />
 			
-			<p:messages showDetail="false" showSummary="true" autoUpdate="true" closable="true" />
+			<p:messages showDetail="false" showSummary="true" autoUpdate="true" closable="true"
+				style="font-size: 14px" />
 			
 			<p:dataTable id="table-consulta-medico" value="#{consultaMedicoBean.medicos}" var="medico"
 					emptyMessage="Nenhum médico cadastrado!" style="margin-top: 20px"
 					styleClass="table-consulta-medico" paginator="true" paginatorPosition="top"
 					rows="7" selection="#{consultaMedicoBean.medicoSelecionado}" selectionMode="single"
-					rowKey="#{medico.id}">
+					rowKey="#{medico.id}" reflow="true">
 				
 				<p:column style="font-size: 17px" width="20">
 					<f:facet name="header">id</f:facet>
 					<p:outputLabel value="#{medico.id}" style="font-size: 12px" />
 				</p:column>
 					
-				<p:column style="font-size: 17px">
+				<p:column style="font-size: 17px" filterBy="#{medico.nome}" filterMatchMode="contains">
 					<f:facet name="header">nome</f:facet>
 					<p:outputLabel value="#{medico.nome}" style="font-size: 12px" />
 				</p:column>
 				
-				<p:column style="font-size: 17px">
+				<p:column style="font-size: 17px" filterBy="#{medico.email}" filterMatchMode="contains">
 					<f:facet name="header">e-mail</f:facet>
 					<p:outputLabel value="#{medico.email}" style="font-size: 12px" />
 				</p:column>
 				
-				<p:column style="font-size: 17px" width="150">
+				<p:column style="font-size: 17px" width="150" filterBy="#{medico.especialidade}" filterMatchMode="contains">
 					<f:facet name="header">especialidade</f:facet>
 					<p:outputLabel value="#{medico.especialidade}" style="font-size: 12px" />
 				</p:column>
 				
-				<p:column style="font-size: 17px" width="90">
+				<p:column style="font-size: 17px" width="90" filterBy="#{medico.crm}" filterMatchMode="contains">
 					<f:facet name="header">crm</f:facet>
 					<p:outputLabel value="#{medico.crm}" style="font-size: 12px" />
 				</p:column>
 				
-				<p:column style="font-size: 17px" width="20">
+				<p:column style="font-size: 17px" width="20" filterBy="#{medico.sigla}" filterMatchMode="contains">
 					<f:facet name="header">uf</f:facet>
 					<p:outputLabel value="#{medico.sigla}" style="font-size: 12px" />
 				</p:column>
@@ -94,7 +95,7 @@
 						<p:confirm icon="fa fa-exclamation-triangle" header="Confirmação de exclusão"
 							message="Excluir o médico selecionado?" />
 							
-						<f:ajax execute="@form" render="frm-consulta-medico:table-consulta-medico" />
+						<f:ajax execute="@form" render=":frm-consulta-medico:table-consulta-medico" />
 					</p:commandLink>
 					
 				</p:column>
