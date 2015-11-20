@@ -25,7 +25,7 @@
 				
 			<p:ajaxStatus styleClass="ajax-status">
 				<f:facet name="start">
-					<h:graphicImage library="imagens" name="carregando.gif" />
+					<h:graphicImage library="imagens" name="loading.gif" />
 				</f:facet>
 				<f:facet name="complete">
 					<h:outputText value="" />
@@ -38,17 +38,21 @@
 					<h:outputText value="#{msg.header_login}" styleClass="header" />
 				</f:facet>
 
-				<p:outputLabel value="#{msg.email}:" for="email" />
+				<p:button value="#{msg.email}" icon="fa fa-envelope" disabled="true"
+					styleClass="button-login" />					
+					
 				<p:inputText id="email" value="#{loginUsuarioBean.email}"
 					placeholder="exemplo@dominio.com.br" size="30" />
 
-				<p:outputLabel value="#{msg.senha}:" for="senha" />
+				<p:button value="#{msg.senha}" icon="fa fa-key" disabled="true"
+					styleClass="button-login" />
+				
 				<p:password id="senha" value="#{loginUsuarioBean.senha}"
 					placeholder="**********" size="30" />
-					
+				
 				<h:outputLabel />
-				<p:commandButton value="#{msg.botao_entrar}" icon="fa fa-unlock-alt"
-					update="@form" action="#{loginUsuarioBean.logar}" styleClass="botao" />
+				<p:commandButton value="#{msg.botao_entrar}" icon="fa fa-unlock-alt" update="@form"
+					action="#{loginUsuarioBean.logar}" styleClass="botao" />
 				
 			</h:panelGrid>
 

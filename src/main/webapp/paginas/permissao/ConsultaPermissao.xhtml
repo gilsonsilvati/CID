@@ -26,7 +26,7 @@
 			
 			<p:ajaxStatus styleClass="ajax-status">
 				<f:facet name="start">
-					<h:graphicImage library="imagens" name="carregando.gif" />
+					<h:graphicImage library="imagens" name="loading.gif" />
 				</f:facet>
 				<f:facet name="complete">
 					<h:outputText value="" />
@@ -43,7 +43,8 @@
 			<p:dataTable id="table-consulta-permissao" value="#{consultaPermissaoBean.permissoes}"
 					var="permissoes" emptyMessage="Nenhuma permissão cadastrada!"
 					style="margin-top: 30px" styleClass="table-consulta-permissao"
-					paginator="true" paginatorPosition="top" rows="7"
+					paginator="true" paginatorPosition="bottom" rows="5" paginatorAlwaysVisible="false"
+					rowsPerPageTemplate="5,10,15"
 					selection="#{consultaPermissaoBean.permissaoSelecionada}" selectionMode="single"
 					rowKey="#{permissoes.id}" reflow="true">
 				

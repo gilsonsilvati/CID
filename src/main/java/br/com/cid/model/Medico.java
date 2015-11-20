@@ -1,6 +1,7 @@
 package br.com.cid.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
@@ -51,6 +56,12 @@ public class Medico implements Serializable {
 	@Column(length = 50)
 	@Email
 	private String email;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataCriacao;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataModificacao;
 	
 	public Medico() {
 	}
@@ -92,6 +103,16 @@ public class Medico implements Serializable {
 
 	public Long getId() {
 		return id;
+	}
+	
+	@PrePersist
+	@PreUpdate
+	public void configuraDatasCriacaoAlteracao() {
+		this.dataModificacao = new Date();
+
+		if (this.dataCriacao == null) {
+			this.dataCriacao = new Date();
+		}
 	}
 
 	@Override

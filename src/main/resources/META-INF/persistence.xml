@@ -7,14 +7,8 @@
 		
 	<persistence-unit name="cidPU" transaction-type="RESOURCE_LOCAL">
 	    
-		<!-- <provider>org.hibernate.ejb.HibernatePersistence</provider> 
-		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> -->
-		
 		<properties>
 		    
-		    <!-- Reconhecendo as classes de entidades automaticamente 
-			<property name="hibernate.archive.autodetection" value="class" /> -->
-			
 			<!-- configuração para ter acceso a base de dados -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />

@@ -13,5 +13,7 @@ public interface Doencas {
 	public Doenca guardar(Doenca doenca);
 
 	public void remove(Doenca doenca);
+	public List<Doenca> buscarComPaginacao(int first, int pageSize);
+	public Long encontrarQuantidadeDeDoencas();
 
 }

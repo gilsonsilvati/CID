@@ -22,13 +22,20 @@ public class ConsultaDoencaBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Repositorios repositorios = new Repositorios();
+	
 	private List<Doenca> doencas = new ArrayList<>();
+	
+	// private LazyDoencaDataModel lazyDoencas;
+	
 	private Doenca doencaSelecionada;
 	
 	@PostConstruct
 	public void inicializar() {
 		Doencas doencas = this.repositorios.getDoencas();
+		
 		this.doencas = doencas.todos();
+		
+		// lazyDoencas = new LazyDoencaDataModel(doencas);
 	}
 	
 	public void excluir() {
@@ -44,7 +51,7 @@ public class ConsultaDoencaBean implements Serializable {
 	public List<Doenca> getDoencas() {
 		return doencas;
 	}
-
+	
 	public Doenca getDoencaSelecionada() {
 		return doencaSelecionada;
 	}
@@ -52,5 +59,11 @@ public class ConsultaDoencaBean implements Serializable {
 	public void setDoencaSelecionada(Doenca doencaSelecionada) {
 		this.doencaSelecionada = doencaSelecionada;
 	}
+	
+	/*
+	public LazyDoencaDataModel getLazyDoencas() {
+		return lazyDoencas;
+	}
+	*/
 	
 }

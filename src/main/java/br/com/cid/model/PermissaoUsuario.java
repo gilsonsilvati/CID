@@ -1,6 +1,7 @@
 package br.com.cid.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +14,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -44,6 +49,15 @@ public class PermissaoUsuario implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "codigo_usuario")
 	private Usuario usuario;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataCriacao;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataModificacao;
+	
+	public PermissaoUsuario() {
+	}
 
 	public String getEmail() {
 		return email;
@@ -68,6 +82,16 @@ public class PermissaoUsuario implements Serializable {
 	
 	public Long getId() {
 		return id;
+	}
+	
+	@PrePersist
+	@PreUpdate
+	public void configuraDatasCriacaoAlteracao() {
+		this.dataModificacao = new Date();
+
+		if (this.dataCriacao == null) {
+			this.dataCriacao = new Date();
+		}
 	}
 	
 	@Override

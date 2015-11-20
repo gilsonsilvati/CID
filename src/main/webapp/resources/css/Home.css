@@ -60,20 +60,13 @@ h4 {
 	margin-left: 55px;
 }
 
-/*
-.ui-layout-unit-header {
-	background-color: #888a85;
-	color: #ffffff;
+.ajax-status {
+	position: absolute;
+	top: 70px;
+	left: 500px;
+	width: 50px;
+	height: 50px
 }
-
-.ui-layout-unit-content {
-	background-color: #ffffff;
-}
-
-.ui-sortable-column {
-	background-color: #888a85;
-}
-*/
 
 .header {
 	border: 0;

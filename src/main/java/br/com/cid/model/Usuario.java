@@ -1,6 +1,7 @@
 package br.com.cid.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,7 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -54,6 +59,12 @@ public class Usuario implements Serializable {
 	@OneToMany(mappedBy = "usuario")
 	private List<PermissaoUsuario> permissoes;
 	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataCriacao;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataModificacao;
+	
 	public Usuario() {
 	}
 	
@@ -91,9 +102,33 @@ public class Usuario implements Serializable {
 	public void setPermissoes(List<PermissaoUsuario> permissoes) {
 		this.permissoes = permissoes;
 	}
+	
+	public Date getDataCriacao() {
+		return dataCriacao;
+	}
+	public void setDataCriacao(Date dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
+
+	public Date getDataModificacao() {
+		return dataModificacao;
+	}
+	public void setDataModificacao(Date dataModificacao) {
+		this.dataModificacao = dataModificacao;
+	}
 
 	public Long getId() {
 		return id;
+	}
+	
+	@PrePersist
+	@PreUpdate
+	public void configuraDatasCriacaoAlteracao() {
+		this.dataModificacao = new Date();
+
+		if (this.dataCriacao == null) {
+			this.dataCriacao = new Date();
+		}
 	}
 
 	@Override

@@ -25,7 +25,7 @@
 
 			<p:ajaxStatus styleClass="ajax-status">
 				<f:facet name="start">
-					<h:graphicImage library="imagens" name="carregando.gif" />
+					<h:graphicImage library="imagens" name="loading.gif" />
 				</f:facet>
 				<f:facet name="complete">
 					<h:outputText value="" />
@@ -42,7 +42,8 @@
 			<p:dataTable id="table-consulta-usuario" value="#{consultaUsuarioBean.usuarios}"
 					widgetVar="table-usuario" var="usuario" emptyMessage="Nenhum usuário cadastrado!"
 					style="margin-top: 20px" styleClass="table-consulta-usuario"
-					paginator="true" paginatorPosition="top" rows="7"
+					paginator="true" paginatorPosition="bottom" rows="5" paginatorAlwaysVisible="false"
+					rowsPerPageTemplate="5,10,15"
 					selection="#{consultaUsuarioBean.usuarioSelecionado}" selectionMode="single"
 					rowKey="#{usuario.id}" reflow="true">
 				

@@ -48,11 +48,12 @@
 			
 			<p:dataTable id="table-imprimi" value="#{imprimiDoencaBean.doencas}" var="doenca"
 					emptyMessage="Nenhuma doença cadastrada!" style="margin-top: 20px"
-					styleClass="table-imprimi" paginator="true" paginatorPosition="top" rows="10"
+					styleClass="table-imprimi" paginator="true" paginatorPosition="bottom" rows="5"
+					paginatorAlwaysVisible="false" rowsPerPageTemplate="3,5,10"
 					selection="#{imprimiDoencaBean.doencaSelecionada}" selectionMode="single"
 					rowKey="#{doenca.id}" reflow="true">
 					
-				<p:column style="font-size: 17px">
+				<p:column style="font-size: 17px" width="100">
 					<f:facet name="header">Cid</f:facet>
 					<p:outputLabel value="#{doenca.cid}" style="font-size: 12px" />
 				</p:column>

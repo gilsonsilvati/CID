@@ -53,6 +53,11 @@ body {
 	font-variant: small-caps;
 }
 
+.button-login {
+	letter-spacing: 2px;
+	font-variant: small-caps;
+}
+
 .dialog-login {
 	text-align: left;
 	

@@ -75,8 +75,19 @@
 
 		<p:layoutUnit position="center">
 			<ui:insert name="center">
+				
+				<p:ajaxStatus styleClass="ajax-status">
+					<f:facet name="start">
+						<h:graphicImage library="imagens" name="loading.gif" />
+					</f:facet>
+					<f:facet name="complete">
+						<h:outputText value="" />
+					</f:facet>
+				</p:ajaxStatus>
+			
 				<h4>Olá, #{facesContext.externalContext.userPrincipal.name}</h4>
-	        	<h:graphicImage library="imagens" name="logo.png" styleClass="logo-body" />			
+	        	<h:graphicImage library="imagens" name="logo.png" styleClass="logo-body" />
+	        			
 	        </ui:insert>
 		</p:layoutUnit>
 

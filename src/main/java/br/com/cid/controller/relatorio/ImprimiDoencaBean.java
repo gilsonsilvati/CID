@@ -71,7 +71,7 @@ public class ImprimiDoencaBean implements Serializable {
 
 		pdf.setMargins(25f, 25f, 25f, 25f);
 		pdf.setPageSize(PageSize.A4);
-		// pdf.addTitle("Título here brother");
+		pdf.addTitle("CID");
 		
 		pdf.open();
 
@@ -86,7 +86,7 @@ public class ImprimiDoencaBean implements Serializable {
 
 		pdf.add(image);
 
-		Paragraph paragraph = new Paragraph("Sistema de consulta cid\n\n");
+		Paragraph paragraph = new Paragraph("Sistema de consulta cid ®\n\n");
 		paragraph.setAlignment("center");
 		pdf.add(paragraph);
 	}  

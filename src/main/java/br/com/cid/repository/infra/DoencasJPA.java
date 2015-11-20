@@ -47,4 +47,17 @@ public class DoencasJPA implements Doencas {
 		this.manager.remove(manager.getReference(Doenca.class, doenca.getId()));
 	}
 
+	@Override
+	public List<Doenca> buscarComPaginacao(int first, int pageSize) {
+		return manager.createNamedQuery("Doenca.buscarTodos", Doenca.class)
+				.setFirstResult(first)
+				.setMaxResults(pageSize)
+				.getResultList();
+	}
+
+	@Override
+	public Long encontrarQuantidadeDeDoencas() {
+		return manager.createQuery("select count(d) from Doenca d", Long.class).getSingleResult();
+	}
+
 }

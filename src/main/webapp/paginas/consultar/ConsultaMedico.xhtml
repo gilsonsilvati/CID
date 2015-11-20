@@ -26,7 +26,7 @@
 			
 			<p:ajaxStatus styleClass="ajax-status">
 				<f:facet name="start">
-					<h:graphicImage library="imagens" name="carregando.gif" />
+					<h:graphicImage library="imagens" name="loading.gif" />
 				</f:facet>
 				<f:facet name="complete">
 					<h:outputText value="" />
@@ -42,8 +42,9 @@
 			
 			<p:dataTable id="table-consulta-medico" value="#{consultaMedicoBean.medicos}" var="medico"
 					emptyMessage="Nenhum médico cadastrado!" style="margin-top: 20px"
-					styleClass="table-consulta-medico" paginator="true" paginatorPosition="top"
-					rows="7" selection="#{consultaMedicoBean.medicoSelecionado}" selectionMode="single"
+					styleClass="table-consulta-medico" paginator="true" paginatorPosition="bottom"
+					rows="5" paginatorAlwaysVisible="false" rowsPerPageTemplate="5,10,15"
+					selection="#{consultaMedicoBean.medicoSelecionado}" selectionMode="single"
 					rowKey="#{medico.id}" reflow="true">
 				
 				<p:column style="font-size: 17px" width="20">
