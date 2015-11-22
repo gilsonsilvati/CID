@@ -57,6 +57,7 @@ public class Medico implements Serializable {
 	@Email
 	private String email;
 	
+	/* Para fazer auditoria... */
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataCriacao;
 	
@@ -104,7 +105,25 @@ public class Medico implements Serializable {
 	public Long getId() {
 		return id;
 	}
-	
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Date getDataCriacao() {
+		return dataCriacao;
+	}
+	public void setDataCriacao(Date dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
+
+	public Date getDataModificacao() {
+		return dataModificacao;
+	}
+	public void setDataModificacao(Date dataModificacao) {
+		this.dataModificacao = dataModificacao;
+	}
+
+	/* Auditoria... */
 	@PrePersist
 	@PreUpdate
 	public void configuraDatasCriacaoAlteracao() {

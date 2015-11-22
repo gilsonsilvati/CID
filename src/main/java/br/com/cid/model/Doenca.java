@@ -27,7 +27,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Doenca implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -39,7 +39,8 @@ public class Doenca implements Serializable {
 	@NotEmpty
 	@Column(length = 50, nullable = false)
 	private String doenca;
-	
+
+	/* Para fazer auditoria... */
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataCriacao;
 	
@@ -66,7 +67,25 @@ public class Doenca implements Serializable {
 	public Long getId() {
 		return id;
 	}
-	
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Date getDataCriacao() {
+		return dataCriacao;
+	}
+	public void setDataCriacao(Date dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
+
+	public Date getDataModificacao() {
+		return dataModificacao;
+	}
+	public void setDataModificacao(Date dataModificacao) {
+		this.dataModificacao = dataModificacao;
+	}
+
+	/* Auditoria... */
 	@PrePersist
 	@PreUpdate
 	public void configuraDatasCriacaoAlteracao() {

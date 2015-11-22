@@ -55,10 +55,11 @@ public class Usuario implements Serializable {
 	@CPF
 	@Column(length = 14)
 	private String cpf;
-
+	
 	@OneToMany(mappedBy = "usuario")
 	private List<PermissaoUsuario> permissoes;
-	
+
+	/* Para fazer auditoria... */
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataCriacao;
 	
@@ -103,6 +104,13 @@ public class Usuario implements Serializable {
 		this.permissoes = permissoes;
 	}
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public Date getDataCriacao() {
 		return dataCriacao;
 	}
@@ -116,11 +124,8 @@ public class Usuario implements Serializable {
 	public void setDataModificacao(Date dataModificacao) {
 		this.dataModificacao = dataModificacao;
 	}
-
-	public Long getId() {
-		return id;
-	}
 	
+	/* Auditoria... */
 	@PrePersist
 	@PreUpdate
 	public void configuraDatasCriacaoAlteracao() {
