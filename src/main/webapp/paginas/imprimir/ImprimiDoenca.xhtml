@@ -53,14 +53,19 @@
 					selection="#{imprimiDoencaBean.doencaSelecionada}" selectionMode="single"
 					rowKey="#{doenca.id}" reflow="true">
 					
-				<p:column style="font-size: 17px" width="100">
+				<p:column style="font-size: 17px" width="70">
 					<f:facet name="header">Cid</f:facet>
 					<p:outputLabel value="#{doenca.cid}" style="font-size: 12px" />
 				</p:column>
 				
-				<p:column style="font-size: 17px">
-					<f:facet name="header">Doença</f:facet>
+				<p:column style="font-size: 17px" width="250">
+					<f:facet name="header">Descrição</f:facet>
 					<p:outputLabel value="#{doenca.doenca}" style="font-size: 12px" />
+				</p:column>
+				
+				<p:column style="font-size: 17px">
+					<f:facet name="header">Panorama</f:facet>
+					<p:outputLabel value="#{doenca.panorama}" style="font-size: 14px" />
 				</p:column>
 				
 			</p:dataTable>

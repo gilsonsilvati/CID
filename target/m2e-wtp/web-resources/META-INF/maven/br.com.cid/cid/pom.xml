@@ -143,6 +143,7 @@
 			<scope>compile</scope>
 		</dependency>
 		
+		<!-- JUnit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -201,7 +202,6 @@
             <version>${weld.version}</version>
             <scope>compile</scope>
         </dependency>
-        
         <dependency>
 			<groupId>org.jboss</groupId>
 		    <artifactId>jandex</artifactId>
