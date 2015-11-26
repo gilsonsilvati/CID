@@ -1,54 +1,57 @@
 package br.com.cid.controller.consulta;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import br.com.cid.model.Usuario;
 import br.com.cid.repository.Usuarios;
 import br.com.cid.service.GestaoUsuarios;
-import br.com.cid.util.FacesMessageUtil;
-import br.com.cid.util.Repositorios;
+import br.com.cid.util.jsf.FacesMessages;
 
-@ManagedBean
+@Named
 @ViewScoped
 public class ConsultaUsuarioBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Repositorios repositorios = new Repositorios();
-	private List<Usuario> usuarios = new ArrayList<>();
-	private Usuario usuarioSelecionado;
 	private Usuario usuario;
+	
+	private List<Usuario> todosUsuarios;
+	
+	private Usuario usuarioSelecionado;
+	
+	@Inject
+	private Usuarios usuarios;
+	
+	@Inject
+	private GestaoUsuarios gestaoUsuarios;
+	
+	@Inject
+	private FacesMessages facesMessages;
 	
 	@PostConstruct
 	public void inicializar() {
-		Usuarios usuarios = this.repositorios.getUsuarios();
-		this.usuarios = usuarios.todos();
+		todosUsuarios = usuarios.todos(); 
 	}
 	
 	public void excluir() {
-		GestaoUsuarios gestaoUsuarios = new GestaoUsuarios(this.repositorios.getUsuarios());
 		gestaoUsuarios.excluir(usuarioSelecionado);
+		facesMessages.info("Usuário " + usuarioSelecionado.getNome() + " excluído com sucesso!");
 		
-		this.inicializar();
-		
-		FacesMessageUtil.adicionarMensagem(FacesMessage.SEVERITY_INFO,
-				"Usuário excluído com sucesso!");
+		inicializar();
 	}
 	
-	public void buscar(String nome) {
-		GestaoUsuarios gestaoUsuarios = new GestaoUsuarios(this.repositorios.getUsuarios());
-		gestaoUsuarios.buscarPorNome(nome);
+	public void pesquisar() {
+		todosUsuarios = usuarios.pesquisar(usuario);
 	}
 	
 	public List<Usuario> getUsuarios() {
-		return usuarios;
+		return todosUsuarios;
 	}
 
 	public Usuario getUsuarioSelecionado() {
@@ -60,10 +63,6 @@ public class ConsultaUsuarioBean implements Serializable {
 	}
 	
 	public Usuario getUsuario() {
-		if (this.usuario == null) {
-			usuario = new Usuario();
-		}
-		
 		return usuario;
 	}
 	

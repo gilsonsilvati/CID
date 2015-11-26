@@ -9,7 +9,7 @@ public interface Doencas {
 	public List<Doenca> todos();
 	public Doenca porId(Long id);
 	public List<String> porCID(String cid);
-
+	
 	public Doenca guardar(Doenca doenca);
 
 	public void remove(Doenca doenca);

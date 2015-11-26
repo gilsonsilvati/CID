@@ -1,5 +1,6 @@
 package br.com.cid.filters;
 
+/*
 import java.io.IOException;
 
 import javax.persistence.EntityManager;
@@ -64,3 +65,4 @@ public class JPAFilter implements Filter {
 	}
 
 }
+*/

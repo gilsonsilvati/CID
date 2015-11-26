@@ -1,19 +1,20 @@
 package br.com.cid.repository.infra;
 
+import java.io.Serializable;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import br.com.cid.model.PermissaoUsuario;
 import br.com.cid.repository.Permissoes;
 
-public class PermissoesJPA implements Permissoes {
+public class PermissoesJPA implements Permissoes, Serializable {
 
-	private EntityManager manager;
+	private static final long serialVersionUID = 1L;
 	
-	public PermissoesJPA(EntityManager manager) {
-		this.manager = manager;
-	}
+	@Inject
+	private EntityManager manager;
 
 	@Override
 	public List<PermissaoUsuario> todos() {

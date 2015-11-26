@@ -40,10 +40,13 @@
 					</p:submenu>
 
 					<p:submenu label="Cadastrar" icon="fa fa-save"
-							rendered="#{request.isUserInRole('ADMIN')}">
-						<p:menuitem value="Usuário" icon="fa fa-male" action="cadastraUsuario" />
-						<p:menuitem value="Médico" icon="fa fa-user-md" action="cadastraMedico" />
-						<p:menuitem value="Doença" icon="fa fa-stethoscope" action="cadastraDoenca" />
+							rendered="#{!request.isUserInRole('USER')}">
+						<p:menuitem value="Usuário" icon="fa fa-male" action="cadastraUsuario"
+							rendered="#{request.isUserInRole('ADMIN')}" />
+						<p:menuitem value="Médico" icon="fa fa-user-md" action="cadastraMedico"
+							rendered="#{request.isUserInRole('ADMIN')}" />
+						<p:menuitem value="Doença" icon="fa fa-stethoscope" action="cadastraDoenca"
+							rendered="#{!request.isUserInRole('USER')}" />
 					</p:submenu>
 
 					<p:submenu label="Consultar" icon="fa fa-search">

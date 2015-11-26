@@ -1,5 +1,6 @@
 package br.com.cid.util;
 
+/*
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
@@ -17,3 +18,4 @@ public class EntityManagerUtil {
 	}
 
 }
+*/

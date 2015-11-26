@@ -5,41 +5,45 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import br.com.cid.model.Medico;
 import br.com.cid.model.UF;
 import br.com.cid.service.GestaoMedicos;
-import br.com.cid.util.FacesMessageUtil;
-import br.com.cid.util.Repositorios;
+import br.com.cid.util.jsf.FacesMessages;
 
-@ManagedBean
-@RequestScoped
+@Named
+@ViewScoped
 public class CadastroMedicoBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Repositorios repositorios;
 	private Medico medico;
+	
 	private List<UF> ufs;
+	
+	@Inject
+	private GestaoMedicos gestaoMedicos;
+	
+	@Inject
+	private FacesMessages facesMessages;
 	
 	@PostConstruct
 	public void inicializar() {
-		this.repositorios = new Repositorios();
-		this.limpar();
+		if (this.medico == null) {
+			this.limpar();
+		}
+		
 		this.ufs = Arrays.asList(UF.values());
 	}
 
 	public void salvar() {
-		GestaoMedicos gestaoMedicos = new GestaoMedicos(this.repositorios.getMedicos());
-		gestaoMedicos.salvar(this.medico);
+		gestaoMedicos.salvar(medico);
+		facesMessages.info("Médico " + medico.getNome() + " salvo com sucesso!");
 		
-		FacesMessageUtil.adicionarMensagem(FacesMessage.SEVERITY_INFO,
-				"Médico salvo com sucesso!");
-		
-		this.limpar();
+		limpar();
 	}
 	
 	private void limpar() {
@@ -60,6 +64,10 @@ public class CadastroMedicoBean implements Serializable {
 		if (this.medico == null) {
 			medico = new Medico();
 		}
+	}
+	
+	public boolean isEditando() {
+		return this.medico.getId() != null;
 	}
 	
 }

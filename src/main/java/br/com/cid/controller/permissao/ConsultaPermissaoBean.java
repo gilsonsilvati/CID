@@ -1,48 +1,51 @@
 package br.com.cid.controller.permissao;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import br.com.cid.model.PermissaoUsuario;
 import br.com.cid.repository.Permissoes;
 import br.com.cid.service.GestaoPermissoes;
-import br.com.cid.util.FacesMessageUtil;
-import br.com.cid.util.Repositorios;
+import br.com.cid.util.jsf.FacesMessages;
 
-@ManagedBean
+@Named
 @ViewScoped
 public class ConsultaPermissaoBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Repositorios repositorios = new Repositorios();
-	private List<PermissaoUsuario> permissoes = new ArrayList<>();
 	private PermissaoUsuario permissaoSelecionada;
+	
+	private List<PermissaoUsuario> permissoesUsuario;
+	
+	@Inject
+	private Permissoes permissoes;
+	
+	@Inject
+	private GestaoPermissoes gestaoPermissoes;
+	
+	@Inject
+	private FacesMessages facesMessages;
 	
 	@PostConstruct
 	public void inicializar() {
-		Permissoes permissoes = this.repositorios.getPermissoes();
-		this.permissoes = permissoes.todos();
+		permissoesUsuario = permissoes.todos();
 	}
 	
 	public void excluir() {
-		GestaoPermissoes gestaoPermissoes = new GestaoPermissoes(this.repositorios.getPermissoes());
 		gestaoPermissoes.excluir(permissaoSelecionada);
+		facesMessages.info("Permissão excluída com sucesso!");
 		
-		this.inicializar();
-		
-		FacesMessageUtil.adicionarMensagem(FacesMessage.SEVERITY_INFO,
-				"Permissão excluída com sucesso!");
+		inicializar();
 	}
 	
 	public List<PermissaoUsuario> getPermissoes() {
-		return permissoes;
+		return permissoesUsuario;
 	}
 
 	public PermissaoUsuario getPermissaoSelecionada() {

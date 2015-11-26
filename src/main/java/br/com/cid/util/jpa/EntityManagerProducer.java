@@ -1,6 +1,5 @@
 package br.com.cid.util.jpa;
 
-/*
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Disposes;
@@ -29,4 +28,3 @@ public class EntityManagerProducer {
 	}
 	
 }
-*/

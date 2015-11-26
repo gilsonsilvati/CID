@@ -8,7 +8,7 @@ public interface Usuarios {
 	
 	public List<Usuario> todos();
 	public Usuario porId(Long id);
-	public List<String> porNome(String nome);
+	public List<Usuario> pesquisar(Usuario usuario);
 	public Usuario comDadosIguais(Usuario usuario);
 	
 	public Usuario guardar(Usuario usuario);

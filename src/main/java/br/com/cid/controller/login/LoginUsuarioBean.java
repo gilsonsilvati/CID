@@ -1,26 +1,33 @@
 package br.com.cid.controller.login;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import java.io.Serializable;
+
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
-import br.com.cid.util.FacesMessageUtil;
+import br.com.cid.util.jsf.FacesMessages;
 
-@ManagedBean
-@RequestScoped
-public class LoginUsuarioBean {
+@Named
+@ViewScoped
+public class LoginUsuarioBean implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private String email;
 	private String senha;
 	
+	@Inject
+	private FacesMessages facesMessages;
+	
 	public String logar() {
 		try {
 			if (email.equals("") || senha.equals("")) {
-				FacesMessageUtil.adicionarMensagem(FacesMessage.SEVERITY_ERROR,
-						FacesMessageUtil.getMensagemI18n("login_empty"));
+				facesMessages.error(facesMessages.getMensagemI18n("login_empty"));
+				
 				return null;
 			} else {
 				this.getRequest().login(this.email, this.senha);
@@ -28,8 +35,8 @@ public class LoginUsuarioBean {
 			}
 			
 		} catch (ServletException e) {
-			FacesMessageUtil.adicionarMensagem(FacesMessage.SEVERITY_ERROR,
-					FacesMessageUtil.getMensagemI18n("erro_login"));
+			facesMessages.error(facesMessages.getMensagemI18n("erro_login"));
+			
 			return null;
 		}
 	}

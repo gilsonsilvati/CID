@@ -3,38 +3,40 @@ package br.com.cid.controller.cadastro;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import br.com.cid.model.Doenca;
 import br.com.cid.service.GestaoDoencas;
-import br.com.cid.util.FacesMessageUtil;
-import br.com.cid.util.Repositorios;
+import br.com.cid.util.jsf.FacesMessages;
 
-@ManagedBean
-@RequestScoped
+@Named
+@ViewScoped
 public class CadastroDoencaBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Repositorios repositorios;
 	private Doenca doenca;
+
+	@Inject
+	private GestaoDoencas gestaoDoencas;
+	
+	@Inject
+	private FacesMessages facesMessages;
 	
 	@PostConstruct
 	public void inicializar() {
-		this.repositorios = new Repositorios();
-		this.limpar();
+		if (this.doenca == null) {
+			this.limpar();
+		}
 	}
 	
 	public void salvar() {
-		GestaoDoencas gestaoDoencas = new GestaoDoencas(this.repositorios.getDoencas());
-		gestaoDoencas.salvar(this.doenca);
+		gestaoDoencas.salvar(doenca);
+		facesMessages.info("CID " + doenca.getCid() + " salvo com sucesso!");
 		
-		FacesMessageUtil.adicionarMensagem(FacesMessage.SEVERITY_INFO,
-				"Doença salva com sucesso!");
-		
-		this.limpar();
+		limpar();
 	}
 	
 	private void limpar() {
@@ -51,6 +53,10 @@ public class CadastroDoencaBean implements Serializable {
 		if (this.doenca == null) {
 			doenca = new Doenca();
 		}
+	}
+	
+	public boolean isEditando() {
+		return this.doenca.getId() != null;
 	}
 	
 }

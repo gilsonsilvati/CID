@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
@@ -22,14 +21,11 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.br.CPF;
 
-import br.com.cid.md5.TransformaStringMD5;
+import br.com.cid.sha2.TransformaStringSHA2;
 
 @Entity
 @Table(name = "usuario")
-@NamedQueries({
-	@NamedQuery(name = "Usuario.buscarTodos", query = "select u from Usuario u"),
-	@NamedQuery(name = "Usuario.buscarPorNome", query = "select u from Usuario u where u.nome = :nome")
-})
+@NamedQuery(name = "Usuario.buscarTodos", query = "select u from Usuario u")
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -48,7 +44,7 @@ public class Usuario implements Serializable {
 	private String email;
 	
 	@NotEmpty
-	@Column(length = 50, nullable = false)
+	@Column(length = 64, nullable = false)
 	private String senha;
 	
 	@NotEmpty
@@ -87,7 +83,7 @@ public class Usuario implements Serializable {
 		return senha;
 	}
 	public void setSenha(String senha) {
-		this.senha = TransformaStringMD5.md5(senha.trim());
+		this.senha = TransformaStringSHA2.sha2(senha.trim());
 	}
 	
 	public String getCpf() {

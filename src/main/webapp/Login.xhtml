@@ -50,10 +50,10 @@
 				<p:password id="senha" value="#{loginUsuarioBean.senha}"
 					placeholder="**********" size="30" />
 				
-				<h:outputLabel />
-				<p:commandButton value="#{msg.botao_entrar}" icon="fa fa-unlock-alt" update="@form"
+				<p:outputLabel />
+				<p:commandButton value="#{msg.botao_entrar}" icon="fa fa-lock" update="@form"
 					action="#{loginUsuarioBean.logar}" styleClass="botao" />
-				
+
 			</h:panelGrid>
 
 			<f:facet name="footer">

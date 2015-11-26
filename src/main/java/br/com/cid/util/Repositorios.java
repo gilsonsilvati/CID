@@ -1,5 +1,6 @@
 package br.com.cid.util;
 
+/*
 import java.io.Serializable;
 
 import javax.persistence.EntityManager;
@@ -38,3 +39,4 @@ public class Repositorios implements Serializable {
 	}
 
 }
+*/

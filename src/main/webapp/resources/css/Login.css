@@ -60,6 +60,7 @@ body {
 
 .dialog-login {
 	text-align: left;
+	margin-top: 10px;
 	
 	/* Arredondamendo das bordas */
 	border: #babdb6 1px solid;

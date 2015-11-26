@@ -2,23 +2,25 @@ package br.com.cid.service;
 
 import java.io.Serializable;
 
+import javax.inject.Inject;
+
 import br.com.cid.model.Medico;
 import br.com.cid.repository.Medicos;
+import br.com.cid.util.jpa.Transactional;
 
 public class GestaoMedicos implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	
+
+	@Inject
 	private Medicos medicos;
 	
-	public GestaoMedicos(Medicos medicos) {
-		this.medicos = medicos;
-	}
-	
+	@Transactional
 	public void salvar(Medico medico) {
 		this.medicos.guardar(medico);
 	}
 	
+	@Transactional
 	public void excluir(Medico medico) {
 		this.medicos.remover(medico);
 	}

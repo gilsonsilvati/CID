@@ -1,6 +1,5 @@
 package br.com.cid.util.jpa;
 
-/*
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -14,4 +13,3 @@ import javax.interceptor.InterceptorBinding;
 public @interface Transactional {
 
 }
-*/

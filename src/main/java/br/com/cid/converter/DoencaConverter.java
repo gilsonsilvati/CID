@@ -6,23 +6,25 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
+
+import org.apache.commons.lang3.StringUtils;
 
 import br.com.cid.model.Doenca;
 import br.com.cid.repository.Doencas;
-import br.com.cid.util.Repositorios;
 
 @FacesConverter(forClass = Doenca.class)
 public class DoencaConverter implements Converter {
 
-	private Repositorios repositorios = new Repositorios();
+	@Inject
+	private Doencas doencas;
 	
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
 		Doenca retorno = null;
-		Doencas doencas = this.repositorios.getDoencas();
 		
-		if (value != null && !value.equals("")) {
-			retorno = doencas.porId(new Long(value));
+		if (StringUtils.isNotBlank(value)) {
+			retorno = this.doencas.porId(new Long(value));
 			
 			if (retorno == null) {
 				String descricaoErro = "Doença não existe.";
@@ -39,10 +41,12 @@ public class DoencaConverter implements Converter {
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
 		if (value != null) {
 			Long id = ((Doenca) value).getId();
-			return id == null ? "" : id.toString();
+			String retorno = (id == null ? null : id.toString());
+			 
+			 return retorno;
 		}
 		
-		return null;
+		return "";
 	}
 
 }

@@ -12,14 +12,19 @@
 		<h:form id="frm-consulta-usuario">
 			<h:outputStylesheet library="css" name="ConsultaUsuario.css" />
 			
+			<f:metadata>
+				<f:viewAction action="#{consultaUsuarioBean.inicializar}" />
+			</f:metadata>
+			
 			<h4>Usuários cadastrados no sistema</h4>
 			<br />
 			
 			<!--
 			<h:panelGrid columns="3" cellpadding="3" cellspacing="5">
-				<p:outputLabel value="Pesquisar por nome: " for="pesquisa" />
-				<p:inputText id="pesquisa" onkeyup="PF('table-usuario').filter()" />
-				<p:commandButton value="Pesquisar" icon="fa fa-search" styleClass="botao" />
+				<p:outputLabel value="Pesquisar:" for="pesquisa" />
+				<p:inputText id="pesquisa" value="#{consultaUsuarioBean.usuario.nome}" />
+				<p:commandButton value="Pesquisar" icon="fa fa-search" styleClass="botao"
+					action="#{consultaUsuarioBean.pesquisar}" update="table-consulta-usuario" />
 			</h:panelGrid>
 			-->
 

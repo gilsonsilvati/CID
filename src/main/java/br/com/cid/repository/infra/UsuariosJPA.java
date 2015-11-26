@@ -1,20 +1,24 @@
 package br.com.cid.repository.infra;
 
+import java.io.Serializable;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import br.com.cid.model.Usuario;
 import br.com.cid.repository.Usuarios;
 
-public class UsuariosJPA implements Usuarios {
+public class UsuariosJPA implements Usuarios, Serializable {
 	
+	private static final long serialVersionUID = 1L;
+	
+	@Inject
 	private EntityManager manager;
 	
-	public UsuariosJPA(EntityManager manager) {
-		this.manager = manager;
-	}
-
 	@Override
 	public List<Usuario> todos() {
 		List<Usuario> todosUsuarios = manager.createNamedQuery("Usuario.buscarTodos", Usuario.class)
@@ -29,12 +33,16 @@ public class UsuariosJPA implements Usuarios {
 	}
 
 	@Override
-	public List<String> porNome(String nome) {
-		List<String> todosPorNome = manager.createNamedQuery("Usuario.buscarPorNome", String.class)
-				.setParameter("nome", nome)
-				.getResultList();
+	public List<Usuario> pesquisar(Usuario usuario) {
+		CriteriaBuilder builder = manager.getCriteriaBuilder();
+		CriteriaQuery<Usuario> criteriaQuery = builder.createQuery(Usuario.class);
+		Root<Usuario> c = criteriaQuery.from(Usuario.class);
+		criteriaQuery.select(c);
+		criteriaQuery.where(builder.like(c.get("nome"), "%:nome%"));
 		
-		return todosPorNome;
+		List<Usuario> clientes = manager.createQuery(criteriaQuery).getResultList();
+		
+		return clientes;
 	}
 
 	@Override

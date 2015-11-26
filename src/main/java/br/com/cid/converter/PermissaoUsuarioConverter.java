@@ -6,23 +6,25 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
+
+import org.apache.commons.lang3.StringUtils;
 
 import br.com.cid.model.PermissaoUsuario;
 import br.com.cid.repository.Permissoes;
-import br.com.cid.util.Repositorios;
 
 @FacesConverter(forClass = PermissaoUsuario.class)
 public class PermissaoUsuarioConverter implements Converter {
 	
-	private Repositorios repositorios = new Repositorios();
+	@Inject
+	private Permissoes permissoes;
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
 		PermissaoUsuario retorno = null;
-		Permissoes permissoes = this.repositorios.getPermissoes();
 		
-		if (value != null && !value.equals("")) {
-			retorno = permissoes.porId(new Long(value));
+		if (StringUtils.isNotBlank(value)) {
+			retorno = this.permissoes.porId(new Long(value));
 			
 			if (retorno == null) {
 				String descricaoErro = "Usuário não existe.";
@@ -39,10 +41,12 @@ public class PermissaoUsuarioConverter implements Converter {
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
 		if (value != null) {
 			Long id = ((PermissaoUsuario) value).getId();
-			return id == null ? "" : id.toString();
+			String retorno = (id == null ? null : id.toString());
+			
+			return retorno;
 		}
 		
-		return null;
+		return "";
 	}
 
 }

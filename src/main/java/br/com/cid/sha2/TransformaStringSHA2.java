@@ -1,21 +1,21 @@
-package br.com.cid.md5;
+package br.com.cid.sha2;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class TransformaStringMD5 {
+public class TransformaStringSHA2 {
 
-	public static String md5(String senha) {
+	public static String sha2(String senha) {
 		MessageDigest md = null;
 
 		try {
-			md = MessageDigest.getInstance("MD5");
+			md = MessageDigest.getInstance("SHA-256"); // 64 bits
 			byte[] hash = md.digest(senha.getBytes("UTF-8"));
 
 			StringBuffer sb = new StringBuffer();
 			for (byte h : hash) {
-				sb.append(Integer.toHexString((h & 0xFF) | 0x100).substring(1, 3));
+				sb.append(String.format("%02X", 0xFF & h));
 			}
 			
 			return sb.toString();

@@ -3,13 +3,13 @@ package br.com.cid.controller.relatorio;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.ServletContext;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -28,22 +28,23 @@ import com.lowagie.text.Paragraph;
 
 import br.com.cid.model.Doenca;
 import br.com.cid.repository.Doencas;
-import br.com.cid.util.Repositorios;
 
-@ManagedBean
+@Named
 @ViewScoped
 public class ImprimiDoencaBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Repositorios repositorios = new Repositorios();
-	private List<Doenca> doencas = new ArrayList<>();
+	private List<Doenca> todasDoencas;
+	
 	private Doenca doencaSelecionada;
+	
+	@Inject
+	private Doencas doencas;
 	
 	@PostConstruct
 	public void inicializar() {
-		Doencas doencas = this.repositorios.getDoencas();
-		this.doencas = doencas.todos();
+		todasDoencas = doencas.todos();
 	}
 	
 	/* XLS */
@@ -92,7 +93,7 @@ public class ImprimiDoencaBean implements Serializable {
 	}  
 	
 	public List<Doenca> getDoencas() {
-		return doencas;
+		return todasDoencas;
 	}
 
 	public Doenca getDoencaSelecionada() {

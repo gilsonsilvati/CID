@@ -43,7 +43,7 @@ public class PermissaoUsuario implements Serializable {
 	private String email;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(length = 5, nullable = false)
+	@Column(length = 10, nullable = false)
 	private TipoPermissao permissao;
 	
 	@ManyToOne

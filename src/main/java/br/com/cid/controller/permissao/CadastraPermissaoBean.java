@@ -5,41 +5,45 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import br.com.cid.model.PermissaoUsuario;
 import br.com.cid.model.TipoPermissao;
 import br.com.cid.service.GestaoPermissoes;
-import br.com.cid.util.FacesMessageUtil;
-import br.com.cid.util.Repositorios;
+import br.com.cid.util.jsf.FacesMessages;
 
-@ManagedBean
-@RequestScoped
+@Named
+@ViewScoped
 public class CadastraPermissaoBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Repositorios repositorios;
 	private PermissaoUsuario permissaoUsuario;
+	
 	private List<TipoPermissao> permissoes;
+	
+	@Inject
+	private GestaoPermissoes gestaoPermissoes;
+	
+	@Inject
+	private FacesMessages facesMessages;
 	
 	@PostConstruct
 	public void inicializar() {
-		this.repositorios = new Repositorios();
-		this.limpar();
+		if (this.permissaoUsuario == null) {
+			this.limpar();
+		}
+		
 		this.permissoes = Arrays.asList(TipoPermissao.values());
 	}
 	
 	public void salvar() {
-		GestaoPermissoes gestaoPermissoes = new GestaoPermissoes(this.repositorios.getPermissoes());
-		gestaoPermissoes.salvar(this.permissaoUsuario);
+		gestaoPermissoes.salvar(permissaoUsuario);
+		facesMessages.info("Permissão salva com sucesso!");
 		
-		FacesMessageUtil.adicionarMensagem(FacesMessage.SEVERITY_INFO,
-				"Permissão salva com sucesso!");
-		
-		this.limpar();
+		limpar();
 	}
 	
 	private void limpar() {
@@ -60,6 +64,10 @@ public class CadastraPermissaoBean implements Serializable {
 		if (this.permissaoUsuario == null) {
 			permissaoUsuario = new PermissaoUsuario();
 		}
+	}
+	
+	public boolean isEditando() {
+		return this.permissaoUsuario.getId() != null;
 	}
 	
 }

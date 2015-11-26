@@ -1,20 +1,21 @@
 package br.com.cid.repository.infra;
 
+import java.io.Serializable;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import br.com.cid.model.Medico;
 import br.com.cid.repository.Medicos;
 
-public class MedicosJPA implements Medicos {
+public class MedicosJPA implements Medicos, Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
+	@Inject
 	private EntityManager manager;
 	
-	public MedicosJPA(EntityManager manager) {
-		this.manager = manager;
-	}
-
 	@Override
 	public List<Medico> todos() {
 		List<Medico> todosMedicos = manager.createNamedQuery("Medico.buscarTodos", Medico.class)

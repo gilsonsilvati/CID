@@ -13,6 +13,10 @@
 
 		<h:outputStylesheet library="css" name="ConsultaDoenca.css" />
 			
+			<f:metadata>
+				<f:viewAction action="#{consultaDoencaBean.inicializar}" />
+			</f:metadata>
+			
 			<h4>Doenças cadastradas no sistema</h4>
 			<br />
 			
@@ -47,21 +51,33 @@
 					selection="#{consultaDoencaBean.doencaSelecionada}" selectionMode="single"
 					rowKey="#{doenca.id}" reflow="true">
 				
-				<p:column style="font-size: 17px" width="20">
+				<p:column style="font-size: 17px" width="30">
 					<f:facet name="header">id</f:facet>
 					<p:outputLabel value="#{doenca.id}" style="font-size: 12px" />
 				</p:column>
 					
-				<p:column style="font-size: 17px" width="100" filterBy="#{doenca.cid}" filterMatchMode="contains">
+				<p:column style="font-size: 17px" width="80">
 					<f:facet name="header">cid</f:facet>
 					<p:outputLabel value="#{doenca.cid}" style="font-size: 12px" />
 				</p:column>
 				
-				<p:column style="font-size: 17px" filterBy="#{doenca.doenca}" filterMatchMode="contains">
-					<f:facet name="header">doença</f:facet>
+				<p:column style="font-size: 17px">
+					<f:facet name="header">descrição</f:facet>
 					<p:outputLabel value="#{doenca.doenca}" style="font-size: 12px" />
 				</p:column>
-				
+
+				<p:column style="font-size: 17px" width="150">
+					<f:facet name="header">panorama</f:facet>
+					<p:commandButton oncomplete="PF('mostraPanorama').show();" value="visão geral"
+							icon="fa fa-eye" process="@this" action="#{consultaDoencaBean.inicializar}"
+							update=":frm-consulta-doenca:mostraPanoramaDialog"
+							styleClass="botao-visao" style="font-size: 15px">
+						
+						<f:setPropertyActionListener value="#{doenca}"
+							target="#{consultaDoencaBean.doencaSelecionada}" />
+					</p:commandButton>
+				</p:column>
+
 				<p:column rendered="#{request.isUserInRole('ADMIN')}"
 						style="font-size: 17px" width="65">
 					<f:facet name="header">opções</f:facet>
@@ -89,7 +105,14 @@
 				</p:column>
 			
 			</p:dataTable>
-			
+
+			<p:dialog id="mostraPanoramaDialog" header="panorama geral"
+					widgetVar="mostraPanorama" closeOnEscape="true" width="500"
+					height="180" showEffect="explode" hideEffect="slide" style="text-align: left">
+
+				<p:outputLabel value="#{consultaDoencaBean.doencaSelecionada.panorama}" />
+			</p:dialog>
+
 		</h:form>
 	</ui:define>
 </ui:composition>

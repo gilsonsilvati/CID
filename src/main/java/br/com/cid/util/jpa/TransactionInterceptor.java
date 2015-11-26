@@ -1,6 +1,5 @@
 package br.com.cid.util.jpa;
 
-/*
 import java.io.Serializable;
 
 import javax.annotation.Priority;
@@ -27,12 +26,14 @@ public class TransactionInterceptor implements Serializable {
 
 		try {
 			if (!transaction.isActive()) {
-				// truque para fazer rollback no que já passou
-				// (senão, um futuro commit, confirmaria até mesmo operações sem transação)
+				/*
+				 * Truque para fazer rollback no que já passou, senão, um futuro commit confirmaria
+				 * até mesmo operações sem transação.
+				 */
 				transaction.begin();
 				transaction.rollback();
 				
-				// agora sim inicia a transação
+				// Agora sim inicia a transação.
 				transaction.begin();
 				
 				owner = true;
@@ -53,4 +54,3 @@ public class TransactionInterceptor implements Serializable {
 	}
 
 }
-*/

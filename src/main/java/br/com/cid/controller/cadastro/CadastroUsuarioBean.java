@@ -3,38 +3,40 @@ package br.com.cid.controller.cadastro;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import br.com.cid.model.Usuario;
 import br.com.cid.service.GestaoUsuarios;
-import br.com.cid.util.FacesMessageUtil;
-import br.com.cid.util.Repositorios;
+import br.com.cid.util.jsf.FacesMessages;
 
-@ManagedBean
-@RequestScoped
+@Named
+@ViewScoped
 public class CadastroUsuarioBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Repositorios repositorios = new Repositorios();
 	private Usuario usuario;
+	
+	@Inject
+	private GestaoUsuarios gestaoUsuarios;
+	
+	@Inject
+	private FacesMessages facesMessages;
 	
 	@PostConstruct
 	public void inicializar() {
-		this.repositorios = new Repositorios();
-		this.limpar();
+		if (this.usuario == null) {
+			this.limpar();
+		}
 	}
 	
 	public void salvar() {
-		GestaoUsuarios gestaoUsuarios = new GestaoUsuarios(this.repositorios.getUsuarios());
-		gestaoUsuarios.salvar(this.usuario);
+		gestaoUsuarios.salvar(usuario);
+		facesMessages.info("Usuário " + usuario.getNome() + " salvo com sucesso!");
 		
-		FacesMessageUtil.adicionarMensagem(FacesMessage.SEVERITY_INFO,
-				"Usuário salvo com sucesso!");
-		
-		this.limpar();
+		limpar();
 	}
 	
 	private void limpar() {
@@ -51,6 +53,10 @@ public class CadastroUsuarioBean implements Serializable {
 		if (this.usuario == null) {
 			this.usuario = new Usuario();
 		}
+	}
+	
+	public boolean isEditando() {
+		return this.usuario.getId() != null;
 	}
 	
 }

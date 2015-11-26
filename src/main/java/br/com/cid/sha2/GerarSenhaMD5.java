@@ -1,4 +1,4 @@
-package br.com.cid.md5;
+package br.com.cid.sha2;
 
 public class GerarSenhaMD5 {
 

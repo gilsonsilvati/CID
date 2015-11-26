@@ -7,6 +7,7 @@
 .dialog-doenca {
 	text-align: left;
 	margin-left: 120px;
+	margin-top: 20px;
 	
 	/* Arredondamendo das bordas */
 	border: #babdb6 1px solid;

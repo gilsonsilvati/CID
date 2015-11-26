@@ -39,6 +39,10 @@ public class Doenca implements Serializable {
 	@NotEmpty
 	@Column(length = 50, nullable = false)
 	private String doenca;
+	
+	@NotEmpty
+	@Column(nullable = false)
+	private String panorama;
 
 	/* Para fazer auditoria... */
 	@Temporal(TemporalType.TIMESTAMP)
@@ -62,6 +66,13 @@ public class Doenca implements Serializable {
 	}
 	public void setDoenca(String doenca) {
 		this.doenca = doenca.toUpperCase();
+	}
+	
+	public String getPanorama() {
+		return panorama;
+	}
+	public void setPanorama(String panorama) {
+		this.panorama = panorama;
 	}
 
 	public Long getId() {

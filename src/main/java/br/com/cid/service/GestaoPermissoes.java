@@ -2,19 +2,20 @@ package br.com.cid.service;
 
 import java.io.Serializable;
 
+import javax.inject.Inject;
+
 import br.com.cid.model.PermissaoUsuario;
 import br.com.cid.repository.Permissoes;
+import br.com.cid.util.jpa.Transactional;
 
 public class GestaoPermissoes implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
+	@Inject
 	private Permissoes permissoes;
 	
-	public GestaoPermissoes(Permissoes permissoes) {
-		this.permissoes = permissoes;
-	}
-	
+	@Transactional
 	public void salvar(PermissaoUsuario permissaoUsuario) {
 		this.permissoes.guardar(permissaoUsuario);
 	}
@@ -35,6 +36,7 @@ public class GestaoPermissoes implements Serializable {
 	}
 	*/
 	
+	@Transactional
 	public void excluir(PermissaoUsuario permissaoUsuario) {
 		this.permissoes.remover(permissaoUsuario);
 	}

@@ -1,19 +1,20 @@
 package br.com.cid.repository.infra;
 
+import java.io.Serializable;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import br.com.cid.model.Doenca;
 import br.com.cid.repository.Doencas;
 
-public class DoencasJPA implements Doencas {
+public class DoencasJPA implements Doencas, Serializable {
 
-	private EntityManager manager;
+	private static final long serialVersionUID = 1L;
 	
-	public DoencasJPA(EntityManager manager) {
-		this.manager = manager;
-	}
+	@Inject
+	private EntityManager manager;
 
 	@Override
 	public List<Doenca> todos() {
