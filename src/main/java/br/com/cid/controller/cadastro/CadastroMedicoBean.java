@@ -40,8 +40,8 @@ public class CadastroMedicoBean implements Serializable {
 	}
 
 	public void salvar() {
-		gestaoMedicos.salvar(medico);
-		facesMessages.info("Médico " + medico.getNome() + " salvo com sucesso!");
+		this.gestaoMedicos.salvar(this.medico);
+		this.facesMessages.info("Médico " + this.medico.getNome() + " salvo com sucesso!");
 		
 		limpar();
 	}

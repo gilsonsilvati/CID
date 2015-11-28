@@ -40,8 +40,8 @@ public class CadastraPermissaoBean implements Serializable {
 	}
 	
 	public void salvar() {
-		gestaoPermissoes.salvar(permissaoUsuario);
-		facesMessages.info("Permissão salva com sucesso!");
+		this.gestaoPermissoes.salvar(this.permissaoUsuario);
+		this.facesMessages.info("Permissão salva com sucesso!");
 		
 		limpar();
 	}

@@ -26,17 +26,16 @@ public class MedicosJPA implements Medicos, Serializable {
 
 	@Override
 	public Medico porId(Long id) {
-		Medico medico = manager.find(Medico.class, id);
-		return medico;
+		return this.manager.getReference(Medico.class, id);
 	}
 
 	@Override
-	public List<String> porNome(String nome) {
-		List<String> todosPorNome = manager.createNamedQuery("Medico.buscarPorNome", String.class)
-				.setParameter("nome", nome)
+	public List<Medico> porCRM(Integer crm) {
+		List<Medico> todosPorCRM = manager.createNamedQuery("Medico.buscarPorCRM", Medico.class)
+				.setParameter("crm", crm)
 				.getResultList();
 		
-		return todosPorNome;
+		return todosPorCRM;
 	}
 
 	@Override

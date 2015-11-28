@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+		http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+
+	<!-- Nome da Aplicação -->
+	<display-name>cid</display-name>
+
+	<!-- Configurando Página Inicial --> 
+	<welcome-file-list>
+		<welcome-file>paginas/Home.xhtml</welcome-file>
+	</welcome-file-list>
+	
+	<!-- Configurando DataSource -->
+	<resource-ref>
+		<description>DB Connection</description>
+		<res-ref-name>jdbc/cidDB</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+	
+	<listener>
+		<listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
+	</listener>
+
+	<!-- Configurando a Servlet -->
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
+
+	<!-- Ambiente de Desenvolvimento -->
+	<context-param>
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Development</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>javax.faces.FACELETS_REFRESH_PERIOD</param-name>
+		<param-value>0</param-value>
+	</context-param>
+
+	<!-- Data e Horário Local da Máquina -->
+	<context-param>
+		<param-name>javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	
+	<!-- Validando campos vazios -->
+	<context-param>
+		<param-name>javax.faces.VALIDATE_EMPTY_FIELDS</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	
+	<!-- Primefaces -->
+	<context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>hot-sneaks</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>primefaces.FONT_AWESOME</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	<!-- Configurar Servidor com UTF-8 -->
+	<filter>
+		<filter-name>Encoding Filter</filter-name>
+		<filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>Encoding Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- Configurando login JAAS -->
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/Login.xhtml</form-login-page>
+			<form-error-page>/Login.xhtml</form-error-page>
+		</form-login-config>
+	</login-config>
+	
+	<!-- Tipos de permissões -->
+	<security-role>
+		<role-name>ADMIN</role-name>
+	</security-role>
+	<security-role>
+		<role-name>MEDICO</role-name>
+	</security-role>
+	<security-role>
+		<role-name>USER</role-name>
+	</security-role>
+	
+	<!-- Configurando páginas de acesso -->
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Home</web-resource-name>
+			<url-pattern>/paginas/Home.xhtml</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>ADMIN</role-name>
+			<role-name>MEDICO</role-name>
+			<role-name>USER</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Permissao</web-resource-name>
+			<url-pattern>/paginas/permissao/CadastraPermissao.xhtml</url-pattern>
+			<url-pattern>/paginas/permissao/ConsultaPermissao.xhtml</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>ADMIN</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Cadastro</web-resource-name>
+			<url-pattern>/paginas/cadastrar/CadastraUsuario.xhtml</url-pattern>
+			<url-pattern>/paginas/cadastrar/CadastraMedico.xhtml</url-pattern>
+			<url-pattern>/paginas/cadastrar/CadastraDoenca.xhtml</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>ADMIN</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>CadastroDoenca</web-resource-name>
+			<url-pattern>/paginas/cadastrar/CadastraDoenca.xhtml</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>MEDICO</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Consulta</web-resource-name>
+			<url-pattern>/paginas/consultar/ConsultaUsuario.xhtml</url-pattern>
+			<url-pattern>/paginas/consultar/ConsultaMedico.xhtml</url-pattern>
+			<url-pattern>/paginas/consultar/ConsultaDoenca.xhtml</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>ADMIN</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>ConsultaDoenca</web-resource-name>
+			<url-pattern>/paginas/consultar/ConsultaDoenca.xhtml</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>MEDICO</role-name>
+			<role-name>USER</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Imprimi</web-resource-name>
+			<url-pattern>/paginas/imprimir/ImprimiDoenca.xhtml</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>ADMIN</role-name>
+			<role-name>USER</role-name>
+			<role-name>MEDICO</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+	<!-- Páginas de erro -->
+	<error-page>
+		<error-code>403</error-code>
+		<location>/paginas/403.xhtml</location>
+	</error-page>
+
+</web-app>

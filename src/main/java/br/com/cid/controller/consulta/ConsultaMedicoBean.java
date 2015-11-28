@@ -22,6 +22,7 @@ public class ConsultaMedicoBean implements Serializable {
 	private List<Medico> todosMedicos;
 	
 	private Medico medicoSelecionado;
+	private Medico medico;
 	
 	@Inject
 	private Medicos medicos;
@@ -34,16 +35,26 @@ public class ConsultaMedicoBean implements Serializable {
 	
 	@PostConstruct
 	public void inicializar() {
-		todosMedicos = medicos.todos();
+		this.todosMedicos = medicos.todos();
+		this.medico = new Medico();
 	}
 	
 	public void excluir() {
-		gestaoMedicos.excluir(medicoSelecionado);
-		facesMessages.info("Médico " + medicoSelecionado.getNome() + " excluído com sucesso!");
+		this.gestaoMedicos.excluir(this.medicoSelecionado);
+		this.facesMessages.info("Médico " + this.medicoSelecionado.getNome() + " excluído com sucesso!");
 		
 		inicializar();
 	}
 	
+	public void pesquisar() {
+		this.todosMedicos = medicos.porCRM(this.medico.getCrm()); 
+		this.facesMessages.info("Resultado da pesquisa!");
+	}
+	
+	public Medico getMedico() {
+		return medico;
+	}
+
 	public List<Medico> getMedicos() {
 		return todosMedicos;
 	}

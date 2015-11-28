@@ -33,8 +33,8 @@ public class CadastroDoencaBean implements Serializable {
 	}
 	
 	public void salvar() {
-		gestaoDoencas.salvar(doenca);
-		facesMessages.info("CID " + doenca.getCid() + " salvo com sucesso!");
+		this.gestaoDoencas.salvar(this.doenca);
+		this.facesMessages.info("CID " + this.doenca.getCid() + " salvo com sucesso!");
 		
 		limpar();
 	}

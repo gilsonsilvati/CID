@@ -8,7 +8,7 @@ public interface Usuarios {
 	
 	public List<Usuario> todos();
 	public Usuario porId(Long id);
-	public List<Usuario> pesquisar(Usuario usuario);
+	public List<Usuario> porCPF(String cpf);
 	public Usuario comDadosIguais(Usuario usuario);
 	
 	public Usuario guardar(Usuario usuario);

@@ -5,9 +5,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 import br.com.cid.model.Usuario;
 import br.com.cid.repository.Usuarios;
@@ -29,20 +26,16 @@ public class UsuariosJPA implements Usuarios, Serializable {
 
 	@Override
 	public Usuario porId(Long id) {
-		return this.manager.find(Usuario.class, id);
+		return this.manager.getReference(Usuario.class, id);
 	}
 
 	@Override
-	public List<Usuario> pesquisar(Usuario usuario) {
-		CriteriaBuilder builder = manager.getCriteriaBuilder();
-		CriteriaQuery<Usuario> criteriaQuery = builder.createQuery(Usuario.class);
-		Root<Usuario> c = criteriaQuery.from(Usuario.class);
-		criteriaQuery.select(c);
-		criteriaQuery.where(builder.like(c.get("nome"), "%:nome%"));
+	public List<Usuario> porCPF(String cpf) {
+		List<Usuario> todosPorCPF = manager.createNamedQuery("Usuario.buscarPorCPF", Usuario.class)
+				.setParameter("cpf", cpf)
+				.getResultList();
 		
-		List<Usuario> clientes = manager.createQuery(criteriaQuery).getResultList();
-		
-		return clientes;
+		return todosPorCPF;
 	}
 
 	@Override

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+    	http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
+    
+    <!-- Configurando as mesagens -->
+	<application>
+    	<message-bundle>Messages</message-bundle>
+    	
+    	<!-- i18n (internacionalization) -->
+    	<locale-config>
+    		<default-locale>pt</default-locale>
+    		<supported-locale>pt</supported-locale>
+    		<supported-locale>en</supported-locale>
+    	</locale-config>
+    	
+    	<resource-bundle>
+    		<base-name>sistema</base-name>
+    		<var>msg</var>
+    	</resource-bundle>
+    </application>
+
+	<!-- Mapeando as páginas -->
+	
+	<!-- Login para página Home -->
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>home</from-outcome>
+			<to-view-id>/paginas/Home.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<!-- Permissões -->
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>cadastraPermissao</from-outcome>
+			<to-view-id>/paginas/permissao/CadastraPermissao.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>consultaPermissao</from-outcome>
+			<to-view-id>/paginas/permissao/ConsultaPermissao.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+    
+    <!-- Cadastrar -->
+    <navigation-rule>
+    	<navigation-case>
+    		<from-outcome>cadastraUsuario</from-outcome>
+    		<to-view-id>/paginas/cadastrar/CadastraUsuario.xhtml</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+    	<navigation-case>
+    		<from-outcome>cadastraMedico</from-outcome>
+    		<to-view-id>/paginas/cadastrar/CadastraMedico.xhtml</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+    
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>cadastraDoenca</from-outcome>
+			<to-view-id>/paginas/cadastrar/CadastraDoenca.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<!-- Consultar -->
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>consultaUsuario</from-outcome>
+			<to-view-id>/paginas/consultar/ConsultaUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>consultaMedico</from-outcome>
+			<to-view-id>/paginas/consultar/ConsultaMedico.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>consultaDoenca</from-outcome>
+			<to-view-id>/paginas/consultar/ConsultaDoenca.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<!-- Imprimir -->
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>imprimiDoenca</from-outcome>
+			<to-view-id>/paginas/imprimir/ImprimiDoenca.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+    
+</faces-config>

@@ -21,6 +21,7 @@ public class GestaoUsuarios implements Serializable {
 	}
 	
 	/*
+	@Transactional
 	public void salvar(Usuario usuario) throws NegocioException {
 		if (isExist(usuario)) {
 			throw new RegraNegocioException("Já existe um usuário igual a este.");

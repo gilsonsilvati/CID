@@ -26,7 +26,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name = "medico")
 @NamedQueries({
 	@NamedQuery(name = "Medico.buscarTodos", query = "select m from Medico m"),
-	@NamedQuery(name = "Medico.buscarPorNome", query = "select m from Medico m where m.nome = :nome")
+	@NamedQuery(name = "Medico.buscarPorCRM", query = "select m from Medico m where m.crm = :crm")
 })
 public class Medico implements Serializable {
 	

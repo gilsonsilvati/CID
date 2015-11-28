@@ -3,7 +3,6 @@ package br.com.cid.controller.relatorio;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
@@ -26,7 +25,7 @@ import com.lowagie.text.Image;
 import com.lowagie.text.PageSize;
 import com.lowagie.text.Paragraph;
 
-import br.com.cid.model.Doenca;
+import br.com.cid.modelLazy.LazyDoencaDataModel;
 import br.com.cid.repository.Doencas;
 
 @Named
@@ -35,16 +34,14 @@ public class ImprimiDoencaBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private List<Doenca> todasDoencas;
-	
-	private Doenca doencaSelecionada;
+	private LazyDoencaDataModel lazyDoencas;
 	
 	@Inject
 	private Doencas doencas;
 	
 	@PostConstruct
 	public void inicializar() {
-		todasDoencas = doencas.todos();
+		this.lazyDoencas = new LazyDoencaDataModel(doencas);
 	}
 	
 	/* XLS */
@@ -90,18 +87,10 @@ public class ImprimiDoencaBean implements Serializable {
 		Paragraph paragraph = new Paragraph("Sistema de consulta cid ®\n\n");
 		paragraph.setAlignment("center");
 		pdf.add(paragraph);
+	}
+
+	public LazyDoencaDataModel getLazyDoencas() {
+		return lazyDoencas;
 	}  
-	
-	public List<Doenca> getDoencas() {
-		return todasDoencas;
-	}
-
-	public Doenca getDoencaSelecionada() {
-		return doencaSelecionada;
-	}
-
-	public void setDoencaSelecionada(Doenca doencaSelecionada) {
-		this.doencaSelecionada = doencaSelecionada;
-	}
 	
 }

@@ -33,8 +33,8 @@ public class CadastroUsuarioBean implements Serializable {
 	}
 	
 	public void salvar() {
-		gestaoUsuarios.salvar(usuario);
-		facesMessages.info("Usuário " + usuario.getNome() + " salvo com sucesso!");
+		this.gestaoUsuarios.salvar(this.usuario);
+		this.facesMessages.info("Usuário " + this.usuario.getNome() + " salvo com sucesso!");
 		
 		limpar();
 	}

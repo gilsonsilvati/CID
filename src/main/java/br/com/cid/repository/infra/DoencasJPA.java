@@ -5,6 +5,10 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import br.com.cid.model.Doenca;
 import br.com.cid.repository.Doencas;
@@ -26,12 +30,12 @@ public class DoencasJPA implements Doencas, Serializable {
 
 	@Override
 	public Doenca porId(Long id) {
-		return this.manager.find(Doenca.class, id);
+		return this.manager.getReference(Doenca.class, id);
 	}
 
 	@Override
-	public List<String> porCID(String cid) {
-		List<String> todasPorCid = manager.createNamedQuery("Doenca.buscarPorCID", String.class)
+	public List<Doenca> porCID(String cid) {
+		List<Doenca> todasPorCid =  manager.createNamedQuery("Doenca.buscarPorCID", Doenca.class)
 				.setParameter("cid", cid)
 				.getResultList();
 		
@@ -47,7 +51,8 @@ public class DoencasJPA implements Doencas, Serializable {
 	public void remove(Doenca doenca) {
 		this.manager.remove(manager.getReference(Doenca.class, doenca.getId()));
 	}
-
+	
+	// Lazy
 	@Override
 	public List<Doenca> buscarComPaginacao(int first, int pageSize) {
 		return manager.createNamedQuery("Doenca.buscarTodos", Doenca.class)
@@ -56,9 +61,25 @@ public class DoencasJPA implements Doencas, Serializable {
 				.getResultList();
 	}
 
+	// Lazy
 	@Override
 	public Long encontrarQuantidadeDeDoencas() {
 		return manager.createQuery("select count(d) from Doenca d", Long.class).getSingleResult();
+	}
+
+	@Override
+	public List<Doenca> criteriaPorCIDLike(String cid) {
+		CriteriaBuilder builder = manager.getCriteriaBuilder();
+		CriteriaQuery<Doenca> criteriaQuery = builder.createQuery(Doenca.class);
+		
+		Root<Doenca> d = criteriaQuery.from(Doenca.class);
+		criteriaQuery.select(d);
+		criteriaQuery.where(builder.like(d.get("cid"), cid));
+		
+		TypedQuery<Doenca> query = manager.createQuery(criteriaQuery);
+		List<Doenca> doencasCID = query.getResultList();
+		
+		return doencasCID;
 	}
 
 }

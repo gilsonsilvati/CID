@@ -36,18 +36,21 @@ public class ConsultaUsuarioBean implements Serializable {
 	
 	@PostConstruct
 	public void inicializar() {
-		todosUsuarios = usuarios.todos(); 
+		this.todosUsuarios = usuarios.todos();
+		
+		this.usuario = new Usuario();
 	}
 	
 	public void excluir() {
-		gestaoUsuarios.excluir(usuarioSelecionado);
-		facesMessages.info("Usuário " + usuarioSelecionado.getNome() + " excluído com sucesso!");
+		this.gestaoUsuarios.excluir(this.usuarioSelecionado);
+		this.facesMessages.info("Usuário " + this.usuarioSelecionado.getNome() + " excluído com sucesso!");
 		
 		inicializar();
 	}
 	
 	public void pesquisar() {
-		todosUsuarios = usuarios.pesquisar(usuario);
+		this.todosUsuarios = usuarios.porCPF(this.usuario.getCpf());
+		this.facesMessages.info("Resultado da pesquisa!");
 	}
 	
 	public List<Usuario> getUsuarios() {

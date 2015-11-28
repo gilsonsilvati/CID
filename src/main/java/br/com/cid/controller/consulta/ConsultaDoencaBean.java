@@ -21,9 +21,8 @@ public class ConsultaDoencaBean implements Serializable {
 	
 	private List<Doenca> todasDoencas;
 	
-	// private LazyDoencaDataModel lazyDoencas;
-	
 	private Doenca doencaSelecionada;
+	private Doenca doenca;
 	
 	@Inject
 	private Doencas doencas;
@@ -36,22 +35,32 @@ public class ConsultaDoencaBean implements Serializable {
 	
 	@PostConstruct
 	public void inicializar() {
-		todasDoencas = doencas.todos();
+		this.todasDoencas = doencas.todos();
 		
-		// lazyDoencas = new LazyDoencaDataModel(doencas);
+		this.doenca = new Doenca();
 	}
 	
 	public void excluir() {
-		gestaoDoencas.excluir(doencaSelecionada);
-		facesMessages.info("CID " + doencaSelecionada.getCid() + " excluído com sucesso!");
+		this.gestaoDoencas.excluir(this.doencaSelecionada);
+		this.facesMessages.info("CID " + this.doencaSelecionada.getCid() + " excluído com sucesso!");
 		
 		inicializar();
 	}
 	
-	public List<Doenca> getDoencas() {
-		return todasDoencas;
+	public void pesquisar() {
+		this.todasDoencas = doencas.porCID(this.doenca.getCid());
+		this.facesMessages.info("Resultado da pesquisa!");
 	}
 	
+	public void pesquisaCriteria() {
+		this.todasDoencas = doencas.criteriaPorCIDLike(this.doenca.getCid());
+		this.facesMessages.info("Resultado da pesquisa!");
+	}
+
+	public List<Doenca> getTodasDoencas() {
+		return todasDoencas;
+	}
+
 	public Doenca getDoencaSelecionada() {
 		return doencaSelecionada;
 	}
@@ -59,11 +68,9 @@ public class ConsultaDoencaBean implements Serializable {
 	public void setDoencaSelecionada(Doenca doencaSelecionada) {
 		this.doencaSelecionada = doencaSelecionada;
 	}
-	
-	/*
-	public LazyDoencaDataModel getLazyDoencas() {
-		return lazyDoencas;
+
+	public Doenca getDoenca() {
+		return doenca;
 	}
-	*/
 	
 }

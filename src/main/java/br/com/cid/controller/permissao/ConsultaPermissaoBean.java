@@ -20,6 +20,7 @@ public class ConsultaPermissaoBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private PermissaoUsuario permissaoSelecionada;
+	private PermissaoUsuario permissao;
 	
 	private List<PermissaoUsuario> permissoesUsuario;
 	
@@ -34,17 +35,27 @@ public class ConsultaPermissaoBean implements Serializable {
 	
 	@PostConstruct
 	public void inicializar() {
-		permissoesUsuario = permissoes.todos();
+		this.permissoesUsuario = permissoes.todos();
+		this.permissao = new PermissaoUsuario();
 	}
 	
 	public void excluir() {
-		gestaoPermissoes.excluir(permissaoSelecionada);
-		facesMessages.info("Permissão excluída com sucesso!");
+		this.gestaoPermissoes.excluir(this.permissaoSelecionada);
+		this.facesMessages.info("Permissão excluída com sucesso!");
 		
 		inicializar();
 	}
 	
-	public List<PermissaoUsuario> getPermissoes() {
+	public void pesquisar() {
+		this.permissoesUsuario = permissoes.porEmail(this.permissao.getEmail());
+		this.facesMessages.info("Resultado da pesquisa!");
+	}
+	
+	public PermissaoUsuario getPermissao() {
+		return permissao;
+	}
+
+	public List<PermissaoUsuario> getPermissoesUsuario() {
 		return permissoesUsuario;
 	}
 

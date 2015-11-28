@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:composite="http://xmlns.jcp.org/jsf/composite"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>
+		<ui:insert name="titulo">..:: CID | Home ::..</ui:insert>
+	</title>
+	<h:outputStylesheet library="css" name="Home.css" />
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+
+	<!-- #{facesContext.externalContext.userPrincipal.name} -->
+
+		<p:layoutUnit position="north" size="50"
+			header="#{msg.welcome}"
+			styleClass="header">
+		</p:layoutUnit>
+
+		<p:layoutUnit position="west" size="255" styleClass="menu">
+			<h:form>
+
+				<p:slideMenu style="width: 225px" backLabel="Voltar">
+
+					<p:submenu label="Página inicial" icon="fa fa-home">
+						<p:menuitem value="Home" icon="fa fa-home" action="home" />
+					</p:submenu>
+					
+					<p:submenu label="Permissões" icon="fa fa-cogs"
+							rendered="#{request.isUserInRole('ADMIN')}">
+						<p:menuitem value="Cadastrar" icon="fa fa-save" action="cadastraPermissao" />
+						<p:menuitem value="Consultar" icon="fa fa-search" action="consultaPermissao" />
+					</p:submenu>
+
+					<p:submenu label="Cadastrar" icon="fa fa-save"
+							rendered="#{!request.isUserInRole('USER')}">
+						<p:menuitem value="Usuário" icon="fa fa-male" action="cadastraUsuario"
+							rendered="#{request.isUserInRole('ADMIN')}" />
+						<p:menuitem value="Médico" icon="fa fa-user-md" action="cadastraMedico"
+							rendered="#{request.isUserInRole('ADMIN')}" />
+						<p:menuitem value="Doença" icon="fa fa-stethoscope" action="cadastraDoenca"
+							rendered="#{!request.isUserInRole('USER')}" />
+					</p:submenu>
+
+					<p:submenu label="Consultar" icon="fa fa-search">
+						<p:menuitem value="Usuário" icon="fa fa-male" action="consultaUsuario"
+								rendered="#{request.isUserInRole('ADMIN')}"/>
+						<p:menuitem value="Médico" icon="fa fa-user-md" action="consultaMedico" />
+						<p:menuitem value="Doença - CID" icon="fa fa-stethoscope" action="consultaDoenca" />
+					</p:submenu>
+
+					<p:submenu label="Imprimir" icon="fa fa-print">
+						<p:menuitem value="Doença com CID" icon="fa fa-stethoscope" action="imprimiDoenca" />
+					</p:submenu>
+
+					<p:submenu label="Sair" icon="fa fa-power-off">
+						<p:menuitem value="Logout" icon="fa fa-sign-out" action="#{loginUsuarioBean.logout}" />
+					</p:submenu>
+					
+				</p:slideMenu>
+				
+				<p:outputLabel value="Apoio:" style="font-size: 16px" /><br />
+				<p:graphicImage library="imagens" name="projecao.png" styleClass="logo-projecao" /><br />
+				<br />
+				<p:graphicImage library="imagens" name="gptec.png" styleClass="logo-gptec" /><br />
+				<br />
+				<p:graphicImage library="imagens" name="siscad.png" styleClass="logo-siscad" />
+				
+			</h:form>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center">
+			<ui:insert name="center">
+				
+				<p:ajaxStatus styleClass="ajax-status">
+					<f:facet name="start">
+						<h:graphicImage library="imagens" name="loading.gif" />
+					</f:facet>
+					<f:facet name="complete">
+						<h:outputText value="" />
+					</f:facet>
+				</p:ajaxStatus>
+			
+				<h4>Olá, #{facesContext.externalContext.userPrincipal.name}</h4>
+	        	<h:graphicImage library="imagens" name="logo.png" styleClass="logo-body" />
+	        			
+	        </ui:insert>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="south" size="35" styleClass="footer">
+			<h:outputText
+				value="copyright © 2015 CID - all rights reserved -
+						developed by: gilson brasil - gilson silva - josenaldo junior" />
+		</p:layoutUnit>
+
+	</p:layout>
+	
+	<!-- Confirmações de exclusões globais -->
+	<h:form>
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="explode" closable="false"
+				severity="alert">
+			<p:panel id="painel-msg-exclusao" columns="2" cellpadding="5" cellspacing="5"
+					styleClass="msg-exclusao-painel" style="border: 0">
+				<p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no"
+					icon="fa fa-times" />
+
+				<p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes"
+					icon="fa fa-check" />
+			</p:panel>
+		</p:confirmDialog>
+	</h:form>
+
+</h:body>
+</html>

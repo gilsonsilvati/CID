@@ -8,7 +8,8 @@ public interface Doencas {
 
 	public List<Doenca> todos();
 	public Doenca porId(Long id);
-	public List<String> porCID(String cid);
+	public List<Doenca> porCID(String cid);
+	public List<Doenca> criteriaPorCIDLike(String cid);
 	
 	public Doenca guardar(Doenca doenca);
 

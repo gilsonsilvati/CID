@@ -26,13 +26,13 @@ public class PermissoesJPA implements Permissoes, Serializable {
 
 	@Override
 	public PermissaoUsuario porId(Long id) {
-		return this.manager.find(PermissaoUsuario.class, id);
+		return this.manager.getReference(PermissaoUsuario.class, id);
 	}
 
 	@Override
-	public List<String> porEmail(String email) {
-		List<String> todosPorEmail = manager.createNamedQuery("PermissaoUsuario.buscarPorEmail",
-				String.class).setParameter("email", email).getResultList();
+	public List<PermissaoUsuario> porEmail(String email) {
+		List<PermissaoUsuario> todosPorEmail = manager.createNamedQuery("PermissaoUsuario.buscarPorEmail",
+				PermissaoUsuario.class).setParameter("email", email).getResultList();
 		
 		return todosPorEmail;
 	}
