@@ -30,7 +30,7 @@ public class DoencasJPA implements Doencas, Serializable {
 
 	@Override
 	public Doenca porId(Long id) {
-		return this.manager.getReference(Doenca.class, id);
+		return this.manager.find(Doenca.class, id);
 	}
 
 	@Override

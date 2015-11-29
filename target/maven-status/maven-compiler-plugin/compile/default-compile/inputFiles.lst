@@ -16,7 +16,6 @@
 /home/gilson/workspace/cid/src/main/java/br/com/cid/modelLazy/LazyDoencaDataModel.java
 /home/gilson/workspace/cid/src/main/java/br/com/cid/model/TipoPermissao.java
 /home/gilson/workspace/cid/src/main/java/br/com/cid/repository/infra/MedicosJPA.java
-/home/gilson/workspace/cid/src/main/java/br/com/cid/util/jpa/Transactional.java
 /home/gilson/workspace/cid/src/main/java/br/com/cid/controller/cadastro/CadastroUsuarioBean.java
 /home/gilson/workspace/cid/src/main/java/br/com/cid/converter/PermissaoUsuarioConverter.java
 /home/gilson/workspace/cid/target/metamodel/br/com/cid/model/Medico_.java
@@ -27,7 +26,6 @@
 /home/gilson/workspace/cid/target/metamodel/br/com/cid/model/PermissaoUsuario_.java
 /home/gilson/workspace/cid/src/main/java/br/com/cid/service/GestaoMedicos.java
 /home/gilson/workspace/cid/src/main/java/br/com/cid/model/Doenca.java
-/home/gilson/workspace/cid/src/main/java/br/com/cid/filters/JPAFilter.java
 /home/gilson/workspace/cid/src/main/java/br/com/cid/controller/consulta/ConsultaUsuarioBean.java
 /home/gilson/workspace/cid/src/main/java/br/com/cid/repository/Usuarios.java
 /home/gilson/workspace/cid/src/main/java/br/com/cid/sha2/TransformaStringSHA2.java
@@ -36,7 +34,6 @@
 /home/gilson/workspace/cid/src/main/java/br/com/cid/repository/infra/PermissoesJPA.java
 /home/gilson/workspace/cid/src/main/java/br/com/cid/controller/cadastro/CadastroDoencaBean.java
 /home/gilson/workspace/cid/src/main/java/br/com/cid/model/PermissaoUsuario.java
-/home/gilson/workspace/cid/src/main/java/br/com/cid/util/jpa/TransactionInterceptor.java
 /home/gilson/workspace/cid/target/metamodel/br/com/cid/model/Usuario_.java
 /home/gilson/workspace/cid/src/main/java/br/com/cid/controller/consulta/ConsultaDoencaBean.java
 /home/gilson/workspace/cid/src/main/java/br/com/cid/model/Medico.java

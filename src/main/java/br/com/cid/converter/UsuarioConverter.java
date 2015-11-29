@@ -27,7 +27,7 @@ public class UsuarioConverter implements Converter {
 			retorno = this.usuarios.porId(new Long(value));
 			
 			if (retorno == null) {
-				String descricaoErro = "Usuário não existe.";
+				String descricaoErro = "usuário não existe.";
 				FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
 						descricaoErro, descricaoErro);
 				throw new ConverterException(message);

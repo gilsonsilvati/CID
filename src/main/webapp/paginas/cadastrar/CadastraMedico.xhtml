@@ -10,14 +10,14 @@
 		<f:viewParam name="id" value="#{cadastroMedicoBean.medico}" />
 	</f:metadata>
 	
-	<ui:define name="titulo">..:: Médico ::..</ui:define>
+	<ui:define name="titulo">..:: #{cadastroMedicoBean.editando ? 'Edição médico' : 'Novo médico'} ::..</ui:define>
 
 	<ui:define name="center">
 		<h:form id="frm-cadastro-medico">
 
 			<h:outputStylesheet library="css" name="CadastraMedico.css" />
 			
-			<h4>..:: Médico cid ::..</h4>
+			<h4>..:: #{cadastroMedicoBean.editando ? 'edição médico' : 'novo médico'} ::..</h4>
 
 			<p:dialog id="dialog-medico" visible="true" modal="false" resizable="false" closable="false"
 					styleClass="dialog-medico" position="center" focus="nome">
@@ -28,18 +28,18 @@
 				<h:panelGrid id="panel-medico" columns="2" cellpadding="5" cellspacing="10">
 				
 					<f:facet name="header">
-						<h:outputText value="Preencha o formulário" styleClass="header-medico" />
+						<h:outputText value="preencha o formulário" styleClass="header-medico" />
 					</f:facet>
 					
-					<p:outputLabel value="Id:" for="id" />
+					<p:outputLabel value="id:" for="id" />
 					<p:inputText id="id" value="#{cadastroMedicoBean.medico.id}" readonly="true"
 						size="5" placeholder="@Id" />
 				
-					<p:outputLabel value="Nome:" for="nome" />
+					<p:outputLabel value="nome:" for="nome" />
 					<p:inputText id="nome" value="#{cadastroMedicoBean.medico.nome}"
 						size="29" placeholder="Nome e Sobrenome" />
 						
-					<p:outputLabel value="Especialide:" for="especialidade" />
+					<p:outputLabel value="especialide:" for="especialidade" />
 					<p:inputText id="especialidade" value="#{cadastroMedicoBean.medico.especialidade}"
 						size="29" placeholder="Especialista em?" />
 						
@@ -58,12 +58,12 @@
 						</p:selectOneMenu>
 					</h:panelGroup>
 
-					<p:outputLabel value="E-mail:" for="email" />
+					<p:outputLabel value="e-mail:" for="email" />
 					<p:inputText id="email" value="#{cadastroMedicoBean.medico.email}" size="29"
 						placeholder="exemplo@dominio.com" />
 					
 					<h:outputLabel />	
-					<p:commandButton value="Salvar" update="@form" icon="fa fa-save"
+					<p:commandButton value="salvar" update="@form" icon="fa fa-save"
 							action="#{cadastroMedicoBean.salvar}" styleClass="botao">
 						
 						<f:ajax execute="@form" render=":frm-cadastro-medico:dialog-medico" />

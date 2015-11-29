@@ -45,7 +45,7 @@ public class Medico implements Serializable {
 	private String especialidade;
 	
 	@NotNull
-	@Column(length = 10)
+	@Column(length = 10, nullable = false)
 	private Integer crm;
 	
 	@Enumerated(EnumType.STRING)
@@ -53,7 +53,7 @@ public class Medico implements Serializable {
 	private UF sigla;
 	
 	@NotEmpty
-	@Column(length = 50)
+	@Column(length = 50, nullable = false)
 	@Email
 	private String email;
 	

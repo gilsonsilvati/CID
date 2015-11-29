@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -44,7 +45,7 @@ public class Usuario implements Serializable {
 	
 	@NotEmpty
 	@Email
-	@Column(length = 50)
+	@Column(length = 50, nullable = false)
 	private String email;
 	
 	@NotEmpty
@@ -53,7 +54,7 @@ public class Usuario implements Serializable {
 	
 	@NotEmpty
 	@CPF
-	@Column(length = 14)
+	@Column(length = 14, nullable = false)
 	private String cpf;
 	
 	@OneToMany(mappedBy = "usuario")
@@ -65,6 +66,9 @@ public class Usuario implements Serializable {
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataModificacao;
+	
+	@Lob
+	private byte[] foto;
 	
 	public Usuario() {
 	}
@@ -125,6 +129,13 @@ public class Usuario implements Serializable {
 		this.dataModificacao = dataModificacao;
 	}
 	
+	public byte[] getFoto() {
+		return foto;
+	}
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
+	}
+
 	/* Auditoria... */
 	@PrePersist
 	@PreUpdate

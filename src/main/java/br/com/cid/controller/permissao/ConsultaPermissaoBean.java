@@ -41,14 +41,14 @@ public class ConsultaPermissaoBean implements Serializable {
 	
 	public void excluir() {
 		this.gestaoPermissoes.excluir(this.permissaoSelecionada);
-		this.facesMessages.info("Permissão excluída com sucesso!");
+		this.facesMessages.info("permissão excluída com sucesso!");
 		
 		inicializar();
 	}
 	
 	public void pesquisar() {
 		this.permissoesUsuario = permissoes.porEmail(this.permissao.getEmail());
-		this.facesMessages.info("Resultado da pesquisa!");
+		this.facesMessages.info("resultado da pesquisa!");
 	}
 	
 	public PermissaoUsuario getPermissao() {

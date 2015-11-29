@@ -14,10 +14,8 @@ br/com/cid/converter/DoencaConverter.class
 br/com/cid/controller/cadastro/CadastroDoencaBean.class
 br/com/cid/controller/login/LoginUsuarioBean.class
 br/com/cid/controller/consulta/ConsultaUsuarioBean.class
-br/com/cid/util/jpa/TransactionInterceptor.class
 br/com/cid/sha2/GerarSenhaMD5.class
 br/com/cid/model/PermissaoUsuario_.class
-br/com/cid/util/jpa/Transactional.class
 br/com/cid/controller/relatorio/ImprimiDoencaBean.class
 br/com/cid/repository/Usuarios.class
 br/com/cid/service/GestaoUsuarios.class

@@ -27,7 +27,7 @@ public class PermissaoUsuarioConverter implements Converter {
 			retorno = this.permissoes.porId(new Long(value));
 			
 			if (retorno == null) {
-				String descricaoErro = "Usuário não existe.";
+				String descricaoErro = "usuário não existe.";
 				FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
 						descricaoErro, descricaoErro);
 				throw new ConverterException(message);

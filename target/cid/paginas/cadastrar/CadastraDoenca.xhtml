@@ -10,14 +10,14 @@
 		<f:viewParam name="id" value="#{cadastroDoencaBean.doenca}" />
 	</f:metadata>
 	
-	<ui:define name="titulo">..:: Doença ::..</ui:define>
+	<ui:define name="titulo">..:: #{cadastroDoencaBean.editando ? 'Edição doença' : 'Nova doença'} ::..</ui:define>
 
 	<ui:define name="center">
 		<h:form id="frm-cadastro-doenca">
 
 			<h:outputStylesheet library="css" name="CadastraDoenca.css" />
 			
-			<h4>..:: Doença cid ::..</h4>
+			<h4>..:: #{cadastroDoencaBean.editando ? 'edição doença' : 'nova doença'} ::..</h4>
 			
 			<p:dialog id="dialog-doenca" visible="true" modal="false" resizable="false" closable="false"
 					styleClass="dialog-doenca" position="center" focus="cid">
@@ -28,22 +28,22 @@
 				<h:panelGrid id="panel-doenca" columns="2" cellpadding="5" cellspacing="10">
 				
 					<f:facet name="header">
-						<h:outputText value="Preencha o formulário" styleClass="header-doenca" />
+						<h:outputText value="preencha o formulário" styleClass="header-doenca" />
 					</f:facet>
 					
-					<p:outputLabel value="Id:" for="id" />
+					<p:outputLabel value="id:" for="id" />
 					<p:inputText id="id" value="#{cadastroDoencaBean.doenca.id}" readonly="true"
 						size="5" placeholder="@Id" />
 				
-					<p:outputLabel value="Código cid:" for="cid" />
+					<p:outputLabel value="código cid:" for="cid" />
 					<p:inputText id="cid" value="#{cadastroDoencaBean.doenca.cid}"
 						placeholder="CID" size="5" />
 						
-					<p:outputLabel value="Descrição:" for="doenca" />
+					<p:outputLabel value="descrição:" for="doenca" />
 					<p:inputText id="doenca" value="#{cadastroDoencaBean.doenca.doenca}"
 						placeholder="Descrição do cid" size="31" />
 						
-					<p:outputLabel value="Panorama:" for="panorama" />
+					<p:outputLabel value="panorama:" for="panorama" />
 					<p:inputTextarea id="panorama" value="#{cadastroDoencaBean.doenca.panorama}"
 						rows="5" cols="30" counter="display" maxlength="255"
 						counterTemplate="{0} caracteres restantes." autoResize="false"
@@ -54,7 +54,7 @@
 					
 				
 					<h:outputLabel />	
-					<p:commandButton value="Salvar" update="@form" icon="fa fa-save"
+					<p:commandButton value="salvar" update="@form" icon="fa fa-save"
 							action="#{cadastroDoencaBean.salvar}" styleClass="botao">
 							
 						<f:ajax execute="@form" render=":frm-cadastro-doenca:dialog-doenca" />	

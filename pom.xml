@@ -45,6 +45,9 @@
 		<weld.version>2.2.10.Final</weld.version>
 		<!-- Weld depende do Jandex -->
 		<jandex.version>1.2.3.Final</jandex.version>
+		
+		<!-- DeltaSpike (coleção de extensões para CDI) -->
+		<deltaspike.version>1.5.1</deltaspike.version>
 	</properties>
 
 	<dependencies>
@@ -183,14 +186,6 @@
 			<scope>compile</scope>
 		</dependency>
 		
-		<!-- Upload de arquivos -->
-		<dependency>
-   			<groupId>commons-fileupload</groupId>
-    		<artifactId>commons-fileupload</artifactId>
-    		<version>${commons-fileupload.version}</version>
-    		<scope>compile</scope>
-		</dependency>
-		
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -227,6 +222,40 @@
 		    <version>${jandex.version}</version>
 		    <scope>compile</scope>
 		</dependency>
+
+		<!-- DeltaSpike -->
+		<dependency>
+			<groupId>org.apache.deltaspike.core</groupId>
+			<artifactId>deltaspike-core-api</artifactId>
+			<version>${deltaspike.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.deltaspike.core</groupId>
+			<artifactId>deltaspike-core-impl</artifactId>
+			<version>${deltaspike.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.deltaspike.cdictrl</groupId>
+			<artifactId>deltaspike-cdictrl-api</artifactId>
+			<version>${deltaspike.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<!-- Módulos DeltaSpike-->
+		<dependency>
+			<groupId>org.apache.deltaspike.modules</groupId>
+			<artifactId>deltaspike-jpa-module-api</artifactId>
+			<version>${deltaspike.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.deltaspike.modules</groupId>
+			<artifactId>deltaspike-jpa-module-impl</artifactId>
+			<version>${deltaspike.version}</version>
+			<scope>runtime</scope>
+		</dependency> 
 		
 		<!-- Bootstrap -->
 		<dependency>

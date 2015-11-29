@@ -10,13 +10,13 @@
 		<f:viewParam name="id" value="#{cadastroUsuarioBean.usuario}" />
 	</f:metadata>
 	
-	<ui:define name="titulo">..:: Usuário ::..</ui:define>
+	<ui:define name="titulo">..:: #{cadastroUsuarioBean.editando ? 'Edição usuário' : 'Novo usuário'} ::..</ui:define>
 	
 	<ui:define name="center">
-		<h:form id="frm-cadastro-usuario">
+		<h:form id="frm-cadastro-usuario" nctype="multipart/form-data">
 			<h:outputStylesheet library="css" name="CadastraUsuario.css" />
 			
-			<h4>..:: Usuário cid ::..</h4>
+			<h4>..:: #{cadastroUsuarioBean.editando ? 'edição usuário' : 'novo usuário'} ::..</h4>
 
 			<p:dialog id="dialog-usuario" visible="true" modal="false" resizable="false" closable="false"
 					styleClass="dialog-usuario" position="center" focus="nome">
@@ -28,36 +28,35 @@
 					cellspacing="10">
 
 					<f:facet name="header">
-						<h:outputText value="Preencha o formulário" styleClass="header-usuario" />
+						<h:outputText value="preencha o formulário" styleClass="header-usuario" />
 					</f:facet>
 					
-					<p:outputLabel value="Id:" for="id" />
+					<p:outputLabel value="id:" for="id" />
 					<p:inputText id="id" value="#{cadastroUsuarioBean.usuario.id}" readonly="true"
 						size="5" placeholder="@Id" />
 
-					<p:outputLabel value="Nome:" for="nome" />
+					<p:outputLabel value="nome:" for="nome" />
 					<p:inputText id="nome" value="#{cadastroUsuarioBean.usuario.nome}"
 						placeholder="Nome e Sobrenome" size="25" />	
 
-					<p:outputLabel value="E-mail:" for="email" />
+					<p:outputLabel value="e-mail:" for="email" />
 					<p:inputText id="email" value="#{cadastroUsuarioBean.usuario.email}"
 						placeholder="exemplo@dominio.com" size="25" />
 
-					<p:outputLabel value="CPF:" for="cpf" />
+					<p:outputLabel value="cpf:" for="cpf" />
 					<p:inputMask mask="999.999.999-99" id="cpf"
 						value="#{cadastroUsuarioBean.usuario.cpf}" size="25"
 						placeholder="999.999.999-99" />
 
-					<p:outputLabel value="Senha:" for="senha" />
+					<p:outputLabel value="senha:" for="senha" />
 					<p:password id="senha" value="#{cadastroUsuarioBean.usuario.senha}"
 							placeholder="**********" size="25">
 							
-						<!-- <f:validateLength minimum="5" maximum="10" /> -->
 						<!-- <f:validateRegex pattern="" /> -->
 					</p:password>
 
 					<h:outputLabel />
-					<p:commandButton value="Salvar" icon="fa fa-save" update="@form"
+					<p:commandButton value="salvar" icon="fa fa-save" update="@form"
 							action="#{cadastroUsuarioBean.salvar}" styleClass="botao">
 						
 						<f:ajax execute="@form" render=":frm-cadastro-usuari:dialog-usuario" />

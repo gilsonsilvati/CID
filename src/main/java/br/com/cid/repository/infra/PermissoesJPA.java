@@ -26,7 +26,7 @@ public class PermissoesJPA implements Permissoes, Serializable {
 
 	@Override
 	public PermissaoUsuario porId(Long id) {
-		return this.manager.getReference(PermissaoUsuario.class, id);
+		return this.manager.find(PermissaoUsuario.class, id);
 	}
 
 	@Override

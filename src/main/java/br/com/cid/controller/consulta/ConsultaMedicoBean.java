@@ -41,14 +41,14 @@ public class ConsultaMedicoBean implements Serializable {
 	
 	public void excluir() {
 		this.gestaoMedicos.excluir(this.medicoSelecionado);
-		this.facesMessages.info("Médico " + this.medicoSelecionado.getNome() + " excluído com sucesso!");
+		this.facesMessages.info("médico " + this.medicoSelecionado.getNome() + " excluído com sucesso!");
 		
 		inicializar();
 	}
 	
 	public void pesquisar() {
 		this.todosMedicos = medicos.porCRM(this.medico.getCrm()); 
-		this.facesMessages.info("Resultado da pesquisa!");
+		this.facesMessages.info("resultado da pesquisa!");
 	}
 	
 	public Medico getMedico() {

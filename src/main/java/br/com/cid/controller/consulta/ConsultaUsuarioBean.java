@@ -43,14 +43,14 @@ public class ConsultaUsuarioBean implements Serializable {
 	
 	public void excluir() {
 		this.gestaoUsuarios.excluir(this.usuarioSelecionado);
-		this.facesMessages.info("Usuário " + this.usuarioSelecionado.getNome() + " excluído com sucesso!");
+		this.facesMessages.info("usuário " + this.usuarioSelecionado.getNome() + " excluído com sucesso!");
 		
 		inicializar();
 	}
 	
 	public void pesquisar() {
 		this.todosUsuarios = usuarios.porCPF(this.usuario.getCpf());
-		this.facesMessages.info("Resultado da pesquisa!");
+		this.facesMessages.info("resultado da pesquisa!");
 	}
 	
 	public List<Usuario> getUsuarios() {

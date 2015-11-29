@@ -4,9 +4,10 @@ import java.io.Serializable;
 
 import javax.inject.Inject;
 
+import org.apache.deltaspike.jpa.api.transaction.Transactional;
+
 import br.com.cid.model.Usuario;
 import br.com.cid.repository.Usuarios;
-import br.com.cid.util.jpa.Transactional;
 
 public class GestaoUsuarios implements Serializable {
 	

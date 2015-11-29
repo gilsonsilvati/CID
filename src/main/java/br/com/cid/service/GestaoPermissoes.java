@@ -4,9 +4,10 @@ import java.io.Serializable;
 
 import javax.inject.Inject;
 
+import org.apache.deltaspike.jpa.api.transaction.Transactional;
+
 import br.com.cid.model.PermissaoUsuario;
 import br.com.cid.repository.Permissoes;
-import br.com.cid.util.jpa.Transactional;
 
 public class GestaoPermissoes implements Serializable {
 
@@ -41,8 +42,4 @@ public class GestaoPermissoes implements Serializable {
 		this.permissoes.remover(permissaoUsuario);
 	}
 	
-	public void buscarPorEmail(String email) {
-		this.permissoes.porEmail(email);
-	}
-
 }

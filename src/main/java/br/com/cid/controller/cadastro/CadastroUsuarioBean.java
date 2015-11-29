@@ -3,7 +3,7 @@ package br.com.cid.controller.cadastro;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -12,7 +12,7 @@ import br.com.cid.service.GestaoUsuarios;
 import br.com.cid.util.jsf.FacesMessages;
 
 @Named
-@ViewScoped
+@RequestScoped
 public class CadastroUsuarioBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -34,7 +34,7 @@ public class CadastroUsuarioBean implements Serializable {
 	
 	public void salvar() {
 		this.gestaoUsuarios.salvar(this.usuario);
-		this.facesMessages.info("Usuário " + this.usuario.getNome() + " salvo com sucesso!");
+		this.facesMessages.info("usuário " + this.usuario.getNome() + " salvo com sucesso!");
 		
 		limpar();
 	}

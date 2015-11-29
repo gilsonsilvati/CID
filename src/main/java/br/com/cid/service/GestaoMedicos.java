@@ -4,9 +4,10 @@ import java.io.Serializable;
 
 import javax.inject.Inject;
 
+import org.apache.deltaspike.jpa.api.transaction.Transactional;
+
 import br.com.cid.model.Medico;
 import br.com.cid.repository.Medicos;
-import br.com.cid.util.jpa.Transactional;
 
 public class GestaoMedicos implements Serializable {
 	

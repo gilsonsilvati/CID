@@ -10,7 +10,7 @@ public class TransformaStringSHA2 {
 		MessageDigest md = null;
 
 		try {
-			md = MessageDigest.getInstance("SHA-256"); // 64 bits
+			md = MessageDigest.getInstance("SHA-256"); // 256 bits (64 caractéres)
 			byte[] hash = md.digest(senha.getBytes("UTF-8"));
 
 			StringBuffer sb = new StringBuffer();

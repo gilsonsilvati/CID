@@ -26,7 +26,7 @@ public class UsuariosJPA implements Usuarios, Serializable {
 
 	@Override
 	public Usuario porId(Long id) {
-		return this.manager.getReference(Usuario.class, id);
+		return this.manager.find(Usuario.class, id);
 	}
 
 	@Override

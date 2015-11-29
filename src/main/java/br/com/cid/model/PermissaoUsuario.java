@@ -47,7 +47,7 @@ public class PermissaoUsuario implements Serializable {
 	private TipoPermissao permissao;
 	
 	@ManyToOne
-	@JoinColumn(name = "codigo_usuario")
+	@JoinColumn(name = "codigo_usuario", nullable = false)
 	private Usuario usuario;
 	
 	/* Para fazer auditoria... */

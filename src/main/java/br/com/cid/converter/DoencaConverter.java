@@ -27,7 +27,7 @@ public class DoencaConverter implements Converter {
 			retorno = this.doencas.porId(new Long(value));
 			
 			if (retorno == null) {
-				String descricaoErro = "Doença não existe.";
+				String descricaoErro = "doença não existe.";
 				FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
 						descricaoErro, descricaoErro);
 				throw new ConverterException(message);

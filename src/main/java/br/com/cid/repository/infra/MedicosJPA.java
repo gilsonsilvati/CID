@@ -26,7 +26,7 @@ public class MedicosJPA implements Medicos, Serializable {
 
 	@Override
 	public Medico porId(Long id) {
-		return this.manager.getReference(Medico.class, id);
+		return this.manager.find(Medico.class, id);
 	}
 
 	@Override

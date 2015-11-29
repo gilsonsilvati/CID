@@ -27,7 +27,7 @@ public class MedicoConverter implements Converter {
 			retorno = this.medicos.porId(new Long(value));
 			
 			if (retorno == null) {
-				String descricaoErro = "Médico não existe.";
+				String descricaoErro = "médico não existe.";
 				FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
 						descricaoErro, descricaoErro);
 				throw new ConverterException(message);

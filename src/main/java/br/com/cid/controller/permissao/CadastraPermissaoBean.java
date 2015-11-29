@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -15,7 +15,7 @@ import br.com.cid.service.GestaoPermissoes;
 import br.com.cid.util.jsf.FacesMessages;
 
 @Named
-@ViewScoped
+@RequestScoped
 public class CadastraPermissaoBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -41,7 +41,7 @@ public class CadastraPermissaoBean implements Serializable {
 	
 	public void salvar() {
 		this.gestaoPermissoes.salvar(this.permissaoUsuario);
-		this.facesMessages.info("Permissão salva com sucesso!");
+		this.facesMessages.info("permissão salva com sucesso!");
 		
 		limpar();
 	}

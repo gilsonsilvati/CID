@@ -42,14 +42,14 @@ public class ConsultaDoencaBean implements Serializable {
 	
 	public void excluir() {
 		this.gestaoDoencas.excluir(this.doencaSelecionada);
-		this.facesMessages.info("CID " + this.doencaSelecionada.getCid() + " excluído com sucesso!");
+		this.facesMessages.info("cid " + this.doencaSelecionada.getCid() + " excluído com sucesso!");
 		
 		inicializar();
 	}
 	
 	public void pesquisar() {
 		this.todasDoencas = doencas.porCID(this.doenca.getCid());
-		this.facesMessages.info("Resultado da pesquisa!");
+		this.facesMessages.info("resultado da pesquisa!");
 	}
 	
 	public void pesquisaCriteria() {
