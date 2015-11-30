@@ -20,3 +20,11 @@
 .grid-botoes {
 	margin-left: 350px;
 }
+
+.ajax-status {
+	position: absolute;
+	top: 120px;
+	left: 550px;
+	width: 35px;
+	height: 35px
+}

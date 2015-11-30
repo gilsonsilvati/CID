@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,8 +19,8 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -44,8 +45,8 @@ public class Usuario implements Serializable {
 	private String nome;
 	
 	@NotEmpty
-	@Email
 	@Column(length = 50, nullable = false)
+	@Pattern(regexp = "^[\\w\\-]+(\\.[\\w\\-]+)*@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$", message = "é inválido!")
 	private String email;
 	
 	@NotEmpty
@@ -57,7 +58,7 @@ public class Usuario implements Serializable {
 	@Column(length = 14, nullable = false)
 	private String cpf;
 	
-	@OneToMany(mappedBy = "usuario")
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.MERGE, orphanRemoval = true)
 	private List<PermissaoUsuario> permissoes;
 
 	/* Para fazer auditoria... */

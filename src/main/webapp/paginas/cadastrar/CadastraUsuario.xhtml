@@ -41,7 +41,7 @@
 
 					<p:outputLabel value="e-mail:" for="email" />
 					<p:inputText id="email" value="#{cadastroUsuarioBean.usuario.email}"
-						placeholder="exemplo@dominio.com" size="25" />
+						placeholder="exemplo@dominio.com.br" size="25" />
 
 					<p:outputLabel value="cpf:" for="cpf" />
 					<p:inputMask mask="999.999.999-99" id="cpf"
@@ -52,9 +52,12 @@
 					<p:password id="senha" value="#{cadastroUsuarioBean.usuario.senha}"
 							placeholder="**********" size="25">
 							
-						<!-- <f:validateRegex pattern="" /> -->
+						<f:validateLength minimum="6" maximum="20" />
+							
+						<f:validateRegex
+							pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})" />
 					</p:password>
-
+						
 					<h:outputLabel />
 					<p:commandButton value="salvar" icon="fa fa-save" update="@form"
 							action="#{cadastroUsuarioBean.salvar}" styleClass="botao">
