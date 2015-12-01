@@ -133,7 +133,7 @@
 	
 	<security-constraint>
 		<web-resource-collection>
-			<web-resource-name>Permissao</web-resource-name>
+			<web-resource-name>PermissaoT</web-resource-name>
 			<url-pattern>/paginas/permissao/CadastraPermissao.xhtml</url-pattern>
 			<url-pattern>/paginas/permissao/ConsultaPermissao.xhtml</url-pattern>
 		</web-resource-collection>
@@ -144,7 +144,7 @@
 	
 	<security-constraint>
 		<web-resource-collection>
-			<web-resource-name>Cadastro</web-resource-name>
+			<web-resource-name>CadastroT</web-resource-name>
 			<url-pattern>/paginas/cadastrar/CadastraUsuario.xhtml</url-pattern>
 			<url-pattern>/paginas/cadastrar/CadastraMedico.xhtml</url-pattern>
 			<url-pattern>/paginas/cadastrar/CadastraDoenca.xhtml</url-pattern>
@@ -156,7 +156,8 @@
 	
 	<security-constraint>
 		<web-resource-collection>
-			<web-resource-name>CadastroDoenca</web-resource-name>
+			<web-resource-name>CadastroD</web-resource-name>
+			<url-pattern>/paginas/cadastrar/CadastraMedico.xhtml</url-pattern>
 			<url-pattern>/paginas/cadastrar/CadastraDoenca.xhtml</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
@@ -166,7 +167,7 @@
 	
 	<security-constraint>
 		<web-resource-collection>
-			<web-resource-name>Consulta</web-resource-name>
+			<web-resource-name>ConsultaT</web-resource-name>
 			<url-pattern>/paginas/consultar/ConsultaUsuario.xhtml</url-pattern>
 			<url-pattern>/paginas/consultar/ConsultaMedico.xhtml</url-pattern>
 			<url-pattern>/paginas/consultar/ConsultaDoenca.xhtml</url-pattern>
@@ -178,7 +179,8 @@
 	
 	<security-constraint>
 		<web-resource-collection>
-			<web-resource-name>ConsultaDoenca</web-resource-name>
+			<web-resource-name>ConsultaMD</web-resource-name>
+			<url-pattern>/paginas/consultar/ConsultaMedico.xhtml</url-pattern>
 			<url-pattern>/paginas/consultar/ConsultaDoenca.xhtml</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>

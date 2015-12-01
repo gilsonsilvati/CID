@@ -20,12 +20,12 @@
 				
 			<p:graphicImage library="imagens" name="logo_pdf.png" styleClass="logo" />
 			
-			<p:messages showDetail="false" showSummary="true" autoUpdate="true"
+			<p:growl id="growl" showDetail="false" showSummary="true" autoUpdate="true" sticky="true"
 				style="font-size: 14px" />
 				
 			<p:ajaxStatus styleClass="ajax-status">
 				<f:facet name="start">
-					<h:graphicImage library="imagens" name="carregando.gif" />
+					<h:graphicImage library="imagens" name="loading.gif" style="width: 35px; height: 35px" />
 				</f:facet>
 				<f:facet name="complete">
 					<h:outputText value="" />
@@ -37,7 +37,7 @@
 				<f:facet name="header">
 					<h:outputText value="#{msg.header_login}" styleClass="header" />
 				</f:facet>
-
+				
 				<p:button value="#{msg.email}" icon="fa fa-envelope" disabled="true"
 					styleClass="button-login" />					
 					
@@ -51,7 +51,7 @@
 					placeholder="**********" size="30" />	
 				
 				<p:outputLabel />
-				<p:commandButton value="#{msg.botao_entrar}" icon="fa fa-lock" update="@form"
+				<p:commandButton value="#{msg.botao_entrar}" icon="fa fa-lock" update="@form, growl"
 					action="#{loginUsuarioBean.logar}" styleClass="botao" />
 
 			</h:panelGrid>

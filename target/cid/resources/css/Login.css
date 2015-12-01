@@ -23,8 +23,9 @@ body {
 .logo {
 	width: 170px;
 	height: auto;
-	margin-top: 10px;
-	margin-left: 150px;
+	margin-top: 20px;
+	margin-bottom: -50px;
+	margin-left: 151px;
 	
 	/* Arredondamendo das bordas */
 	border: #babdb6 1px solid;
@@ -73,8 +74,8 @@ body {
 
 .ajax-status {
 	position: relative;
-	top: 203px;
+	top: 206px;
 	left: 280px;
-	width: 50px;
-	height: 50px
+	width: 35px;
+	height: 35px;
 }

@@ -10,20 +10,20 @@
 		<f:viewParam name="id" value="#{cadastraPermissaoBean.permissaoUsuario}" />
 	</f:metadata>
 	
-	<ui:define name="titulo">..:: Cadastra | Permissão ::..</ui:define>
+	<ui:define name="titulo">..:: #{cadastraPermissaoBean.editando ? 'Editando permissão' : 'Nova permissão'} ::..</ui:define>
 
 	<ui:define name="center">
 		<h:form id="frm-permissao">
 			<h:outputStylesheet library="css" name="CadastraPermissao.css" />
 			
-			<h4>..:: Permissão cid ::..</h4>
-			
+			<h4>..:: #{cadastraPermissaoBean.editando ? 'editando permissão' : 'nova permissão'} ::..</h4>
+
 			<p:dialog id="dialog-permissao" visible="true" modal="false" resizable="false"
 					styleClass="dialog-permissao" closable="false" position="center" focus="email">
 			
 				<p:messages showDetail="false" showSummary="true" autoUpdate="true"
 					style="font-size: 14px" />
-			
+					
 				<h:panelGrid id="panel-permissao" columns="2" cellpadding="5" cellspacing="10">
 				
 					<f:facet name="header">

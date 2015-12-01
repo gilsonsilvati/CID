@@ -37,7 +37,6 @@ public class ConsultaUsuarioBean implements Serializable {
 	@PostConstruct
 	public void inicializar() {
 		this.todosUsuarios = usuarios.todos();
-		
 		this.usuario = new Usuario();
 	}
 	

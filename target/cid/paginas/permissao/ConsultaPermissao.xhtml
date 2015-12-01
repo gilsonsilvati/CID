@@ -26,16 +26,17 @@
 				<p:commandButton id="pesquisa" value="Pesquisar" icon="fa fa-search" styleClass="botao"
 					action="#{consultaPermissaoBean.pesquisar}" update="table-consulta-permissao" />
 			</h:panelGrid>
-			
+
 			<p:ajaxStatus styleClass="ajax-status">
 				<f:facet name="start">
-					<h:graphicImage library="imagens" name="carregando.gif" />
+					<h:graphicImage library="imagens" name="loading.gif"
+						style="width: 35px; height: 35px" />
 				</f:facet>
 				<f:facet name="complete">
 					<h:outputText value="" />
 				</f:facet>
 			</p:ajaxStatus>
-			
+
 			<br />
 			<p:separator />
 			<br />

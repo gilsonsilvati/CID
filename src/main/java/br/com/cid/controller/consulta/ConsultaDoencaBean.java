@@ -36,7 +36,6 @@ public class ConsultaDoencaBean implements Serializable {
 	@PostConstruct
 	public void inicializar() {
 		this.todasDoencas = doencas.todos();
-		
 		this.doenca = new Doenca();
 	}
 	
