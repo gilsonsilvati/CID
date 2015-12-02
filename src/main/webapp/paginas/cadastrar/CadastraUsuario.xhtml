@@ -13,7 +13,7 @@
 	<ui:define name="titulo">..:: #{cadastroUsuarioBean.editando ? 'Edição usuário' : 'Novo usuário'} ::..</ui:define>
 	
 	<ui:define name="center">
-		<h:form id="frm-cadastro-usuario" nctype="multipart/form-data">
+		<h:form id="frm-cadastro-usuario" enctype="multipart/form-data">
 			<h:outputStylesheet library="css" name="CadastraUsuario.css" />
 			
 			<h4>..:: #{cadastroUsuarioBean.editando ? 'edição usuário' : 'novo usuário'} ::..</h4>
@@ -57,10 +57,13 @@
 						<f:validateRegex
 							pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})" />
 					</p:password>
+					
+					<p:outputLabel value="foto para perfil" for="foto_perfil" />
+					<p:fileUpload id="foto_perfil" value="#{cadastroUsuarioBean.uploadFile}" mode="simple" />
 						
 					<h:outputLabel />
 					<p:commandButton value="salvar" icon="fa fa-save" update="@form"
-							action="#{cadastroUsuarioBean.salvar}" styleClass="botao">
+							action="#{cadastroUsuarioBean.salvar}" styleClass="botao" ajax="false">
 						
 						<f:ajax execute="@form" render=":frm-cadastro-usuari:dialog-usuario" />
 					</p:commandButton>

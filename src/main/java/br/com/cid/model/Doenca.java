@@ -46,9 +46,11 @@ public class Doenca implements Serializable {
 
 	/* Para fazer auditoria... */
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_criacao", nullable = false, updatable = false)
 	private Date dataCriacao;
 	
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_modificacao", nullable = false, updatable = true)
 	private Date dataModificacao;
 	
 	public Doenca() {

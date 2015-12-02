@@ -63,13 +63,16 @@ public class Usuario implements Serializable {
 
 	/* Para fazer auditoria... */
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_criacao", nullable = false, updatable = false)
 	private Date dataCriacao;
 	
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_modificacao", nullable = false, updatable = true)
 	private Date dataModificacao;
 	
 	@Lob
-	private byte[] foto;
+	@Column(name = "foto_perfil")
+	private byte[] fotoPerfil;
 	
 	public Usuario() {
 	}
@@ -130,11 +133,11 @@ public class Usuario implements Serializable {
 		this.dataModificacao = dataModificacao;
 	}
 	
-	public byte[] getFoto() {
-		return foto;
+	public byte[] getFotoPerfil() {
+		return fotoPerfil;
 	}
-	public void setFoto(byte[] foto) {
-		this.foto = foto;
+	public void setFotoPerfil(byte[] fotoPerfil) {
+		this.fotoPerfil = fotoPerfil;
 	}
 
 	/* Auditoria... */

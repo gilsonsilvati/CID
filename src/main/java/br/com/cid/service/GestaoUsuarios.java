@@ -17,7 +17,7 @@ public class GestaoUsuarios implements Serializable {
 	private Usuarios usuarios;
 	
 	@Transactional
-	public void salvar(Usuario usuario) {
+	public void salvar(Usuario usuario) throws NegocioException {
 		this.usuarios.guardar(usuario);
 	}
 	
