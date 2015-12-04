@@ -19,7 +19,7 @@ import org.junit.Test;
 
 import br.com.cid.model.Usuario;
 
-public class TesteUsuario {
+public class UsuarioTest {
 	
 	private static EntityManagerFactory factory;
 	

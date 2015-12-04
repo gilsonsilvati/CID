@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "doenca")
@@ -32,15 +32,15 @@ public class Doenca implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotEmpty
+	@NotBlank
 	@Column(length = 10, nullable = false)
 	private String cid;
 	
-	@NotEmpty
+	@NotBlank
 	@Column(length = 50, nullable = false)
 	private String doenca;
 	
-	@NotEmpty
+	@NotBlank
 	@Column(nullable = false)
 	private String panorama;
 

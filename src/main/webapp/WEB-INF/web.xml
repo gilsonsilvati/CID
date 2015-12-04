@@ -13,14 +13,6 @@
 		<welcome-file>paginas/Home.xhtml</welcome-file>
 	</welcome-file-list>
 	
-	<!-- Configurando DataSource
-	<resource-ref>
-		<description>DB Connection</description>
-		<res-ref-name>jdbc/cidDB</res-ref-name>
-		<res-type>javax.sql.DataSource</res-type>
-		<res-auth>Container</res-auth>
-	</resource-ref> -->
-	
 	<!-- Configuração do Weld (CDI) -->
 	<listener>
 		<listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
@@ -215,5 +207,16 @@
 		<error-code>403</error-code>
 		<location>/paginas/403.xhtml</location>
 	</error-page>
+	
+	<!-- Configurando protocolo HTTPS -->
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>securedapp</web-resource-name>
+			<url-pattern>/*</url-pattern>
+		</web-resource-collection>
+		<user-data-constraint>
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
 
 </web-app>

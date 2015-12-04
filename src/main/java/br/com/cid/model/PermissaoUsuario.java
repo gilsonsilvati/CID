@@ -21,7 +21,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "permissao_usuario")
@@ -37,12 +37,13 @@ public class PermissaoUsuario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotEmpty
+	@NotBlank
 	@Column(length = 50, nullable = false)
 	@Pattern(regexp = "^[\\w\\-]+(\\.[\\w\\-]+)*@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$", message = "é inválido!")
 	private String email;
 	
 	@Enumerated(EnumType.STRING)
+	@NotBlank
 	@Column(length = 10, nullable = false)
 	private TipoPermissao permissao;
 	

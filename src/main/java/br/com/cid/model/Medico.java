@@ -17,10 +17,9 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "medico")
@@ -36,23 +35,24 @@ public class Medico implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotEmpty
+	@NotBlank
 	@Column(length = 100, nullable = false)
 	private String nome;
 	
-	@NotEmpty
+	@NotBlank
 	@Column(length = 50, nullable = false)
 	private String especialidade;
 	
-	@NotNull
+	@NotBlank
 	@Column(length = 10, nullable = false)
 	private Integer crm;
 	
 	@Enumerated(EnumType.STRING)
+	@NotBlank
 	@Column(length = 2, nullable = false)
 	private UF sigla;
 	
-	@NotEmpty
+	@NotBlank
 	@Column(length = 50, nullable = false)
 	@Pattern(regexp = "^[\\w\\-]+(\\.[\\w\\-]+)*@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$", message = "é inválido!")
 	private String email;

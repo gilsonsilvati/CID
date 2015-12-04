@@ -13,7 +13,7 @@ public abstract class Usuario_ {
 	public static volatile SingularAttribute<Usuario, Date> dataModificacao;
 	public static volatile SingularAttribute<Usuario, String> senha;
 	public static volatile ListAttribute<Usuario, PermissaoUsuario> permissoes;
-	public static volatile SingularAttribute<Usuario, byte[]> foto;
+	public static volatile SingularAttribute<Usuario, byte[]> fotoPerfil;
 	public static volatile SingularAttribute<Usuario, String> cpf;
 	public static volatile SingularAttribute<Usuario, String> nome;
 	public static volatile SingularAttribute<Usuario, Long> id;

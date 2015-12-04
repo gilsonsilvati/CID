@@ -21,7 +21,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
 
 import br.com.cid.sha2.TransformaStringSHA2;
@@ -40,34 +40,34 @@ public class Usuario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotEmpty
+	@NotBlank
 	@Column(length = 100, nullable = false)
 	private String nome;
 	
-	@NotEmpty
+	@NotBlank
 	@Column(length = 50, nullable = false)
 	@Pattern(regexp = "^[\\w\\-]+(\\.[\\w\\-]+)*@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$", message = "é inválido!")
 	private String email;
 	
-	@NotEmpty
+	@NotBlank
 	@Column(length = 64, nullable = false)
 	private String senha;
 	
-	@NotEmpty
+	@NotBlank
 	@CPF
 	@Column(length = 14, nullable = false)
 	private String cpf;
 	
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.MERGE, orphanRemoval = true)
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<PermissaoUsuario> permissoes;
 
 	/* Para fazer auditoria... */
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "data_criacao", nullable = false, updatable = false)
+	@Column(name = "data_criacao", updatable = false)
 	private Date dataCriacao;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "data_modificacao", nullable = false, updatable = true)
+	@Column(name = "data_modificacao", updatable = true)
 	private Date dataModificacao;
 	
 	@Lob
