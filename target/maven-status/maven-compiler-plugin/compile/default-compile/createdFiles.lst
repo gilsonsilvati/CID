@@ -3,8 +3,8 @@ br/com/cid/model/Medico_.class
 br/com/cid/controller/consulta/ConsultaMedicoBean.class
 br/com/cid/repository/Permissoes.class
 br/com/cid/repository/infra/PermissoesJPA.class
-br/com/cid/controller/cadastro/CadastroUsuarioBean.class
 br/com/cid/controller/consulta/ConsultaDoencaBean.class
+br/com/cid/controller/cadastro/CadastroUsuarioBean.class
 br/com/cid/controller/permissao/CadastraPermissaoBean.class
 br/com/cid/converter/MedicoConverter.class
 br/com/cid/repository/infra/UsuariosJPA.class
@@ -28,14 +28,14 @@ br/com/cid/converter/UsuarioConverter.class
 br/com/cid/service/GestaoDoencas.class
 br/com/cid/service/NegocioException.class
 br/com/cid/service/GestaoMedicos.class
-br/com/cid/repository/infra/MedicosJPA.class
 br/com/cid/util/jpa/EntityManagerProducer.class
+br/com/cid/repository/infra/MedicosJPA.class
 br/com/cid/model/Doenca.class
 br/com/cid/sha2/TransformaStringSHA2.class
 br/com/cid/model/TipoPermissao.class
 br/com/cid/repository/infra/DoencasJPA.class
-br/com/cid/controller/cadastro/CadastroMedicoBean.class
 br/com/cid/util/jsf/FacesMessages.class
+br/com/cid/controller/cadastro/CadastroMedicoBean.class
 br/com/cid/converter/PermissaoUsuarioConverter.class
 br/com/cid/model/Usuario.class
 br/com/cid/modelLazy/LazyDoencaDataModel.class

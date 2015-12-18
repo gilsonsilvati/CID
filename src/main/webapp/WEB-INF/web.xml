@@ -208,7 +208,7 @@
 		<location>/paginas/403.xhtml</location>
 	</error-page>
 	
-	<!-- Configurando protocolo HTTPS -->
+	<!-- Configurando protocolo HTTPS
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>securedapp</web-resource-name>
@@ -217,6 +217,6 @@
 		<user-data-constraint>
 			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
 		</user-data-constraint>
-	</security-constraint>
+	</security-constraint> -->
 
 </web-app>

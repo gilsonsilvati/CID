@@ -10,7 +10,7 @@
 	<!-- JAAS (Java Authentication and Authorization Service) -->
 	<Realm className="org.apache.catalina.realm.JDBCRealm" driverName="com.mysql.jdbc.Driver"
 		connectionURL="jdbc:mysql://127.0.0.1:3306/cid"
-		connectionName="root" connectionPassword="tapout"
+		connectionName="root" connectionPassword="Projec@0"
 		userTable="usuario" userNameCol="email" userCredCol="senha"
 		userRoleTable="permissao_usuario" roleNameCol="permissao" digest="SHA-256" />
 </Context>

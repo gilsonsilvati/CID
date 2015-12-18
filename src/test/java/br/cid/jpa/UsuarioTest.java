@@ -1,3 +1,4 @@
+/*
 package br.cid.jpa;
 
 import java.util.List;
@@ -77,3 +78,4 @@ public class UsuarioTest {
 	}
 
 }
+*/
