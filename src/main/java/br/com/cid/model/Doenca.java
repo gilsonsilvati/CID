@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
+import javax.persistence.Index;
 import javax.persistence.NamedQuery;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -19,11 +19,8 @@ import javax.persistence.TemporalType;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-@Table(name = "doenca")
-@NamedQueries({
-	@NamedQuery(name = "Doenca.buscarTodos", query = "select d from Doenca d"),
-	@NamedQuery(name = "Doenca.buscarPorCID", query = "select d from Doenca d where d.cid = :cid")
-})
+@Table(name = "doenca", indexes = {@Index(columnList = "cid", unique = true)})
+@NamedQuery(name = "Doenca.buscarPorCID", query = "select d from Doenca d where d.cid = :cid")
 public class Doenca implements Serializable {
 
 	private static final long serialVersionUID = 1L;

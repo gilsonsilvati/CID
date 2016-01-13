@@ -5,22 +5,27 @@
 		xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
 			http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	
-	<persistence-unit name="cidPU" transaction-type="RESOURCE_LOCAL">
-		<properties>
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/cid" />
-			<property name="javax.persistence.jdbc.user" value="root" />
-			<property name="javax.persistence.jdbc.password" value="Projec@0" />
+	<persistence-unit name="cidPU" transaction-type="JTA">
+		<jta-data-source>java:jboss/datasources/gerenciador-acesso-db</jta-data-source>
 			
-			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />
-			<property name="javax.persistence.schema-generation.create-source" value="metadata-then-script" />
-			<property name="javax.persistence.schema-generation.drop-source" value="metadata-then-script" />
-			<property name="javax.persistence.sql-load-script-source" value="META-INF/sql/carregar-dados.sql" />
-		
-			<!-- <property name="hibernate.hbm2ddl.auto" value="update" /> -->
+		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			
+			<!-- Injetando dados... -->
+			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />
+			<property name="javax.persistence.schema-generation.create-source" value="metadata" />
+			<property name="javax.persistence.sql-load-script-source" value="META-INF/sql/carregar-dados.sql" />
+			
+		
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
+			
+			<!-- Habilitando Cache
+			<property name="hibernate.cache.use_second_level_cache" value="true" />
+			<property name="hibernate.cache.use_query_cache" value="true" />
+			-->
+			
 		</properties>
 	</persistence-unit>
 	

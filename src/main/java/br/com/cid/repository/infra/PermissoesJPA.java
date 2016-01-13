@@ -6,6 +6,9 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+
 import br.com.cid.model.PermissaoUsuario;
 import br.com.cid.repository.Permissoes;
 
@@ -16,12 +19,13 @@ public class PermissoesJPA implements Permissoes, Serializable {
 	@Inject
 	private EntityManager manager;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<PermissaoUsuario> todos() {
-		List<PermissaoUsuario> todasPermissoes = manager.createNamedQuery("PermissaoUsuario.buscarTodos",
-				PermissaoUsuario.class).getResultList();
+		Session session = manager.unwrap(Session.class);
+		Criteria criteria = session.createCriteria(PermissaoUsuario.class);
 		
-		return todasPermissoes;
+		return criteria.list();
 	}
 
 	@Override

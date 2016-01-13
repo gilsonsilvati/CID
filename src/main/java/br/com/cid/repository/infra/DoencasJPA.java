@@ -10,6 +10,9 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+
 import br.com.cid.model.Doenca;
 import br.com.cid.repository.Doencas;
 
@@ -20,12 +23,13 @@ public class DoencasJPA implements Doencas, Serializable {
 	@Inject
 	private EntityManager manager;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Doenca> todos() {
-		List<Doenca> todasDoencas = manager.createNamedQuery("Doenca.buscarTodos", Doenca.class)
-				.getResultList();
+		Session session = manager.unwrap(Session.class);
+		Criteria criteria = session.createCriteria(Doenca.class);
 		
-		return todasDoencas;
+		return criteria.list();
 	}
 
 	@Override
@@ -55,7 +59,7 @@ public class DoencasJPA implements Doencas, Serializable {
 	// Lazy
 	@Override
 	public List<Doenca> buscarComPaginacao(int first, int pageSize) {
-		return manager.createNamedQuery("Doenca.buscarTodos", Doenca.class)
+		return manager.createQuery("from Doenca", Doenca.class)
 				.setFirstResult(first)
 				.setMaxResults(pageSize)
 				.getResultList();

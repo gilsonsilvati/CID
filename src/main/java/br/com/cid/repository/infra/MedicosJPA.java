@@ -6,6 +6,9 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+
 import br.com.cid.model.Medico;
 import br.com.cid.repository.Medicos;
 
@@ -16,12 +19,13 @@ public class MedicosJPA implements Medicos, Serializable {
 	@Inject
 	private EntityManager manager;
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Medico> todos() {
-		List<Medico> todosMedicos = manager.createNamedQuery("Medico.buscarTodos", Medico.class)
-				.getResultList();
+		Session session = manager.unwrap(Session.class);
+		Criteria criteria = session.createCriteria(Medico.class);
 		
-		return todosMedicos;
+		return criteria.list();
 	}
 
 	@Override

@@ -6,6 +6,9 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+
 import br.com.cid.model.Usuario;
 import br.com.cid.repository.Usuarios;
 
@@ -16,12 +19,13 @@ public class UsuariosJPA implements Usuarios, Serializable {
 	@Inject
 	private EntityManager manager;
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Usuario> todos() {
-		List<Usuario> todosUsuarios = manager.createNamedQuery("Usuario.buscarTodos", Usuario.class)
-				.getResultList();
+		Session session = manager.unwrap(Session.class);
+		Criteria criteria = session.createCriteria(Usuario.class);
 		
-		return todosUsuarios;
+		return criteria.list();
 	}
 
 	@Override

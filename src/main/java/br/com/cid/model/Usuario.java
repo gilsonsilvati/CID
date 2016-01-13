@@ -10,8 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.Lob;
-import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
@@ -27,11 +27,8 @@ import org.hibernate.validator.constraints.br.CPF;
 import br.com.cid.sha2.TransformaStringSHA2;
 
 @Entity
-@Table(name = "usuario")
-@NamedQueries({
-	@NamedQuery(name = "Usuario.buscarTodos", query = "select u from Usuario u"),
-	@NamedQuery(name = "Usuario.buscarPorCPF", query = "select u from Usuario u where u.cpf = :cpf")
-})
+@Table(name = "usuario", indexes = {@Index(columnList = "cpf", unique = true)})
+@NamedQuery(name = "Usuario.buscarPorCPF", query = "select u from Usuario u where u.cpf = :cpf")
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;

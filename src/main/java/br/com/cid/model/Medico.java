@@ -10,23 +10,21 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
+import javax.persistence.Index;
 import javax.persistence.NamedQuery;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-@Table(name = "medico")
-@NamedQueries({
-	@NamedQuery(name = "Medico.buscarTodos", query = "select m from Medico m"),
-	@NamedQuery(name = "Medico.buscarPorCRM", query = "select m from Medico m where m.crm = :crm")
-})
+@Table(name = "medico", indexes = {@Index(columnList = "crm", unique = true)})
+@NamedQuery(name = "Medico.buscarPorCRM", query = "select m from Medico m where m.crm = :crm")
 public class Medico implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -43,12 +41,11 @@ public class Medico implements Serializable {
 	@Column(length = 50, nullable = false)
 	private String especialidade;
 	
-	@NotBlank
+	@NotNull
 	@Column(length = 10, nullable = false)
 	private Integer crm;
 	
 	@Enumerated(EnumType.STRING)
-	@NotBlank
 	@Column(length = 2, nullable = false)
 	private UF sigla;
 	
