@@ -79,3 +79,8 @@ body {
 	width: 35px;
 	height: 35px;
 }
+
+.messages {
+	position: relative;
+	margin-top: 70px;
+}

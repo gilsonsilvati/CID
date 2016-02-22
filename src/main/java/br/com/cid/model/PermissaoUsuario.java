@@ -24,9 +24,10 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+@NamedQuery(name = "PermissaoUsuario.buscarPorEmail", query = "select pu from PermissaoUsuario pu " +
+		"where pu.email = :email")
 @Entity
 @Table(name = "permissao_usuario", indexes = {@Index(columnList = "email", unique = true)})
-@NamedQuery(name = "PermissaoUsuario.buscarPorEmail", query = "select pu from PermissaoUsuario pu where pu.email = :email")
 public class PermissaoUsuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -57,6 +58,8 @@ public class PermissaoUsuario implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "data_modificacao", nullable = false, updatable = true)
 	private Date dataModificacao;
+	
+	// TODO: Adicionar version...
 	
 	public PermissaoUsuario() {
 	}

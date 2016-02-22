@@ -12,7 +12,7 @@ import br.com.cid.repository.Permissoes;
 public class GestaoPermissoes implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	@Inject
 	private Permissoes permissoes;
 	

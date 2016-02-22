@@ -1,6 +1,5 @@
 package br.com.cid.repository.infra;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -12,7 +11,7 @@ import org.hibernate.Session;
 import br.com.cid.model.PermissaoUsuario;
 import br.com.cid.repository.Permissoes;
 
-public class PermissoesJPA implements Permissoes, Serializable {
+public class PermissoesJPA implements Permissoes {
 
 	private static final long serialVersionUID = 1L;
 	

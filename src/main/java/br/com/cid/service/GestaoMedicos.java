@@ -12,7 +12,7 @@ import br.com.cid.repository.Medicos;
 public class GestaoMedicos implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-
+	
 	@Inject
 	private Medicos medicos;
 	

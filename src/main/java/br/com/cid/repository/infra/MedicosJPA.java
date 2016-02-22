@@ -1,6 +1,5 @@
 package br.com.cid.repository.infra;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -12,7 +11,7 @@ import org.hibernate.Session;
 import br.com.cid.model.Medico;
 import br.com.cid.repository.Medicos;
 
-public class MedicosJPA implements Medicos, Serializable {
+public class MedicosJPA implements Medicos {
 
 	private static final long serialVersionUID = 1L;
 	

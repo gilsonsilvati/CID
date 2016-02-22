@@ -1,6 +1,7 @@
 /home/gilsonsilvati/Dropbox/workspace/cid/src/main/java/br/com/cid/sha2/TransformaStringSHA2.java
 /home/gilsonsilvati/Dropbox/workspace/cid/src/main/java/br/com/cid/controller/consulta/ConsultaUsuarioBean.java
 /home/gilsonsilvati/Dropbox/workspace/cid/src/main/java/br/com/cid/repository/Usuarios.java
+/home/gilsonsilvati/Dropbox/workspace/cid/src/main/java/br/com/cid/servlet/FotoServlet.java
 /home/gilsonsilvati/Dropbox/workspace/cid/src/main/java/br/com/cid/converter/MedicoConverter.java
 /home/gilsonsilvati/Dropbox/workspace/cid/src/main/java/br/com/cid/repository/infra/MedicosJPA.java
 /home/gilsonsilvati/Dropbox/workspace/cid/src/main/java/br/com/cid/model/Medico.java

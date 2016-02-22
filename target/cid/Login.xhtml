@@ -20,9 +20,9 @@
 				
 			<p:graphicImage library="imagens" name="logo_pdf.png" styleClass="logo" />
 			
-			<p:growl id="growl" showDetail="false" showSummary="true" autoUpdate="true" sticky="true"
-				style="font-size: 14px" />
-				
+			<p:messages id="messages" showDetail="false" showSummary="true" autoUpdate="true" sticky="true"
+				style="font-size: 14px" styleClass="messages" />
+			
 			<p:ajaxStatus styleClass="ajax-status">
 				<f:facet name="start">
 					<h:graphicImage library="imagens" name="loading.gif" style="width: 35px; height: 35px" />
@@ -33,25 +33,25 @@
 			</p:ajaxStatus>
 
 			<h:panelGrid columns="2" cellpadding="5" cellspacing="10" id="painel-login">
-				
+			
 				<f:facet name="header">
 					<h:outputText value="#{msg.header_login}" styleClass="header" />
 				</f:facet>
 				
-				<p:button value="#{msg.email}" icon="fa fa-envelope" disabled="true"
+				<p:button value="#{msg.email}*" icon="fa fa-envelope" disabled="true"
 					styleClass="button-login" />					
 					
 				<p:inputText id="email" value="#{loginUsuarioBean.email}"
 					placeholder="exemplo@dominio.com.br" size="30" />
 
-				<p:button value="#{msg.senha}" icon="fa fa-key" disabled="true"
+				<p:button value="#{msg.senha}*" icon="fa fa-key" disabled="true"
 					styleClass="button-login" />
 				
 				<p:password id="senha" value="#{loginUsuarioBean.senha}"
 					placeholder="**********" size="30" />	
 				
 				<p:outputLabel />
-				<p:commandButton value="#{msg.botao_entrar}" icon="fa fa-lock" update="@form, growl"
+				<p:commandButton value="#{msg.botao_entrar}" icon="fa fa-lock" update="@form"
 					action="#{loginUsuarioBean.logar}" styleClass="botao" />
 
 			</h:panelGrid>

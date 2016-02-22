@@ -1,10 +1,11 @@
 package br.com.cid.repository;
 
+import java.io.Serializable;
 import java.util.List;
 
 import br.com.cid.model.Usuario;
 
-public interface Usuarios {
+public interface Usuarios extends Serializable {
 	
 	public List<Usuario> todos();
 	public Usuario porId(Long id);

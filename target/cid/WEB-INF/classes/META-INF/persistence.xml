@@ -5,8 +5,8 @@
 		xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
 			http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	
-	<persistence-unit name="cidPU" transaction-type="JTA">
-		<jta-data-source>java:jboss/datasources/gerenciador-acesso-db</jta-data-source>
+	<persistence-unit name="cidPU" transaction-type="RESOURCE_LOCAL">
+		<non-jta-data-source>java:comp/env/jdbc/GerenciadorAcessoDB</non-jta-data-source>
 			
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
@@ -17,14 +17,9 @@
 			<property name="javax.persistence.sql-load-script-source" value="META-INF/sql/carregar-dados.sql" />
 			
 		
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<!-- <property name="hibernate.hbm2ddl.auto" value="update" /> -->
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
-			
-			<!-- Habilitando Cache
-			<property name="hibernate.cache.use_second_level_cache" value="true" />
-			<property name="hibernate.cache.use_query_cache" value="true" />
-			-->
 			
 		</properties>
 	</persistence-unit>

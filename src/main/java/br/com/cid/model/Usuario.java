@@ -12,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.Lob;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -28,7 +27,6 @@ import br.com.cid.sha2.TransformaStringSHA2;
 
 @Entity
 @Table(name = "usuario", indexes = {@Index(columnList = "cpf", unique = true)})
-@NamedQuery(name = "Usuario.buscarPorCPF", query = "select u from Usuario u where u.cpf = :cpf")
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -70,6 +68,8 @@ public class Usuario implements Serializable {
 	@Lob
 	@Column(name = "foto_perfil")
 	private byte[] fotoPerfil;
+	
+	// TODO: Adicionar version...
 	
 	public Usuario() {
 	}

@@ -22,7 +22,7 @@
 			<h:panelGrid columns="3" cellpadding="3" cellspacing="5">
 				<p:outputLabel value="cpf:" for="pesquisa" />
 				<p:inputMask mask="999.999.999-99" id="pesquisa"
-					value="#{consultaUsuarioBean.usuario.cpf}" />
+					value="#{consultaUsuarioBean.cpf}" />
 				<p:commandButton value="Pesquisar" icon="fa fa-search" styleClass="botao"
 					action="#{consultaUsuarioBean.pesquisar}" update="table-consulta-usuario" />
 			</h:panelGrid>

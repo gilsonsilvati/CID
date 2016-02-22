@@ -1,18 +1,18 @@
 package br.com.cid.repository.infra;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 
 import br.com.cid.model.Usuario;
 import br.com.cid.repository.Usuarios;
 
-public class UsuariosJPA implements Usuarios, Serializable {
+public class UsuariosJPA implements Usuarios {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -35,11 +35,12 @@ public class UsuariosJPA implements Usuarios, Serializable {
 
 	@Override
 	public List<Usuario> porCPF(String cpf) {
-		List<Usuario> todosPorCPF = manager.createNamedQuery("Usuario.buscarPorCPF", Usuario.class)
-				.setParameter("cpf", cpf)
-				.getResultList();
+		String query = "from Usuario where cpf like :cpf "
+				+ "order by nome";
 		
-		return todosPorCPF;
+		return manager.createQuery(query, Usuario.class)
+				.setParameter("cpf", "%" + StringUtils.defaultIfBlank(cpf, "") + "%")
+				.getResultList();
 	}
 
 	@Override

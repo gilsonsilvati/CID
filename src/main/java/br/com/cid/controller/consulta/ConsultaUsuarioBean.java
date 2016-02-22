@@ -25,6 +25,8 @@ public class ConsultaUsuarioBean implements Serializable {
 	
 	private Usuario usuarioSelecionado;
 	
+	private String cpf;
+	
 	@Inject
 	private Usuarios usuarios;
 	
@@ -48,7 +50,7 @@ public class ConsultaUsuarioBean implements Serializable {
 	}
 	
 	public void pesquisar() {
-		this.todosUsuarios = usuarios.porCPF(this.usuario.getCpf());
+		this.todosUsuarios = usuarios.porCPF(cpf);
 		this.facesMessages.info("resultado da pesquisa!");
 	}
 	
@@ -67,5 +69,13 @@ public class ConsultaUsuarioBean implements Serializable {
 	public Usuario getUsuario() {
 		return usuario;
 	}
-	
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
 }

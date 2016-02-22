@@ -1,6 +1,5 @@
 package br.com.cid.repository.infra;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -16,7 +15,7 @@ import org.hibernate.Session;
 import br.com.cid.model.Doenca;
 import br.com.cid.repository.Doencas;
 
-public class DoencasJPA implements Doencas, Serializable {
+public class DoencasJPA implements Doencas {
 
 	private static final long serialVersionUID = 1L;
 	

@@ -22,9 +22,9 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+@NamedQuery(name = "Medico.buscarPorCRM", query = "select m from Medico m where m.crm = :crm")
 @Entity
 @Table(name = "medico", indexes = {@Index(columnList = "crm", unique = true)})
-@NamedQuery(name = "Medico.buscarPorCRM", query = "select m from Medico m where m.crm = :crm")
 public class Medico implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -62,6 +62,8 @@ public class Medico implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "data_modificacao", nullable = false, updatable = true)
 	private Date dataModificacao;
+	
+	// TODO: Adicionar version...
 	
 	public Medico() {
 	}

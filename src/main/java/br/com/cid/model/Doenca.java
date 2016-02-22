@@ -18,9 +18,9 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+@NamedQuery(name = "Doenca.buscarPorCID", query = "select d from Doenca d where d.cid = :cid")
 @Entity
 @Table(name = "doenca", indexes = {@Index(columnList = "cid", unique = true)})
-@NamedQuery(name = "Doenca.buscarPorCID", query = "select d from Doenca d where d.cid = :cid")
 public class Doenca implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -49,6 +49,8 @@ public class Doenca implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "data_modificacao", nullable = false, updatable = true)
 	private Date dataModificacao;
+	
+	// TODO: Adicionar version...
 	
 	public Doenca() {
 	}

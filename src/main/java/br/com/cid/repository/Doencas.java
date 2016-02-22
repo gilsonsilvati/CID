@@ -1,10 +1,11 @@
 package br.com.cid.repository;
 
+import java.io.Serializable;
 import java.util.List;
 
 import br.com.cid.model.Doenca;
 
-public interface Doencas {
+public interface Doencas extends Serializable {
 
 	public List<Doenca> todos();
 	public Doenca porId(Long id);
