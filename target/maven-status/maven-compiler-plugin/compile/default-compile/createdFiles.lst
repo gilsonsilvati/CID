@@ -31,7 +31,6 @@ br/com/cid/service/GestaoMedicos.class
 br/com/cid/util/jpa/EntityManagerProducer.class
 br/com/cid/repository/infra/MedicosJPA.class
 br/com/cid/model/Doenca.class
-br/com/cid/servlet/FotoServlet.class
 br/com/cid/sha2/TransformaStringSHA2.class
 br/com/cid/model/TipoPermissao.class
 br/com/cid/repository/infra/DoencasJPA.class

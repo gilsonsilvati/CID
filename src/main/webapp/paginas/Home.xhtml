@@ -17,8 +17,6 @@
 <h:body>
 	<p:layout fullPage="true">
 
-	<!-- #{facesContext.externalContext.userPrincipal.name} -->
-
 		<p:layoutUnit position="north" size="50"
 			header="#{msg.welcome}"
 			styleClass="header">
@@ -88,16 +86,14 @@
 					</f:facet>
 				</p:ajaxStatus>
 			
-				<h4>olá, #{facesContext.externalContext.userPrincipal.name}</h4>
+				<h4 class="userLogado">olá, #{facesContext.externalContext.userPrincipal.name}</h4>
 	        	<h:graphicImage library="imagens" name="logo.png" styleClass="logo-body" />
 	        			
 	        </ui:insert>
 		</p:layoutUnit>
 
 		<p:layoutUnit position="south" size="35" styleClass="footer">
-			<h:outputText
-				value="copyright © 2015 CID - all rights reserved -
-						developed by: gilson brasil - gilson silva - josenaldo junior" />
+			<h:outputText value="#{msg.copyright}" />
 		</p:layoutUnit>
 
 	</p:layout>

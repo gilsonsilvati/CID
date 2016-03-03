@@ -42,6 +42,11 @@ h4 {
 	box-shadow: 4px 4px 4px #babdb6;
 }
 
+h4.userLogado:hover {
+	color: #ffffff;
+	text-shadow: 0px 0px 5px #ffffff;
+}
+
 .ui-slidemenu {
 	border: 0;
 }
@@ -81,6 +86,11 @@ h4 {
 .footer {
 	font-size: 14px;
 	letter-spacing: 1px;
+}
+
+.footer:hover {
+	color: #000000;
+	text-shadow: 0px 0px 5px #000000;
 }
 
 .logo-body {

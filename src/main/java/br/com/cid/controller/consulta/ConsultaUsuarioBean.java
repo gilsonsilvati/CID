@@ -8,6 +8,8 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import br.com.cid.model.Usuario;
 import br.com.cid.repository.Usuarios;
 import br.com.cid.service.GestaoUsuarios;
@@ -25,6 +27,7 @@ public class ConsultaUsuarioBean implements Serializable {
 	
 	private Usuario usuarioSelecionado;
 	
+	@CPF
 	private String cpf;
 	
 	@Inject

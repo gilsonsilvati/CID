@@ -9,9 +9,9 @@
 > Conclusion: DEZ/2016.
 > College: Projeção.
 
->> Authors: Gilson Brasil - Gilson Silva - Josenaldo Jr.
+>> Authors: Gilson Brasil - Gilson Silva.
 
->> Developed: Gilson Silva e Josenaldo Jr.
+>> Developed: Gilson Silva.
 
 >> Documented: Gilson Brasil.
 
