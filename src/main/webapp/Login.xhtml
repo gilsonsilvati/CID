@@ -38,20 +38,20 @@
 					<h:outputText value="#{msg.header_login}" styleClass="header" />
 				</f:facet>
 				
-				<p:button value="#{msg.email}*" icon="fa fa-envelope" disabled="true"
-					styleClass="button-login" />					
+				<p:graphicImage library="imagens" name="email.png" title="E-mail"
+					width="45px" height="auto" />					
 					
 				<p:inputText id="email" value="#{loginUsuarioBean.email}"
 					placeholder="exemplo@dominio.com.br" size="30" />
 
-				<p:button value="#{msg.senha}*" icon="fa fa-key" disabled="true"
-					styleClass="button-login" />
+				<p:graphicImage library="imagens" name="password.png" title="Senha"
+					width="40px" height="auto" />
 				
 				<p:password id="senha" value="#{loginUsuarioBean.senha}"
 					placeholder="**********" size="30" />	
 				
 				<p:outputLabel />
-				<p:commandButton value="#{msg.botao_entrar}" icon="fa fa-lock" update="@form"
+				<p:commandButton id="entrar" value="#{msg.botao_entrar}" icon="fa fa-lock" update="@form"
 					action="#{loginUsuarioBean.logar}" styleClass="botao" />
 
 			</h:panelGrid>
