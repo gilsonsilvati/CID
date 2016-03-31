@@ -1,0 +1,68 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:composite="http://xmlns.jcp.org/jsf/composite"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/paginas/Home.xhtml">
+	
+	<f:metadata>
+		<f:viewParam name="id" value="#{cadastraPermissaoBean.permissaoUsuario}" />
+	</f:metadata>
+	
+	<ui:define name="titulo">..:: #{cadastraPermissaoBean.editando ? 'Editando permissão' : 'Nova permissão'} ::..</ui:define>
+
+	<ui:define name="center">
+		<h:form id="frm-permissao">
+			<h:outputStylesheet library="css" name="CadastraPermissao.css" />
+			
+			<h4>..:: #{cadastraPermissaoBean.editando ? 'editando permissão' : 'nova permissão'} ::..</h4>
+
+			<p:dialog id="dialog-permissao" visible="true" modal="false" resizable="false"
+					styleClass="dialog-permissao" closable="false" position="center" focus="email">
+			
+				<p:messages showDetail="false" showSummary="true" autoUpdate="true"
+					style="font-size: 14px" />
+					
+				<h:panelGrid id="panel-permissao" columns="2" cellpadding="5" cellspacing="10">
+				
+					<f:facet name="header">
+						<h:outputText value="Preencha o formulário" styleClass="header-permissao" />
+					</f:facet>
+					
+					<p:outputLabel value="Id:" for="id" />
+					<p:inputText id="id" value="#{cadastraPermissaoBean.permissaoUsuario.id}"
+						readonly="true" size="5" placeholder="@Id" />
+				
+					<p:outputLabel value="E-mail:" for="email" />
+					<p:inputText id="email" value="#{cadastraPermissaoBean.permissaoUsuario.email}"
+						placeholder="exemplo@dominio.com" size="25" />
+
+					<p:outputLabel value="Tipo de permissão:" for="permissao" />
+					<p:selectOneMenu value="#{cadastraPermissaoBean.permissaoUsuario.permissao}"
+							required="true" style="width: 115px" label="Tipo de permissão"
+							id="permissao">
+						<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+						<f:selectItems value="#{cadastraPermissaoBean.permissoes}" var="permissoes"
+							itemLabel="#{permissoes}" itemValue="#{permissoes}" />
+					</p:selectOneMenu>
+					
+					<p:outputLabel value="Código do usuário:" for="codigo-usuario" />
+					<p:inputText id="codigo-usuario" required="true"
+						value="#{cadastraPermissaoBean.permissaoUsuario.usuario}"
+						placeholder="@Id" size="5" />
+
+					<h:outputLabel />	
+					<p:commandButton value="Salvar" update="@form" icon="fa fa-save"
+							action="#{cadastraPermissaoBean.salvar}" styleClass="botao">
+							
+						<f:ajax execute="@form" render=":frm-permissao:dialog-permissao" />	
+					</p:commandButton>
+					
+				</h:panelGrid>
+				
+			</p:dialog>
+			
+		</h:form>
+	</ui:define>
+</ui:composition>

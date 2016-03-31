@@ -1,0 +1,106 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:composite="http://xmlns.jcp.org/jsf/composite"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/paginas/Home.xhtml">
+	
+	<ui:define name="titulo">..:: Consulta | Usuário ::..</ui:define>
+
+	<ui:define name="center">
+		<h:form id="frm-consulta-usuario">
+			<h:outputStylesheet library="css" name="ConsultaUsuario.css" />
+			
+			<f:metadata>
+				<f:viewAction action="#{consultaUsuarioBean.inicializar}" />
+			</f:metadata>
+			
+			<h4>Usuários cadastrados no sistema</h4>
+			<br />
+			
+			<h:panelGrid columns="3" cellpadding="3" cellspacing="5">
+				<p:outputLabel value="cpf:" for="pesquisa" />
+				<p:inputMask mask="999.999.999-99" id="pesquisa"
+					value="#{consultaUsuarioBean.cpf}" />
+				<p:commandButton value="Pesquisar" icon="fa fa-search" styleClass="botao"
+					action="#{consultaUsuarioBean.pesquisar}" update="table-consulta-usuario" />
+			</h:panelGrid>
+
+			<p:ajaxStatus styleClass="ajax-status">
+				<f:facet name="start">
+					<h:graphicImage library="imagens" name="loading.gif"
+						style="width: 35px; height: 35px" />
+				</f:facet>
+				<f:facet name="complete">
+					<h:outputText value="" />
+				</f:facet>
+			</p:ajaxStatus>
+
+			<br />
+			<p:separator />
+			<br />
+			
+			<p:messages showDetail="false" showSummary="true" autoUpdate="true" closable="true"
+				style="font-size: 14px" />
+
+			<p:dataTable id="table-consulta-usuario" value="#{consultaUsuarioBean.usuarios}"
+					widgetVar="table-usuario" var="usuario" emptyMessage="Nenhum usuário cadastrado!"
+					style="margin-top: 20px" styleClass="table-consulta-usuario"
+					paginator="true" paginatorPosition="bottom" rows="5" paginatorAlwaysVisible="false"
+					rowsPerPageTemplate="5,10,15"
+					selection="#{consultaUsuarioBean.usuarioSelecionado}" selectionMode="single"
+					rowKey="#{usuario.id}" reflow="true">
+				
+				<p:column style="font-size: 17px" width="20">
+					<f:facet name="header">id</f:facet>
+					<p:outputLabel value="#{usuario.id}" style="font-size: 12px" />
+				</p:column>
+					
+				<p:column style="font-size: 17px">
+					<f:facet name="header">nome</f:facet>
+					<p:outputLabel value="#{usuario.nome}" style="font-size: 11px" />
+				</p:column>
+				
+				<p:column style="font-size: 17px">
+					<f:facet name="header">e-mail</f:facet>
+					<p:outputLabel value="#{usuario.email}" style="font-size: 14px" />
+				</p:column>
+				
+				<p:column style="font-size: 17px" width="130">
+					<f:facet name="header">cpf</f:facet>
+					<p:outputLabel value="#{usuario.cpf}" style="font-size: 12px" />
+				</p:column>
+				
+				<p:column rendered="#{request.isUserInRole('ADMIN')}"
+						style="font-size: 17px" width="65">
+					<f:facet name="header">opções</f:facet>
+					
+					<h:link outcome="cadastraUsuario">
+						<p:graphicImage library="imagens" name="edit.png" title="Editar"
+							style="width: 20px; heigth: 20px" />
+						
+						<f:param name="id" value="#{usuario.id}" />
+					</h:link>
+					
+					<p:commandLink action="#{consultaUsuarioBean.excluir}" update="@form"
+							process="@this">
+						<p:graphicImage library="imagens" name="excluir.png" title="Excluir"
+							style="width: 20px; heigth: 20px" />
+							
+						<f:setPropertyActionListener value="#{usuario}"
+							target="#{consultaUsuarioBean.usuarioSelecionado}" />
+						
+						<p:confirm icon="fa fa-exclamation-triangle" header="Confirmação de exclusão"
+							message="Excluir o usuário selecionado?" />
+							
+						<f:ajax execute="@form" render=":frm-consulta-usuario:table-consulta-usuario" />
+					</p:commandLink>
+					
+				</p:column>
+			
+			</p:dataTable>
+			
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,115 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:composite="http://xmlns.jcp.org/jsf/composite"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/paginas/Home.xhtml">
+	
+	<ui:define name="titulo">..:: Consulta | Médico ::..</ui:define>
+
+	<ui:define name="center">
+		<h:form id="frm-consulta-medico">
+
+			<h:outputStylesheet library="css" name="ConsultaMedico.css" />
+			
+			<f:metadata>
+				<f:viewAction action="#{consultaMedicoBean.inicializar}" />
+			</f:metadata>
+			
+			<h4>Médicos cadastrados no sistema</h4>
+			<br />
+			
+			<h:panelGrid columns="3" cellpadding="3" cellspacing="5">
+				<p:outputLabel value="crm:" for="crm" />
+				<p:inputText id="crm" value="#{consultaMedicoBean.medico.crm}" />
+				<p:commandButton id="pesquisa" value="Pesquisar" icon="fa fa-search" styleClass="botao"
+					action="#{consultaMedicoBean.pesquisar}" update="table-consulta-medico" />
+			</h:panelGrid>
+			
+			<p:ajaxStatus styleClass="ajax-status">
+				<f:facet name="start">
+					<h:graphicImage library="imagens" name="loading.gif"
+						style="width: 35px; height: 35px" />
+				</f:facet>
+				<f:facet name="complete">
+					<h:outputText value="" />
+				</f:facet>
+			</p:ajaxStatus>
+			
+			<br />
+			<p:separator />
+			<br />
+			
+			<p:messages showDetail="false" showSummary="true" autoUpdate="true" closable="true"
+				style="font-size: 14px" />
+			
+			<p:dataTable id="table-consulta-medico" value="#{consultaMedicoBean.medicos}" var="medico"
+					emptyMessage="Nenhum médico cadastrado!" style="margin-top: 20px"
+					styleClass="table-consulta-medico" paginator="true" paginatorPosition="bottom"
+					rows="5" paginatorAlwaysVisible="false" rowsPerPageTemplate="5,10,15"
+					selection="#{consultaMedicoBean.medicoSelecionado}" selectionMode="single"
+					rowKey="#{medico.id}" reflow="true">
+				
+				<p:column style="font-size: 17px" width="20">
+					<f:facet name="header">id</f:facet>
+					<p:outputLabel value="#{medico.id}" style="font-size: 12px" />
+				</p:column>
+					
+				<p:column style="font-size: 17px">
+					<f:facet name="header">nome</f:facet>
+					<p:outputLabel value="#{medico.nome}" style="font-size: 12px" />
+				</p:column>
+				
+				<p:column style="font-size: 17px">
+					<f:facet name="header">e-mail</f:facet>
+					<p:outputLabel value="#{medico.email}" style="font-size: 12px" />
+				</p:column>
+				
+				<p:column style="font-size: 17px" width="150">
+					<f:facet name="header">especialidade</f:facet>
+					<p:outputLabel value="#{medico.especialidade}" style="font-size: 12px" />
+				</p:column>
+				
+				<p:column style="font-size: 17px" width="90">
+					<f:facet name="header">crm</f:facet>
+					<p:outputLabel value="#{medico.crm}" style="font-size: 12px" />
+				</p:column>
+				
+				<p:column style="font-size: 17px" width="20">
+					<f:facet name="header">uf</f:facet>
+					<p:outputLabel value="#{medico.sigla}" style="font-size: 12px" />
+				</p:column>
+				
+				<p:column rendered="#{request.isUserInRole('ADMIN')}"
+						style="font-size: 17px" width="65">
+					<f:facet name="header">opções</f:facet>
+					
+					<h:link outcome="cadastraMedico">
+						<p:graphicImage library="imagens" name="edit.png" title="Editar"
+							style="width: 20px; heigth: 20px" />
+						
+						<f:param name="id" value="#{medico.id}" />
+					</h:link>
+					
+					<p:commandLink action="#{consultaMedicoBean.excluir}" update="@form"
+							process="@this">
+						<p:graphicImage library="imagens" name="excluir.png" title="Excluir"
+							style="width: 20px; heigth: 20px" />
+							
+						<f:setPropertyActionListener value="#{medico}"
+							target="#{consultaMedicoBean.medicoSelecionado}" />
+							
+						<p:confirm icon="fa fa-exclamation-triangle" header="Confirmação de exclusão"
+							message="Excluir o médico selecionado?" />
+							
+						<f:ajax execute="@form" render=":frm-consulta-medico:table-consulta-medico" />
+					</p:commandLink>
+					
+				</p:column>
+			
+			</p:dataTable>
+			
+		</h:form>
+	</ui:define>
+</ui:composition>

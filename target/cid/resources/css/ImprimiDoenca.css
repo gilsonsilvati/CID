@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+
+* {
+	margin: 0;
+}
+
+.botao {
+	font-variant: small-caps;
+  	letter-spacing: 2px;
+	display: block;
+}
+
+.table-imprimi {
+	width: 900px;
+	height: auto;
+	margin-left: 100px;
+	text-align: left;
+}
+
+.grid-botoes {
+	margin-left: 350px;
+}
+
+.ajax-status {
+	position: absolute;
+	top: 120px;
+	left: 550px;
+	width: 35px;
+	height: 35px
+}

@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+
+* {
+	margin: 0;
+}
+
+.table-consulta-doenca {
+	width: 800px;
+	height: auto;
+	margin-left: 160px;
+	text-align: left;
+}
+
+.ajax-status {
+	position: absolute;
+	top: 50px;
+	left: 550px;
+	width: 50px;
+	height: 50px;
+}
+
+.botao-visao {
+	letter-spacing: 2px;
+	font-variant: small-caps;
+}

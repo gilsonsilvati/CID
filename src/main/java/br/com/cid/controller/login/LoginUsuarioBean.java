@@ -2,8 +2,8 @@ package br.com.cid.controller.login;
 
 import java.io.Serializable;
 
+import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.ServletException;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import br.com.cid.util.jsf.FacesMessages;
 
 @Named
-@ViewScoped
+@RequestScoped
 public class LoginUsuarioBean implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

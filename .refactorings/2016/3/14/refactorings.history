@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 7 elements from project &apos;cid&apos;&#x0A;- Original project: &apos;cid&apos;&#x0A;- Original elements:&#x0A;     cid&#x0A;     generated-sources&#x0A;     generated-test-sources&#x0A;     m2e-wtp&#x0A;     maven-archiver&#x0A;     maven-status&#x0A;     cid.war" description="Delete elements" element1="target/generated-sources" element2="target/m2e-wtp" element3="target/maven-archiver" element4="target/maven-status" element5="target/cid" element6="target/cid.war" element7="target/generated-test-sources" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="7" stamp="1459293280360" subPackages="false" version="1.0"/>
+</session>

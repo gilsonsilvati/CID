@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+
+.table-consulta-medico {
+	text-align: left;
+}
+
+.ajax-status {
+	position: absolute;
+	top: 50px;
+	left: 450px;
+	width: 35px;
+	height: 35px;
+}

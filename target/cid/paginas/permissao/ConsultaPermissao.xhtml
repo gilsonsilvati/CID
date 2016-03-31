@@ -1,0 +1,101 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:composite="http://xmlns.jcp.org/jsf/composite"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/paginas/Home.xhtml">
+	
+	<ui:define name="titulo">..:: Consulta | Permissão ::..</ui:define>
+
+	<ui:define name="center">
+		<h:form id="frm-consulta-permissao">
+
+		<h:outputStylesheet library="css" name="ConsultaPermissao.css" />
+		
+			<f:metadata>
+				<f:viewAction action="#{consultaPermissaoBean.inicializar}" />
+			</f:metadata>
+			
+			<h4>Permissões cadastradas no sistema</h4>
+			<br />
+			
+			<h:panelGrid columns="3" cellpadding="3" cellspacing="5">
+				<p:outputLabel value="e-mail:" for="email" />
+				<p:inputText id="email" value="#{consultaPermissaoBean.permissao.email}" />
+				<p:commandButton id="pesquisa" value="Pesquisar" icon="fa fa-search" styleClass="botao"
+					action="#{consultaPermissaoBean.pesquisar}" update="table-consulta-permissao" />
+			</h:panelGrid>
+
+			<p:ajaxStatus styleClass="ajax-status">
+				<f:facet name="start">
+					<h:graphicImage library="imagens" name="loading.gif"
+						style="width: 35px; height: 35px" />
+				</f:facet>
+				<f:facet name="complete">
+					<h:outputText value="" />
+				</f:facet>
+			</p:ajaxStatus>
+
+			<br />
+			<p:separator />
+			<br />
+			
+			<p:messages showDetail="false" showSummary="true" autoUpdate="true" closable="true"
+				style="font-size: 14px" />
+			
+			<p:dataTable id="table-consulta-permissao" value="#{consultaPermissaoBean.permissoesUsuario}"
+					var="permissoes" emptyMessage="Nenhuma permissão cadastrada!"
+					style="margin-top: 30px" styleClass="table-consulta-permissao"
+					paginator="true" paginatorPosition="bottom" rows="5" paginatorAlwaysVisible="false"
+					rowsPerPageTemplate="5,10,15"
+					selection="#{consultaPermissaoBean.permissaoSelecionada}" selectionMode="single"
+					rowKey="#{permissoes.id}" reflow="true">
+				
+				<p:column style="font-size: 17px" width="20">
+					<f:facet name="header">id</f:facet>
+					<p:outputLabel value="#{permissoes.id}" style="font-size: 14px" />
+				</p:column>
+					
+				<p:column style="font-size: 17px">
+					<f:facet name="header">e-mail</f:facet>
+					<p:outputLabel value="#{permissoes.email}" style="font-size: 14px" />
+				</p:column>
+				
+				<p:column style="font-size: 17px" width="100">
+					<f:facet name="header">permissão</f:facet>
+					<p:outputLabel value="#{permissoes.permissao}" style="font-size: 12px" />
+				</p:column>
+				
+				<p:column rendered="#{request.isUserInRole('ADMIN')}"
+						style="font-size: 17px" width="65">
+					<f:facet name="header">opções</f:facet>
+					
+					<h:link outcome="cadastraPermissao">
+						<p:graphicImage library="imagens" name="edit.png" title="Editar"
+							style="width: 20px; heigth: 20px" />
+						
+						<f:param name="id" value="#{permissoes.id}" />
+					</h:link>
+					
+					<p:commandLink action="#{consultaPermissaoBean.excluir}" update="@form"
+							process="@this">
+						<p:graphicImage library="imagens" name="excluir.png" title="Excluir"
+							style="width: 20px; heigth: 20px" />
+							
+						<f:setPropertyActionListener value="#{permissoes}"
+							target="#{consultaPermissaoBean.permissaoSelecionada}" />
+							
+						<p:confirm icon="fa fa-exclamation-triangle" header="Confirmação de exclusão"
+							message="Excluir a permissão selecionada?" />
+							
+						<f:ajax execute="@form" render=":frm-consulta-permissao:table-consulta-permissao" />
+					</p:commandLink>
+					
+				</p:column>
+			
+			</p:dataTable>
+			
+		</h:form>
+	</ui:define>
+</ui:composition>
