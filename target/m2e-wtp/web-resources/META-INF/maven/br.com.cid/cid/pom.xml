@@ -8,6 +8,15 @@
 	<artifactId>cid</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
+	
+	<!-- Developer -->
+	<developers>
+		<developer>
+			<id>1</id>
+			<name>Gilson Silva</name>
+			<email>gilsonsilvati@gmail.com</email>
+		</developer>
+	</developers>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
