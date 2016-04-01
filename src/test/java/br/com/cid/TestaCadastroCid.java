@@ -11,6 +11,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class TestaCadastroCid {
 	
 	private static WebDriver driver;
+	private static WebElement element;
+	
 	private static final String URL_HOME = "http://127.0.0.1:8080/cid";
 	private static final String URL_CADASTRO_CID = "http://127.0.0.1:8080/cid/paginas/cadastrar/CadastraDoenca.xhtml";
 	private static final String URL_CONSULTA_CID = "http://127.0.0.1:8080/cid/paginas/consultar/ConsultaDoenca.xhtml";
@@ -26,19 +28,14 @@ public class TestaCadastroCid {
 
 	@AfterClass
 	public static void tearDownTest() {
-		try {
-			Thread.sleep(5000);
-			driver.quit();
-		} catch (InterruptedException e) {
-			System.out.println("Erro: " + e.getMessage());
-		}
+		driver.quit();
 	}
 	
 	@Test
-	public void testaCadastroCidSuccess() {
+	public void testaCadastroCidSuccess() throws InterruptedException {
 		driver.get(URL_CADASTRO_CID);
 		
-		WebElement element = driver.findElement(By.id("frm:cid"));
+		element = driver.findElement(By.id("frm:cid"));
 		element.sendKeys("N13");
 		
 		element = driver.findElement(By.id("frm:doenca"));
@@ -51,21 +48,18 @@ public class TestaCadastroCid {
 		
 		driver.findElement(By.id("frm:salvar")).click();
 		
-		try {
-			Thread.sleep(8000);
-		} catch (InterruptedException e) {
-			System.out.println("Erro: " + e.getMessage());
-		}
+		Thread.sleep(8000);
 		
 		driver.get(URL_CONSULTA_CID);
 		
+		Thread.sleep(5000);
 	}
 	
 	@Test
-	public void testaCadastroCidCampoObrigatorio() {
+	public void testaCadastroCidCampoObrigatorio() throws InterruptedException {
 		driver.get(URL_CADASTRO_CID);
 		
-		WebElement element = driver.findElement(By.id("frm:cid"));
+		element = driver.findElement(By.id("frm:cid"));
 		element.sendKeys("A00");
 		
 		element = driver.findElement(By.id("frm:doenca"));
@@ -76,18 +70,15 @@ public class TestaCadastroCid {
 		
 		driver.findElement(By.id("frm:salvar")).click();
 		
-		try {
-			Thread.sleep(8000);
-		} catch (InterruptedException e) {
-			System.out.println("Erro: " + e.getMessage());
-		}
+		Thread.sleep(5000);
 		
 		driver.get(URL_CONSULTA_CID);
 		
+		Thread.sleep(5000);
 	}
 	
 	private static void efetuarlogin() {
-		WebElement element = driver.findElement(By.id("frm:email"));
+		element = driver.findElement(By.id("frm:email"));
 		element.sendKeys("gilsonsilvati@gmail.com");
 
 		element = driver.findElement(By.id("frm:senha"));
