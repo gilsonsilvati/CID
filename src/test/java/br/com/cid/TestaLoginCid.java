@@ -1,7 +1,5 @@
 package br.com.cid;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -33,12 +31,6 @@ public class TestaLoginCid {
 		driver.quit();
 	}
 	
-	 /* Fazer teste ao vivo :) */
-	@Test
-	public void testaTitleLogin() throws InterruptedException {
-		assertEquals("CID | Login", driver.getTitle());
-	}
-
 	@Test
 	public void testaLoginCidSuccess() throws InterruptedException {
 		element = driver.findElement(By.id("frm:email"));
