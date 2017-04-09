@@ -4,19 +4,19 @@
 	xsi:schemaLocation="http://www.zeroturnaround.com http://www.zeroturnaround.com/alderaan/rebel-2_0.xsd">
 
 	<classpath>
-		<dir name="/home/gilsonsilvati/Dropbox/workspace/cid/target/classes">
+		<dir name="/home/gilsonsilvati/workspace/cid/target/classes">
 		</dir>
 	</classpath>
 
 	<web>
 		<link target="/">
 			<dir
-				name="/home/gilsonsilvati/Dropbox/workspace/cid/target/m2e-wtp/web-resources">
+				name="/home/gilsonsilvati/workspace/cid/target/m2e-wtp/web-resources">
 				<exclude name="/" />
 			</dir>
 		</link>
 		<link target="/">
-			<dir name="/home/gilsonsilvati/Dropbox/workspace/cid/src/main/webapp">
+			<dir name="/home/gilsonsilvati/workspace/cid/src/main/webapp">
 			</dir>
 		</link>
 	</web>

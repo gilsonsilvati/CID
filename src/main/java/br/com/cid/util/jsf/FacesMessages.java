@@ -26,6 +26,10 @@ public class FacesMessages implements Serializable {
 		add(message, FacesMessage.SEVERITY_ERROR);
 	}
 	
+	public void warning(String message) {
+		add(message, FacesMessage.SEVERITY_WARN);
+	}
+	
 	public String getMensagemI18n(String chave) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		String msg = context.getApplication().getResourceBundle(context, "msg").getString(chave);

@@ -13,8 +13,8 @@ hs_err_pid*
 /target/
 
 # Demais arquivos...
-.refactorings/
-.settings/
-.classpath
-.project
-.term-project
+*.refactorings/
+*.settings/
+*.classpath
+*.project
+*.term-project
