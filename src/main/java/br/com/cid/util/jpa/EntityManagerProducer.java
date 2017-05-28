@@ -9,6 +9,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.omnifaces.cdi.Startup;
+
+@Startup
 @ApplicationScoped
 public class EntityManagerProducer {
 
