@@ -1,6 +1,5 @@
 package br.com.cid.util.jpa;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Any;
 import javax.enterprise.inject.Disposes;
@@ -12,7 +11,6 @@ import javax.persistence.Persistence;
 import org.omnifaces.cdi.Startup;
 
 @Startup
-@ApplicationScoped
 public class EntityManagerProducer {
 
 	private EntityManagerFactory factory;

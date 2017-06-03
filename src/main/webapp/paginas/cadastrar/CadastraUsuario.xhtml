@@ -58,9 +58,6 @@
 							pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})" />
 					</p:password>
 					
-					<p:outputLabel value="foto para perfil:" for="foto_perfil" />
-					<p:fileUpload id="foto_perfil" value="#{cadastroUsuarioBean.uploadFile}" mode="simple" />
-						
 					<h:outputLabel />
 					<p:commandButton value="salvar" icon="fa fa-save" update="@form"
 							action="#{cadastroUsuarioBean.salvar}" styleClass="botao">

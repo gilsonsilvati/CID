@@ -17,8 +17,16 @@ public class GestaoDoencas implements Serializable {
 	private Doencas doencas;
 	
 	@Transactional
-	public void salvar(Doenca doenca) {
+	public void salvar(Doenca doenca) throws NegocioException {
+		if (isExist(doenca))
+			throw new NegocioException("Já existe uma doença registrada em nossa base de dados.");
+		
 		this.doencas.guardar(doenca);
+	}
+	
+	private boolean isExist(Doenca doenca) {
+		Doenca doencaSemelhante = this.doencas.comDadosIguais(doenca);
+		return doencaSemelhante != null && !doencaSemelhante.equals(doenca);
 	}
 	
 	@Transactional

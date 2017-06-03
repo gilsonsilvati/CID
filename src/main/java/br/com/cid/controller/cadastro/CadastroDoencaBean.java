@@ -9,6 +9,7 @@ import javax.inject.Named;
 
 import br.com.cid.model.Doenca;
 import br.com.cid.service.GestaoDoencas;
+import br.com.cid.service.NegocioException;
 import br.com.cid.util.jsf.FacesMessages;
 
 @Named
@@ -33,10 +34,16 @@ public class CadastroDoencaBean implements Serializable {
 	}
 	
 	public void salvar() {
-		this.gestaoDoencas.salvar(this.doenca);
-		this.facesMessages.info("cid " + this.doenca.getCid() + " salvo com sucesso!");
-		
-		limpar();
+		try {
+			this.gestaoDoencas.salvar(this.doenca);
+			this.facesMessages.info("cid " + this.doenca.getCid() + " salvo com sucesso!");
+			limpar();
+		} catch (NegocioException e) {
+			facesMessages.error(e.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+			facesMessages.error("Falha ao cadastrar usuário.");
+		}
 	}
 	
 	private void limpar() {

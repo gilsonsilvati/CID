@@ -16,27 +16,25 @@ public class GestaoUsuarios implements Serializable {
 	@Inject
 	private Usuarios usuarios;
 	
-	@Transactional
-	public void salvar(Usuario usuario) throws NegocioException {
-		this.usuarios.guardar(usuario);
-	}
 	
-	/*
 	@Transactional
 	public void salvar(Usuario usuario) throws NegocioException {
-		if (isExist(usuario)) {
-			throw new RegraNegocioException("Já existe um usuário igual a este.");
-		}
+		if (isExist(usuario))
+			throw new NegocioException("Já existe um usuário registrado em nossa base de dados.");
 		
 		this.usuarios.guardar(usuario);
 	}
 	
 	private boolean isExist(Usuario usuario) {
 		Usuario usuarioSemelhante = this.usuarios.comDadosIguais(usuario);
-		
-		return usuarioSemelhante != null && usuarioSemelhante.equals(usuario);
+		return usuarioSemelhante != null && !usuarioSemelhante.equals(usuario);
 	}
-	*/
+	
+	/*@Transactional
+	public void atualizar(Usuario usuario) throws NegocioException {
+		this.usuarios.guardar(usuario);
+	}*/
+	
 	
 	@Transactional
 	public void excluir(Usuario usuario) {

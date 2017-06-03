@@ -17,8 +17,16 @@ public class GestaoMedicos implements Serializable {
 	private Medicos medicos;
 	
 	@Transactional
-	public void salvar(Medico medico) {
+	public void salvar(Medico medico) throws NegocioException {
+		if (isExist(medico))
+			throw new NegocioException("Já existe um médico registrado em nossa base de dados.");
+		
 		this.medicos.guardar(medico);
+	}
+	
+	private boolean isExist(Medico medico) {
+		Medico medicoSemelhante = this.medicos.comDadosIguais(medico);
+		return medicoSemelhante != null && !medicoSemelhante.equals(medico);
 	}
 	
 	@Transactional

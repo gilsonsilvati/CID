@@ -4,9 +4,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.cid.model.Medico;
 import br.com.cid.repository.Medicos;
@@ -49,6 +51,22 @@ public class MedicosJPA implements Medicos {
 	@Override
 	public void remover(Medico medico) {
 		this.manager.remove(manager.getReference(Medico.class, medico.getId()));
+	}
+	
+	@Override
+	public Medico comDadosIguais(Medico medico) {
+		try {
+			Session session = manager.unwrap(Session.class);
+			Criteria criteria = session.createCriteria(Medico.class);
+			
+			criteria.add(Restrictions.eq("crm", medico.getCrm()));
+			
+			medico = (Medico) criteria.uniqueResult();
+			
+			return medico;
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 }

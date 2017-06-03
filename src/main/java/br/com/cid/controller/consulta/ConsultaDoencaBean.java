@@ -22,7 +22,7 @@ public class ConsultaDoencaBean implements Serializable {
 	private List<Doenca> todasDoencas;
 	
 	private Doenca doencaSelecionada;
-	private Doenca doenca;
+	private String doenca;
 	
 	@Inject
 	private Doencas doencas;
@@ -36,7 +36,6 @@ public class ConsultaDoencaBean implements Serializable {
 	@PostConstruct
 	public void inicializar() {
 		this.todasDoencas = doencas.todos();
-		this.doenca = new Doenca();
 	}
 	
 	public void excluir() {
@@ -47,14 +46,19 @@ public class ConsultaDoencaBean implements Serializable {
 	}
 	
 	public void pesquisar() {
+		this.todasDoencas = doencas.porDoenca(doenca);
+		this.facesMessages.info("Resultado da pesquisa!");
+	}
+	
+/*	public void pesquisar() {
 		this.todasDoencas = doencas.porCID(this.doenca.getCid());
-		this.facesMessages.info("resultado da pesquisa!");
+		this.facesMessages.info("Resultado da pesquisa!");
 	}
 	
 	public void pesquisaCriteria() {
-		this.todasDoencas = doencas.criteriaPorCIDLike(this.doenca.getCid());
+		this.todasDoencas = doencas.criteriaPorCIDLike(this.doenca.getDoenca());
 		this.facesMessages.info("Resultado da pesquisa!");
-	}
+	}*/
 
 	public List<Doenca> getTodasDoencas() {
 		return todasDoencas;
@@ -68,8 +72,11 @@ public class ConsultaDoencaBean implements Serializable {
 		this.doencaSelecionada = doencaSelecionada;
 	}
 
-	public Doenca getDoenca() {
+	public String getDoenca() {
 		return doenca;
 	}
-	
+	public void setDoenca(String doenca) {
+		this.doenca = doenca;
+	}
+
 }

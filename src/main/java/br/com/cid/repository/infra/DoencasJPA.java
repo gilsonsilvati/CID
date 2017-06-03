@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -11,6 +12,8 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.cid.model.Doenca;
 import br.com.cid.repository.Doencas;
@@ -83,6 +86,32 @@ public class DoencasJPA implements Doencas {
 		List<Doenca> doencasCID = query.getResultList();
 		
 		return doencasCID;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Doenca> porDoenca(String doenca) {
+		Session session = manager.unwrap(Session.class);
+		Criteria criteria = session.createCriteria(Doenca.class);
+		criteria.add(Restrictions.ilike("doenca", doenca, MatchMode.ANYWHERE));
+		
+		return criteria.list();
+	}
+	
+	@Override
+	public Doenca comDadosIguais(Doenca doenca) {
+		try {
+			Session session = manager.unwrap(Session.class);
+			Criteria criteria = session.createCriteria(Doenca.class);
+			
+			criteria.add(Restrictions.eq("cid", doenca.getCid()));
+			
+			doenca = (Doenca) criteria.uniqueResult();
+			
+			return doenca;
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 }

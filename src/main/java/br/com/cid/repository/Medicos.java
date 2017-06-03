@@ -10,6 +10,7 @@ public interface Medicos extends Serializable {
 	public List<Medico> todos();
 	public Medico porId(Long id);
 	public List<Medico> porCRM(Integer crm);
+	public Medico comDadosIguais(Medico medico);
 	
 	public Medico guardar(Medico medico);
 	

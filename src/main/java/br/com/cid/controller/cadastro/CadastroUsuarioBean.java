@@ -7,8 +7,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.primefaces.model.UploadedFile;
-
 import br.com.cid.model.Usuario;
 import br.com.cid.service.GestaoUsuarios;
 import br.com.cid.service.NegocioException;
@@ -22,7 +20,7 @@ public class CadastroUsuarioBean implements Serializable {
 	
 	private Usuario usuario;
 	
-	private UploadedFile uploadFile;
+//	private UploadedFile uploadFile;
 	
 	@Inject
 	private GestaoUsuarios gestaoUsuarios;
@@ -39,19 +37,17 @@ public class CadastroUsuarioBean implements Serializable {
 	
 	public void salvar() {
 		try {
-			if (this.uploadFile != null) {
+			/*if (this.uploadFile != null) {
 				this.usuario.setFotoPerfil(this.uploadFile.getContents());
-			}
+			}*/
 			
 			this.gestaoUsuarios.salvar(this.usuario);
 			this.facesMessages.info("usuário " + this.usuario.getNome() + " salvo com sucesso!");
 		} catch (NegocioException e) {
 			facesMessages.error(e.getMessage());
-			this.usuario = null;
 		} catch (Exception e) {
 			e.printStackTrace();
-			facesMessages.error("Erro desconhecido. Contatar o administrador.");
-			this.usuario = null;
+			facesMessages.error("Falha ao cadastrar usuário.");
 		}
 		
 		limpar();
@@ -73,12 +69,12 @@ public class CadastroUsuarioBean implements Serializable {
 		}
 	}
 	
-	public UploadedFile getUploadFile() {
+	/*public UploadedFile getUploadFile() {
 		return uploadFile;
 	}
 	public void setUploadFile(UploadedFile uploadFile) {
 		this.uploadFile = uploadFile;
-	}
+	}*/
 
 	public boolean isEditando() {
 		return this.usuario.getId() != null;

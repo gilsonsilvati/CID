@@ -10,7 +10,9 @@ public interface Doencas extends Serializable {
 	public List<Doenca> todos();
 	public Doenca porId(Long id);
 	public List<Doenca> porCID(String cid);
+	public List<Doenca> porDoenca(String doenca);
 	public List<Doenca> criteriaPorCIDLike(String cid);
+	public Doenca comDadosIguais(Doenca doenca);
 	
 	public Doenca guardar(Doenca doenca);
 

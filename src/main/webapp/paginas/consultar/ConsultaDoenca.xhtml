@@ -22,7 +22,7 @@
 			
 			<h:panelGrid columns="3" cellpadding="3" cellspacing="5">
 				<p:outputLabel value="Pesquisar por cid:" for="cid" />
-				<p:inputText id="cid" value="#{consultaDoencaBean.doenca.cid}" />
+				<p:inputText id="cid" value="#{consultaDoencaBean.doenca}" />
 				<p:commandButton id="pesquisa" value="Pesquisar" icon="fa fa-search" styleClass="botao"
 					action="#{consultaDoencaBean.pesquisar}" update="table-consulta-doenca" />
 			</h:panelGrid>
@@ -41,8 +41,7 @@
 			<p:separator />
 			<br />
 			
-			<p:messages showDetail="false" showSummary="true" autoUpdate="true" closable="true"
-				style="font-size: 14px" />
+			<p:messages showDetail="false" showSummary="true" autoUpdate="true" style="font-size: 14px" />
 			
 			<p:dataTable id="table-consulta-doenca" value="#{consultaDoencaBean.todasDoencas}" var="doenca"
 					emptyMessage="Nenhuma doença cadastrada!" style="margin-top: 20px"

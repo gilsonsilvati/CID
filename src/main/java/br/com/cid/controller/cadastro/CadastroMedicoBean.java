@@ -12,6 +12,7 @@ import javax.inject.Named;
 import br.com.cid.model.Medico;
 import br.com.cid.model.UF;
 import br.com.cid.service.GestaoMedicos;
+import br.com.cid.service.NegocioException;
 import br.com.cid.util.jsf.FacesMessages;
 
 @Named
@@ -40,10 +41,16 @@ public class CadastroMedicoBean implements Serializable {
 	}
 
 	public void salvar() {
-		this.gestaoMedicos.salvar(this.medico);
-		this.facesMessages.info("médico " + this.medico.getNome() + " salvo com sucesso!");
-		
-		limpar();
+		try {
+			this.gestaoMedicos.salvar(this.medico);
+			this.facesMessages.info("médico " + this.medico.getNome() + " salvo com sucesso!");
+			limpar();
+		} catch (NegocioException e) {
+			facesMessages.error(e.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+			facesMessages.error("Falha ao cadastrar usuário.");
+		}
 	}
 	
 	private void limpar() {

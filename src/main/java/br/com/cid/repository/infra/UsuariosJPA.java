@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
@@ -55,8 +56,17 @@ public class UsuariosJPA implements Usuarios {
 
 	@Override
 	public Usuario comDadosIguais(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			String query = "from Usuario where cpf like :cpf";
+			
+			usuario = manager.createQuery(query, Usuario.class)
+					.setParameter("cpf", "%" + StringUtils.defaultIfBlank(usuario.getCpf(), "") + "%")
+					.getSingleResult();
+			
+			return usuario;
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
-
+	
 }

@@ -12,7 +12,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
-import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -67,9 +66,9 @@ public class Usuario implements Serializable {
 	@Column(name = "data_modificacao", updatable = true)
 	private Date dataModificacao;
 	
-	@Lob
+	/*@Lob
 	@Column(name = "foto_perfil")
-	private byte[] fotoPerfil;
+	private byte[] fotoPerfil;*/
 	
 	// TODO: Adicionar version...
 	
@@ -132,12 +131,12 @@ public class Usuario implements Serializable {
 		this.dataModificacao = dataModificacao;
 	}
 	
-	public byte[] getFotoPerfil() {
+	/*public byte[] getFotoPerfil() {
 		return fotoPerfil;
 	}
 	public void setFotoPerfil(byte[] fotoPerfil) {
 		this.fotoPerfil = fotoPerfil;
-	}
+	}*/
 
 	/* Auditoria... */
 	@PrePersist

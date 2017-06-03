@@ -39,6 +39,7 @@
 		<navigation-case>
 			<from-outcome>cadastraPermissao</from-outcome>
 			<to-view-id>/paginas/permissao/CadastraPermissao.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>
 	</navigation-rule>
 	
@@ -46,6 +47,7 @@
 		<navigation-case>
 			<from-outcome>consultaPermissao</from-outcome>
 			<to-view-id>/paginas/permissao/ConsultaPermissao.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>
 	</navigation-rule>
     
@@ -54,6 +56,7 @@
     	<navigation-case>
     		<from-outcome>cadastraUsuario</from-outcome>
     		<to-view-id>/paginas/cadastrar/CadastraUsuario.xhtml</to-view-id>
+    		<redirect />
     	</navigation-case>
     </navigation-rule>
     
@@ -61,6 +64,7 @@
     	<navigation-case>
     		<from-outcome>cadastraMedico</from-outcome>
     		<to-view-id>/paginas/cadastrar/CadastraMedico.xhtml</to-view-id>
+    		<redirect />
     	</navigation-case>
     </navigation-rule>
     
@@ -68,6 +72,7 @@
 		<navigation-case>
 			<from-outcome>cadastraDoenca</from-outcome>
 			<to-view-id>/paginas/cadastrar/CadastraDoenca.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>
 	</navigation-rule>
 	
@@ -76,6 +81,7 @@
 		<navigation-case>
 			<from-outcome>consultaUsuario</from-outcome>
 			<to-view-id>/paginas/consultar/ConsultaUsuario.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>
 	</navigation-rule>
 
@@ -83,6 +89,7 @@
 		<navigation-case>
 			<from-outcome>consultaMedico</from-outcome>
 			<to-view-id>/paginas/consultar/ConsultaMedico.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>
 	</navigation-rule>
 
@@ -90,6 +97,7 @@
 		<navigation-case>
 			<from-outcome>consultaDoenca</from-outcome>
 			<to-view-id>/paginas/consultar/ConsultaDoenca.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>
 	</navigation-rule>
 	
@@ -98,6 +106,7 @@
 		<navigation-case>
 			<from-outcome>imprimiDoenca</from-outcome>
 			<to-view-id>/paginas/imprimir/ImprimiDoenca.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>
 	</navigation-rule>
     
