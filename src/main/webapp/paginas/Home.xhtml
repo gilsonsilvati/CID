@@ -28,34 +28,34 @@
 				<p:slideMenu style="width: 225px" backLabel="Voltar">
 
 					<p:submenu label="Página inicial" icon="fa fa-home">
-						<p:menuitem value="Home" icon="fa fa-home" action="home" />
+						<p:menuitem value="Home" icon="fa fa-home" outcome="home" />
 					</p:submenu>
 					
 					<p:submenu label="Permissões" icon="fa fa-cogs"
 							rendered="#{request.isUserInRole('ADMIN')}">
-						<p:menuitem value="Cadastrar" icon="fa fa-save" action="cadastraPermissao" />
-						<p:menuitem value="Consultar" icon="fa fa-search" action="consultaPermissao" />
+						<p:menuitem value="Cadastrar" icon="fa fa-save" outcome="cadastraPermissao" />
+						<p:menuitem value="Consultar" icon="fa fa-search" outcome="consultaPermissao" />
 					</p:submenu>
 
 					<p:submenu label="Cadastrar" icon="fa fa-save"
 							rendered="#{!request.isUserInRole('USER')}">
-						<p:menuitem value="Usuário" icon="fa fa-male" action="cadastraUsuario"
+						<p:menuitem value="Usuário" icon="fa fa-male" outcome="cadastraUsuario"
 							rendered="#{request.isUserInRole('ADMIN')}" />
-						<p:menuitem value="Médico" icon="fa fa-user-md" action="cadastraMedico"
+						<p:menuitem value="Médico" icon="fa fa-user-md" outcome="cadastraMedico"
 							rendered="#{!request.isUserInRole('USER')}" />
-						<p:menuitem value="Doença" icon="fa fa-stethoscope" action="cadastraDoenca"
+						<p:menuitem value="Doença" icon="fa fa-stethoscope" outcome="cadastraDoenca"
 							rendered="#{!request.isUserInRole('USER')}" />
 					</p:submenu>
 
 					<p:submenu label="Consultar" icon="fa fa-search">
-						<p:menuitem value="Usuário" icon="fa fa-male" action="consultaUsuario"
+						<p:menuitem value="Usuário" icon="fa fa-male" outcome="consultaUsuario"
 								rendered="#{request.isUserInRole('ADMIN')}"/>
-						<p:menuitem value="Médico" icon="fa fa-user-md" action="consultaMedico" />
-						<p:menuitem value="Doença - CID" icon="fa fa-stethoscope" action="consultaDoenca" />
+						<p:menuitem value="Médico" icon="fa fa-user-md" outcome="consultaMedico" />
+						<p:menuitem value="Doença - CID" icon="fa fa-stethoscope" outcome="consultaDoenca" />
 					</p:submenu>
 
 					<p:submenu label="Imprimir" icon="fa fa-print">
-						<p:menuitem value="Doença com CID" icon="fa fa-stethoscope" action="imprimiDoenca" />
+						<p:menuitem value="Doença com CID" icon="fa fa-stethoscope" outcome="imprimiDoenca" />
 					</p:submenu>
 
 					<p:submenu label="Sair" icon="fa fa-power-off">

@@ -95,8 +95,6 @@
     TITLE="consultaDoenca" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#paginas#permissao#CadastraPermissao.xhtml"
-  PATH="/paginas/permissao/CadastraPermissao.xhtml" SHAPE="240,257,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules::9" SHAPE="32,1361,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules::9" NAME="item" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
@@ -106,6 +104,8 @@
     TITLE="imprimiDoenca" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#permissao#CadastraPermissao.xhtml"
+  PATH="/paginas/permissao/CadastraPermissao.xhtml" SHAPE="240,257,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#paginas#permissao#ConsultaPermissao.xhtml"
   PATH="/paginas/permissao/ConsultaPermissao.xhtml" SHAPE="240,593,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
