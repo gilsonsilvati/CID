@@ -9,6 +9,7 @@ public interface Usuarios extends Serializable {
 	
 	public List<Usuario> todos();
 	public Usuario porId(Long id);
+	public Usuario buscaPorCPF(String cpf);
 	public List<Usuario> porCPF(String cpf);
 	public Usuario comDadosIguais(Usuario usuario);
 	

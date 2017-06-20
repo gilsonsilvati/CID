@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:composite="http://xmlns.jcp.org/jsf/composite"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>..:: CID | Senha ::..</title>
+	<h:outputStylesheet library="css" name="Login.css" />
+</h:head>
+<h:body>
+	<h:form id="frm">
+		<p:dialog id="dialog-usuario" visible="true" modal="true" resizable="false" closable="false"
+			styleClass="dialog-login" position="center" focus="cpf">
+			
+			<p:graphicImage library="imagens" name="logo_pdf.png" styleClass="logo" />
+				
+			<p:messages id="messages" showDetail="false" showSummary="true" autoUpdate="true" sticky="true"
+				style="font-size: 14px" styleClass="messages" />
+			
+			<p:ajaxStatus styleClass="ajax-status">
+				<f:facet name="start">
+					<h:graphicImage library="imagens" name="loading.gif" style="width: 35px; height: 35px" />
+				</f:facet>
+				<f:facet name="complete">
+					<h:outputText value="" />
+				</f:facet>
+			</p:ajaxStatus>
+
+			<h:panelGrid columns="3" cellpadding="3" cellspacing="5">
+				<p:outputLabel value="cpf:" for="cpf" />
+				<p:inputMask mask="999.999.999-99" id="cpf" value="#{senhaUsuarioBean.cpf}" />
+				<p:commandButton value="Pesquisar" icon="fa fa-search" styleClass="botao"
+					action="#{senhaUsuarioBean.pesquisar}" update="@form" />
+			</h:panelGrid>
+
+			<h:panelGrid id="panel-usuario" columns="2" cellpadding="5" cellspacing="10"
+					rendered="#{senhaUsuarioBean.usuario ne null}">
+				<p:outputLabel value="nome:" />
+				<p:inputText value="#{senhaUsuarioBean.usuario.nome}" size="25" disabled="true" />
+
+				<p:outputLabel value="e-mail:" />
+				<p:inputText value="#{senhaUsuarioBean.usuario.email}" size="25" disabled="true" />
+
+				<p:outputLabel value="cpf:" />
+				<p:inputMask mask="999.999.999-99"
+					value="#{senhaUsuarioBean.usuario.cpf}" size="25" disabled="true" />
+
+				<p:outputLabel value="senha:" for="senha" />
+				<p:password id="senha" value="#{senhaUsuarioBean.usuario.senha}" size="25">
+					<f:validateLength minimum="6" maximum="20" />
+
+					<f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})" />
+				</p:password>
+
+				<h:outputLabel />
+				<p:commandButton value="salvar" icon="fa fa-save" update="@form"
+					action="#{senhaUsuarioBean.salvar}" styleClass="botao">
+
+					<f:ajax execute="@form" render=":frm:dialog-usuario" />
+				</p:commandButton>
+			</h:panelGrid>
+			
+			<div align="center" style="margin-top: 10px">
+				<p:link value="Página de Login" href="Login.xhtml" />
+			</div>
+		</p:dialog>
+	</h:form>
+</h:body>
+</html>

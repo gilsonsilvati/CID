@@ -9,6 +9,7 @@ import javax.persistence.NoResultException;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.cid.model.Usuario;
 import br.com.cid.repository.Usuarios;
@@ -67,6 +68,15 @@ public class UsuariosJPA implements Usuarios {
 		} catch (NoResultException e) {
 			return null;
 		}
+	}
+	
+	@Override
+	public Usuario buscaPorCPF(String cpf) {
+		Session session = manager.unwrap(Session.class);
+		Criteria criteria = session.createCriteria(Usuario.class);
+		criteria.add(Restrictions.eq("cpf", cpf));
+		
+		return (Usuario) criteria.uniqueResult();
 	}
 	
 }
